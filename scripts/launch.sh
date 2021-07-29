@@ -8,4 +8,5 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-polybar -c ~/i3/configs/config.ini main &
+# polybar -c ~/i3/configs/config.ini main &
+polybar -c ~/SudacodeRice/polybar/config.ini main &
