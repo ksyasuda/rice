@@ -1,0 +1,55 @@
+* {
+  background-color: #282C34;
+  border-color: #2e343f;
+  text-color: #8ca0aa;
+  spacing: 0;
+  width: 35%;
+  font: "Open Sans 12";
+  lines: 10;
+  markup: true;
+  y-offset: 4.9%;
+  x-offset: 6.5%;
+}
+
+rofi {
+  border: 1px;
+  border-color: red;
+}
+
+inputbar {
+  border: 0 0 1px 0;
+  children: [prompt,entry];
+}
+
+prompt {
+  padding: 16px;
+  border: 0 1px 0 0;
+}
+
+textbox {
+  background-color: #2e343f;
+  border: 0 0 1px 0;
+  border-color: #282C33;
+  padding: 8px 16px;
+}
+
+entry {
+  padding: 16px;
+}
+
+listview {
+  cycle: false;
+  margin: 0 0 -1px 0;
+  scrollbar: false;
+  border: 4px;
+}
+
+element {
+  border: 0 1px 1px 0;
+  padding: 16px;
+}
+
+element selected {
+  color: #a4ce82;
+  background-color: #56a7b5;
+}

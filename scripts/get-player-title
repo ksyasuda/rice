@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+STAT=`playerctl status 2>/dev/null`
+if [[ $STAT == "" ]]; then
+    printf "\n"
+elif [[ $(playerctl status 2>/dev/null) == "Playing" ]]; then
+    printf "%s\n" "Playing: $(playerctl metadata title)"
+else
+    printf "%s\n" "Paused: $(playerctl metadata title)"
+fi

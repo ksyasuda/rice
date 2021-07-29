@@ -1,0 +1,19 @@
+--abort-on-error
+
+# Geo Restriction
+--geo-bypass
+
+# Thumbnail images
+# --write-thumbnail
+
+--merge-output-format mp4
+
+# Subtitle Options
+# --write-auto-sub
+# --all-subs
+
+# Post-processing Options
+# --embed-subs
+--add-metadata
+
+-o ~/Downloads/%(title)s.%(ext)s

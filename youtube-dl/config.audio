@@ -1,0 +1,8 @@
+--abort-on-error
+
+# Geo Restriction
+--geo-bypass
+
+--add-metadata
+
+-o ~/temp/%(title)s-%(album)s.%(ext)s

@@ -1,0 +1,10 @@
+{
+	"arrowParens": "avoid",
+	"semi": false,
+	"tabWidth": 4,
+	"useTabs": true,
+	"jsxSingleQuote": true,
+	"printWidth": 80,
+	"trailingComma": "es5",
+	"vueIndentScriptAndStyle": true
+}
