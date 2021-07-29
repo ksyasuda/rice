@@ -398,13 +398,13 @@ bindsym Mod1+p exec --no-startup-id $HOME/scripts/pavucontrol.sh
 
 ## Spotify/Mpd controls
 # Bind F4 to Next Song
-bindsym XF86AudioPrev exec --no-startup-id $HOME/scripts/spotify-controls.sh -b;\
+bindsym XF86AudioPrev exec --no-startup-id $HOME/SudacodeRice/scripts/spotify-controls.sh -b;\
         exec --no-startup-id $HOME/i3/scripts/music-controls.sh -p
 # Bind F6 to Pause/Play
-bindsym XF86AudioPlay exec --no-startup-id $HOME/scripts/spotify-controls.sh -p;\
+bindsym XF86AudioPlay exec --no-startup-id $HOME/SudacodeRice/scripts/spotify-controls.sh -p;\
         exec --no-startup-id $HOME/i3/scripts/music-controls.sh -t
 # Bind F5 to Next Song
-bindsym XF86AudioNext exec --no-startup-id $HOME/scripts/spotify-controls.sh -n;\
+bindsym XF86AudioNext exec --no-startup-id $HOME/SudacodeRice/scripts/spotify-controls.sh -n;\
         exec --no-startup-id $HOME/i3/scripts/music-controls.sh -n
 
 ## Music Mpd/Ncmpcpp/Playerctl
@@ -415,7 +415,7 @@ bindsym Mod1+n exec --no-startup-id alacritty -e ncmpcpp
 bindsym Mod1+b exec --no-startup-id alacritty -e bpytop
 
 # get a new wallpaper
-bindsym Control+Mod1+n exec --no-startup-id $HOME/scripts/new-wallpaper.sh
+bindsym Control+Mod1+n exec --no-startup-id $HOME/SudacodeRice/scripts/new-wallpaper.sh
 
 bindsym Control+Mod1+f exec --no-startup-id firefox
 
@@ -436,17 +436,17 @@ assign [class="^discord$"] workspace $ws10
 
 ## ON STARTUP
 # launch polybar on startup
-exec_always --no-startup-id /home/sudacode/i3/scripts/launch.sh
+exec_always --no-startup-id ~/SudacodeRice/scripts/launch.sh
 
 # launch picom in the background
-exec_always --no-startup-id /home/sudacode/scripts/picom.sh
+exec_always --no-startup-id ~/SudacodeRice/scripts/picom.sh
 
 # run wallpaper script to set random wallpaper
-exec_always --no-startup-id /home/sudacode/scripts/wallpaper.sh
+exec_always --no-startup-id ~/SudacodeRice/scripts/wallpaper.sh
 
 # start the calendar and todolist plasmoids
-exec --no-startup-id ~/scripts/calendar.sh
-exec --no-startup-id ~/scripts/todo.sh
+exec --no-startup-id ~/SudacodeRice/scripts/calendar.sh
+exec --no-startup-id ~/SudacodeRice/scripts/todo.sh
 
 exec --no-startup-id alacritty -e ncmpcpp
 
