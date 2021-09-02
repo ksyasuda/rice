@@ -5,7 +5,7 @@
   spacing: 0;
   width: 70%;
   font: "Open Sans 24";
-  lines: 24;
+  lines: 10;
   markup: true;
   y-offset: 1.5%;
 }

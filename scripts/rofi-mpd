@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-m() { rofi -theme /home/sudacode/i3/rofi/rofi-mpd.rasi -dmenu -i "$@" ;}
-mb() { rofi -theme /home/sudacode/i3/rofi/rofi-mpd.rasi -dmenu -i -kb-custom-1 "Alt+q" "$@" ;}
+m() { rofi -l 12 -markup -theme ~/SudacodeRice/rofi/rofi-mpd.rasi -dmenu -i "$@" ;}
+mb() { rofi -l 24 -markup -theme ~/SudacodeRice/rofi/rofi-mpd.rasi -dmenu -i -kb-custom-1 "Alt+q" "$@" ;}
 
 artist() {
   lines="$(mpc list artist | wc -l)"
