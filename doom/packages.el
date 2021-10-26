@@ -48,8 +48,13 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-(package! wakatime-mode)
+(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
 (package! org-bullets)
-(package! markdown-mode)
-(package! auto-complete)
-(package! mozc)
+
+(package! wakatime-mode)
+
+(package! py-isort)
+(package! python-pytest)
+(package! ein)
+(package! python-docstring)
+(package! py-autopep8)
