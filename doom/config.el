@@ -80,6 +80,9 @@
   (setq lsp-pyls-plugins-pyflakes-enabled t)
 )
 
+(after! lsp-python-ms
+  (set-lsp-priority! 'mspyls 1))
+
 (add-hook 'org-mode-hook #'org-bullets-mode)
 
 (add-hook 'before-save-hook 'py-isort-before-save)
@@ -114,3 +117,21 @@ was updated after pytest was run then nothing is reported.
  'org-babel-load-languages
  '((python . t)))
 
+
+(setq projectile-project-search-path '("~/Projects/" "~/Work/Projects/"))
+
+(setf (lsp-session-folders-blacklist (lsp-session)) nil)
+(lsp--persist-session (lsp-session))
+
+(advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
+
+
+(add-load-path! (expand-file-name "~/Downloads/all-the-icons-dired"))
+(load "all-the-icons-dired.el")
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
+(use-package! peep-dired
+  :ensure t
+  :defer t ; don't access `dired-mode-map' until `peep-dired' is loaded
+  :bind (:map dired-mode-map
+              ("P" . peep-dired)))

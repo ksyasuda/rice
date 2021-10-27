@@ -58,3 +58,5 @@
 (package! ein)
 (package! python-docstring)
 (package! py-autopep8)
+(package! diredfl)
+(package! peep-dired)
