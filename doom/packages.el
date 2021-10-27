@@ -58,8 +58,6 @@
 (package! ein)
 (package! python-docstring)
 (package! py-autopep8)
-<<<<<<< HEAD
+
 (package! diredfl)
 (package! peep-dired)
-=======
->>>>>>> dfea492 (updates)

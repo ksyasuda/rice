@@ -80,12 +80,9 @@
   (setq lsp-pyls-plugins-pyflakes-enabled t)
 )
 
-<<<<<<< HEAD
 (after! lsp-python-ms
   (set-lsp-priority! 'mspyls 1))
 
-=======
->>>>>>> dfea492 (updates)
 (add-hook 'org-mode-hook #'org-bullets-mode)
 
 (add-hook 'before-save-hook 'py-isort-before-save)
@@ -120,7 +117,6 @@ was updated after pytest was run then nothing is reported.
  'org-babel-load-languages
  '((python . t)))
 
-<<<<<<< HEAD
 
 (setq projectile-project-search-path '("~/Projects/" "~/Work/Projects/"))
 
@@ -139,5 +135,4 @@ was updated after pytest was run then nothing is reported.
   :defer t ; don't access `dired-mode-map' until `peep-dired' is loaded
   :bind (:map dired-mode-map
               ("P" . peep-dired)))
-=======
->>>>>>> dfea492 (updates)
+
