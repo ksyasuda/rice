@@ -1,3 +1,5 @@
+# ZSH_THEME="spaceship" # set by `omz`
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -8,7 +10,6 @@ fi
 #If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
 export ZSH="/home/sudacode/.oh-my-zsh"
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/Work/scripts:$PATH"
@@ -16,13 +17,16 @@ export PATH="$HOME/projects/Python/get_song/src/:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
-
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
 
 if [ -f ~/.aliases ]; then
 	. ~/.aliases
+fi
+
+if [ -f ~/Work/.aliases ]; then
+	. ~/Work/.aliases
 fi
 
 
@@ -37,8 +41,9 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="random"
+# ZSH_THEME="random" # set by `omz`
 #ZSH_THEME="agnoster"
+# ZSH_THEMES="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -102,7 +107,7 @@ HISTCONTROL=ignoreboth
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting colored-man-pages zsh-256color vi-mode)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting colored-man-pages vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 #source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
@@ -137,49 +142,6 @@ export ARCHFLAGS="-arch x86_64"
 
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 
-# ------------------------------------- POWERLINE CONFIG ----------------------
-#POWERLEVEL9K_OS_ICON_BACKGROUND="white"
-#POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time battery context dir vcs newline)
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon battery context newline dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status root_indicator background_jobs history)
-POWERLEVEL9K_DISABLE_RPROMPT=false
-POWERLEVEL9K_TIME_BACKGROUND='117'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-
-#POWERLEVEL9K_CUSTOM_NOW_PLAYING='~/.nowplaying'
-#POWERLEVEL9K_CUSTOM_NOW_PLAYING_BACKGROUND='blue'
-#POWERLEVEL9K_CUSTOM_NOW_PLAYING_FOREGROUND='black'
-
-# Icons
-OS_ICON='  Yawnick boi: ﴑ'
-POWERLEVEL9K_OS_ICON_BACKGROUND='208'
-POWERLEVEL9K_OS_ICON_FOREGROUND='000'
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON=' '
-POWERLEVEL9K_USER_ICON="\uF415" # 
-POWERLEVEL9K_USER_DEFAULT_BACKGROUND='199'
-
-zsh_wifi_signal(){
-    local signal=$(nmcli device wifi | grep yes | awk '{print $8}')
-    local color='%F{yellow}'
-    [[ $signal -gt 75 ]] && color='%F{green}'
-    [[ $signal -lt 50 ]] && color='%F{red}'
-    echo -n "%{$color%}\uf230  $signal%{%f%}" # \uf230 is 
-}
-POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time user dir vcs virtualenv)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery user dir vcs virtualenv)
-
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='↱'
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='↳  Yawnick boi : ﴑ '
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX_BACKGROUND='208'
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX_FOREGROUND='000'
-#POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
-
-
-
 # set battery stages and colors
 POWERLEVEL9K_BATTERY_STAGES=(
    $'▏    ▏' $'▎    ▏' $'▍    ▏' $'▌    ▏' $'▋    ▏' $'▊    ▏' $'▉    ▏' $'█    ▏'
@@ -196,40 +158,7 @@ POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='021'
 POWERLEVEL9K_BATTERY_LOW_THRESHOLD=20
 POWERLEVEL9K_BATTERY_VERBOSE=true
 
- # Set 'context' segment colors
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='010'
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='128'
-
-# Set directory icons
-POWERLEVEL9K_HOME_ICON='🏠'
-POWERLEVEL9K_HOME_SUB_ICON='📂'
-
-# Set dir path colors
-#POWERLEVEL9K_DIR_PATH_HIGHLIGHT_BOLD=true
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='033'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='016'
-POWERLEVEL9K_DIR_HOME_BACKGROUND='033'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='016'
-POWERLEVEL9K_DIR_PATH_HILIGHT_FOREGROUND='000'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='033'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='016'
-POWERLEVEL9K_DIR_NOT_WRITABLE_BACKGROUND='196'
-POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND='016'
-
-# Git configurations
-POWERLEVEL9K_SHOW_CHANGESET=true
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='233'
-#POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='033'
-#POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='197'
-#POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
-#! -----------------------------------END OF POWERLEVEL CONFIG------------------
-
-#LS_COLORS="di=42;1;30:*.mp3=1;32;41:fi=0;91:*.c=1;96:*.js=1;93:*.h=1;35:ex=1;32:*.html=1;36:*.cpp=1;96:*.txt=1;91:*Makefile=1;35:*.css=1;36:*.as=1;36:ow=1;42;93:*.ttf=0;91:*.png=0;91:*README=4;31:*.jpg=0;91:*.md=4;31:*.json=1;94:*.as=0;35:*.obj=0;35:*.correct=1;94"
-
-
-LS_COLORS="di=42;1;94:*.mp3=1;32;41:fi=0;91:*.c=1;96:*.js=1;93:*.h=1;35:ex=1;32:*.html=1;36:*.cpp=1;96:*.txt=1;91:*Makefile=1;95:*.css=1;36:*.as=1;36:ow=1;42;93:*.ttf=0;91:*.png=0;91:*README=4;31:*.jpg=0;91:*.md=4;31:*.json=1;94:*.as=0;35:*.obj=0;35:*.correct=1;94"
+LS_COLORS="di=42;1;90:*.mp3=1;32;41:fi=0;91:*.c=1;96:*.js=1;93:*.h=1;35:ex=1;32:*.html=1;36:*.cpp=1;96:*.txt=1;91:*Makefile=1;95:*.css=1;36:*.as=1;36:ow=1;42;93:*.ttf=0;91:*.png=0;91:*README=4;31:*.jpg=0;91:*.md=4;31:*.json=1;94:*.as=0;35:*.obj=0;35:*.correct=1;94:*.py=1;91:*.ipynb=3;91"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
@@ -270,6 +199,17 @@ codi() {
     Codi $syntax" "$@"
 }
 
+get_git_commit_hash() {
+	git rev-parse HEAD | cut -c -12
+}
+
+export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_GCLOUD_SHOW=false
+export SPACESHIP_EXIT_CODE_SHOW=true
+export SPACESHIP_TIME_COLOR=blue
+export SPACESHIP_VENV_PREFIX=" "
+export SPACESHIP_DIR_TRUNC=0
+# eval spaceship_vi_mode_enable
 
 ### for use with xserver... causes screenfetch and neofetch to not work unless xserver is running
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
@@ -278,63 +218,45 @@ codi() {
 
 PS2="===>"
 
-# Add gem to PATH
-export PATH=$PATH:/home/sudacode/.gem/ruby/2.7.0/bin
-
-# Add go to PATH
-export PATH=$PATH:/home/sudacode/go/bin
-
-alias freud='cd /home/sudacode/'
-
-# Add yarn to PATH
-export PATH="$PATH:`yarn global bin`"
-
-# set terminal color to 256 color
-export TERM=xterm-256color
-
-export PATH=$PATH:/home/sudacode/.local/bin
-
+# # Add gem to PATH
+# export PATH=$PATH:/home/sudacode/.gem/ruby/2.7.0/bin
+# 
+# # Add go to PATH
+# export PATH=$PATH:/home/sudacode/go/bin
+# 
+# alias freud='cd /home/sudacode/'
+# 
+# # Add yarn to PATH
+# export PATH="$PATH:`yarn global bin`"
+# 
+# # set terminal color to 256 color
+# export TERM=xterm-256color
+# 
+# export PATH=$PATH:/home/sudacode/.local/bin
+# 
 # add emacs to path
 export PATH=$PATH:/home/sudacode/.emacs.d/bin
-
+# 
 #Enable tab completions for flags in colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
-
-# add pythno to PATH
-export PATH="$PATH:/usr/bin/python"
-
-# add jdk-8 to path
-export PATH="$PATH:/usr/lib/jvm/java-8-openjdk/bin"
-export CLASSPATH="$CLASSPATH:/usr/share/java/mariadb-jdbc/mariadb-java-client.jar"
+# 
+# # add pythno to PATH
+# export PATH="$PATH:/usr/bin/python"
+# 
+# # add jdk-8 to path
+# export PATH="$PATH:/usr/lib/jvm/java-8-openjdk/bin"
+# export CLASSPATH="$CLASSPATH:/usr/share/java/mariadb-jdbc/mariadb-java-client.jar"
 
 ## ibus config
-export GTK_IM_MODULE=ibus
-# will make libreoffice work
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-export QT4_IM_MODULE=xim
-ibus-daemon -drx
-
-export GTK_IM_MODULE_FILE=/etc/gtk-2.0/gtk.immodules
-export GTK_IM_MODULE_FILE=/usr/lib/gtk-3.0/3.0.0/immodules.cache
-
+# export GTK_IM_MODULE=ibus
+# # will make libreoffice work
+# export XMODIFIERS=@im=ibus
+# export QT_IM_MODULE=ibus
+# export QT4_IM_MODULE=xim
+# ibus-daemon -drx
 
 export VISUAL=vim
-
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-export ORACLE_HOME=/usr
-export TNS_ADMIN=/etc/tnsnames.ora
-
-
-export GDK_SCALE=2
-
-
-# rdesktop use cursor
-# export XCURSOR_DISCOVER=1 rdesktop
-
-# set qt scale factor
-export QT_AUTO_SCREEN_SCALE_FACTOR=1.5
-# export QT_FONT_DPI=196 vym
 
 # source the Xmodmap file to get custom keybindings
 # [[ -f ~/.Xmodmap  ]] && xmodmap ~/.Xmodmap
@@ -357,3 +279,5 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1.5
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
+
+# neofetch

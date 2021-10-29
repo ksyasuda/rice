@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;; (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 14))
-(setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 16))
+(setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -66,11 +66,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(after! company
-    (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
-    (setq company-show-quick-access t)
-    (setq company-idle-delay 0)
-)
+
 
 (use-package! lsp
   :init
@@ -80,45 +76,31 @@
   (setq lsp-pyls-plugins-pyflakes-enabled t)
 )
 
-(after! lsp-python-ms
-  (set-lsp-priority! 'mspyls 1))
+
+(use-package! lsp-mode
+  :commands lsp
+  :hook
+  (sh-mode . 'lsp))
+
+(add-hook 'python-mode 'python-pylint)
+
+(add-hook 'sh-mode-hook 'flycheck-mode)
+
+
+; enable bash language server
+;(setq lsp-auto-configure nil)
 
 (add-hook 'org-mode-hook #'org-bullets-mode)
 
 (add-hook 'before-save-hook 'py-isort-before-save)
 
-(setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display_page=True")
-
-(flycheck-define-checker python-pycoverage
-    "A Python test coverage checker using the pycoverage tool.
-
-See `https://github.com/mattharrison/pycoverage.el'.
-
-This works after pytest has run by marking lines missing
-coverage (as reported by pytest) as flycheck issues.  If the code
-was updated after pytest was run then nothing is reported.
-"
-    :command
-    ("python" "-c"
-     (eval
-      (mapconcat 'identity
-                 (list
-                  "import sys"
-                  (format "sys.path.insert(0, '%scov2emacs')" (file-name-directory (locate-library "pycoverage")))
-                  "from cov2emacslib.__init__ import main"
-                  "main(sys.argv[1:])")
-                 ";"))
-     "--compile-mode" "--python-file" source-original)
-    :error-patterns ((warning line-start (file-name) ":" line ":" (message) line-end))
-    :modes (python-mode))
+;; (setq python-shell-interpreter "ipython"
+;;         python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display_page=True")
 
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)))
 
-
-(setq projectile-project-search-path '("~/Projects/" "~/Work/Projects/"))
 
 (setf (lsp-session-folders-blacklist (lsp-session)) nil)
 (lsp--persist-session (lsp-session))
@@ -136,3 +118,26 @@ was updated after pytest was run then nothing is reported.
   :bind (:map dired-mode-map
               ("P" . peep-dired)))
 
+
+(use-package! company-tabnine :ensure t)
+
+(after! company
+    (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
+    (setq company-show-quick-access t)
+    (setq company-idle-delay 0)
+)
+
+(require 'company-tabnine)
+
+
+(use-package! lsp-jedi
+  :ensure t)
+  ;; :config
+  ;; (with-eval-after-load "lsp-mode"
+    ; (add-to-list 'lsp-disabled-clients 'pyls)
+    ;; (add-to-list 'lsp-enabled-clients 'jedi)))
+
+;; (defun my/python-mode-hook ()
+;;   (add-to-list 'company-backends 'company-jedi))
+
+(add-to-list 'company-backends 'company-shell)

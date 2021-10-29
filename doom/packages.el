@@ -48,7 +48,13 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+(package! company-mode)
+(package! lsp-jedi)
+(package! company-jedi)
+(package! flycheck)
 (package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
+
 (package! org-bullets)
 
 (package! wakatime-mode)
