@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-m() { rofi -l 12 -markup -theme ~/SudacodeRice/rofi/rofi-mpd.rasi -dmenu -i "$@" ;}
-mb() { rofi -l 24 -markup -theme ~/SudacodeRice/rofi/rofi-mpd.rasi -dmenu -i -kb-custom-1 "Alt+q" "$@" ;}
+m() { rofi -theme ~/SudacodeRice/rofi/rofimpd-desktop.rasi -dmenu -i "$@"; }
+mb() { rofi -theme ~/SudacodeRice/rofi/rofimpd-desktop.rasi -dmenu -i -kb-custom-1 "Alt+q" "$@"; }
 
 artist() {
   lines="$(mpc list artist | wc -l)"
@@ -29,15 +29,15 @@ song() {
 }
 
 case "$1" in
-  -l | --library) mode=Library ;;
-  -A | --album) mode=Album ;;
-  -s | --song) mode=Song ;;
-  -a | --ask)
-    MODE=$(printf "Library\nAlbum\nSong" | m -p "Choose mode" -l 3)
-    mode=$MODE
-    ;;
-  -h | --help)
-    echo "
+-l | --library) mode=Library ;;
+-A | --album) mode=Album ;;
+-s | --song) mode=Song ;;
+-a | --ask)
+  MODE=$(printf "Library\nAlbum\nSong" | m -p "Choose mode" -l 3)
+  mode=$MODE
+  ;;
+-h | --help)
+  echo "
   usage: rofi-mpd [-h] [-l] [-s] [-a]
 
   arguments:
@@ -51,35 +51,35 @@ case "$1" in
   enter             play song/album now
   Alt+q             add song/album to queue
     "
-    exit
-    ;;
+  exit
+  ;;
 esac
 
 case "$mode" in
-  Library)
-    artist=$(artist)
-    [ ! "$artist" ] && exit
-    album=$(a_album "$artist")
-    cod=$?
-    [ ! "$album" ] && exit
-    [ "$cod" -eq 10 ] || mpc clear
-    mpc find artist "$artist" album "$album" | mpc add
-    mpc play >/dev/null
-    ;;
-  Song)
-    song=$(song)
-    cod=$?
-    [ ! "$song" ] && exit
-    [ "$cod" -eq 10 ] || mpc clear
-    mpc search "(title==\"$song\")" | mpc add
-    mpc play >/dev/null
-    ;;
-  Album)
-    album=$(album)
-    cod=$?
-    [ ! "$album" ] && exit
-    [ "$cod" -eq 10 ] || mpc clear
-    mpc find album "$album" | mpc add
-    mpc play >/dev/null
-    ;;
+Library)
+  artist=$(artist)
+  [ ! "$artist" ] && exit
+  album=$(a_album "$artist")
+  cod=$?
+  [ ! "$album" ] && exit
+  [ "$cod" -eq 10 ] || mpc clear
+  mpc find artist "$artist" album "$album" | mpc add
+  mpc play >/dev/null
+  ;;
+Song)
+  song=$(song)
+  cod=$?
+  [ ! "$song" ] && exit
+  [ "$cod" -eq 10 ] || mpc clear
+  mpc search "(title==\"$song\")" | mpc add
+  mpc play >/dev/null
+  ;;
+Album)
+  album=$(album)
+  cod=$?
+  [ ! "$album" ] && exit
+  [ "$cod" -eq 10 ] || mpc clear
+  mpc find album "$album" | mpc add
+  mpc play >/dev/null
+  ;;
 esac

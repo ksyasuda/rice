@@ -1,0 +1,56 @@
+* {
+  background-color: #282C34;
+  border-color: #2e343f;
+  text-color: #8ca0aa;
+  spacing: 0;
+  width: 70%;
+  font: "mononoki Nerd Font 12";
+  lines: 10;
+  markup: true;
+  y-offset: 1.5%;
+}
+
+rofi {
+  border: 1px;
+  border-color: tomato;
+}
+
+inputbar {
+  border: 0 0 1px 0;
+  children: [prompt,entry];
+}
+
+prompt {
+  padding: 8px;
+  border: 0 1px 0 0;
+}
+
+textbox {
+  background-color: #2e343f;
+  border: 0 0 1px 0;
+  border-color: #282C33;
+  padding: 8px 8px;
+}
+
+entry {
+  padding: 5px;
+}
+
+listview {
+  cycle: false;
+  margin: 0 0 -1px 0;
+  scrollbar: true;
+  border: 4px;
+}
+
+element {
+  border: 0 1px 1px 0;
+  text-color: #a4ce82;
+  padding: 2px;
+}
+
+element selected {
+  color: #a4ce82;
+  text-color: dodgerblue;
+  background-color: dodgerblue;
+}
