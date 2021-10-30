@@ -141,3 +141,8 @@
 ;;   (add-to-list 'company-backends 'company-jedi))
 
 (add-to-list 'company-backends 'company-shell)
+
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
+(setq jedi:environment-virtualenv ["source", "env/bin/activate"])
+(add-hook 'python-mode-hook 'jedi:setup)
