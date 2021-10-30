@@ -49,6 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! pyenv-mode)
 (package! company-mode)
 (package! lsp-jedi)
 (package! company-jedi)

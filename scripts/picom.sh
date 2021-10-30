@@ -15,8 +15,8 @@ justKillIt=0
 
 while getopts "vk" arg; do
 	case $arg in
-		v) verbose=1;;
-		k) justKillIt=1;;
+	v) verbose=1 ;;
+	k) justKillIt=1 ;;
 	esac
 done
 
@@ -44,25 +44,24 @@ if [[ $justKillIt -eq 1 ]]; then
 fi
 
 res=$(pgrep -x picom)
-if [[ $res  != '' ]]; then
+if [[ $res != '' ]]; then
 	pid=$(pidof picom)
-	if [[ $verbose -eq 1 ]]
-	then
+	if [[ $verbose -eq 1 ]]; then
 		echo 'killing process pid '$pid
 	fi
 	kill -9 $pid
-	while pgrep -x picom >/dev/null; do sleep 1;
+	while pgrep -x picom >/dev/null; do
+		sleep 1
 	done
 fi
 
 if [[ $verbose -eq 1 ]]; then
-	picom &
+	picom --config ~/.config/picom/picom.conf &
 else
-	picom &>/dev/null &
+	picom --config ~/.config/picom/picom.conf &>/dev/null &
 fi
 
-if [[ $verbose -eq 1 ]] 
-then
+if [[ $verbose -eq 1 ]]; then
 	pid=$(pidof picom)
 	echo 'launched new instance of picom with pid '$pid
 fi
