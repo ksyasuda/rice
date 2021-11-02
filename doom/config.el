@@ -152,6 +152,14 @@
 ;;   (add-to-list 'company-backends 'company-jedi))
 
 
+;;; gif screencast
+
+(with-eval-after-load 'gif-screencast
+  (define-key gif-screencast-mode-map (kbd "<f8>") 'gif-screencast-toggle-pause))
+
+(global-set-key (kbd "<f9>") 'gif-screencast-start-or-stop)
+
+
 ;;; HOOKS
 
 

@@ -71,3 +71,4 @@
 (package! fira-code-mode)
 (package! lsp-ui)
 (package! company-quickhelp)
+(package! gif-screencast)
