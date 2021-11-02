@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;; (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 14))
-(setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 18))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -82,6 +82,8 @@
   :hook
   (sh-mode . 'lsp))
 
+(setq lsp-enable-folding t)
+
 (add-hook 'python-mode 'python-pylint)
 
 (add-hook 'sh-mode-hook 'flycheck-mode)
@@ -122,7 +124,7 @@
 (use-package! company-tabnine :ensure t)
 
 (after! company
-    (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
+    (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet company-shell))
     (setq company-show-quick-access t)
     (setq company-idle-delay 0)
 )
@@ -140,9 +142,14 @@
 ;; (defun my/python-mode-hook ()
 ;;   (add-to-list 'company-backends 'company-jedi))
 
-(add-to-list 'company-backends 'company-shell)
 
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
-(setq jedi:environment-virtualenv ["source", "env/bin/activate"])
+(setq jedi:environment-virtualenv ["source", "./env/bin/activate"])
+(setq jedi:key-complete ["Tab"])
 (add-hook 'python-mode-hook 'jedi:setup)
+
+(setq format-all-debug nil)
+;; (global-fira-code-mode)
+;; Enable fira-code-mode automatically for programming major modes
+(add-hook 'prog-mode-hook 'fira-code-mode)

@@ -1,0 +1,58 @@
+# Main Colors
+unrecognized_file: gold
+# recognized_file: yellow
+recognized_file: "#d19a66"
+executable_file: "#98c379"
+# executable_file: lime
+# dir: dodgerblue
+dir: "#1E90FF"
+
+# Link
+# dead_link: red
+dead_link: "#e06c75"
+link: "#56b6c2"
+
+# special files
+# socket: green
+# blockdev: green
+# chardev: green
+socket: "#98c379"
+blockdev: "#98c379"
+chardev: "#98c379"
+
+# Access Modes
+# write:     darkkhaki
+# read:      limegreen
+# exec:      red
+write: "#d19a66"
+read: "#98c379"
+exec: "#e06c75"
+no_access: indianred
+
+# Age
+day_old: mediumspringgreen
+# hour_old: lime
+hour_old: "#98c379"
+no_modifier: seagreen
+
+# File Size
+file_large: orange
+file_medium: gold
+file_small: peachpuff
+
+# Random
+report: white
+user: moccasin
+tree: cyan
+empty: yellow
+error: red
+normal: darkkhaki
+
+# Git
+# addition: chartreuse
+addition: "#98c379"
+# modification: darkkhaki
+modification: "#d19a66"
+deletion: "#e06c75"
+untracked: darkorange
+unchanged: forestgreen

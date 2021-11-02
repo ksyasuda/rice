@@ -31,8 +31,6 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'vim-scripts/SQLUtilities'
 
-Plug 'ryanoasis/vim-devicons'
-
 Plug 'itchyny/vim-gitbranch'
 
 Plug 'ap/vim-css-color'
@@ -40,6 +38,8 @@ Plug 'ap/vim-css-color'
 Plug 'wakatime/vim-wakatime'
 
 Plug 'itchyny/lightline.vim'
+
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 

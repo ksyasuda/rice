@@ -18,17 +18,18 @@ export EDITOR=vim
 export VISUAL=vim
 
 if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+	. $HOME/.bash_aliases
 fi
 
 if [ -f ~/.aliases ]; then
-	. ~/.aliases
+	. $HOME/.aliases
 fi
 
 if [ -f ~/Work/.aliases ]; then
-	. ~/Work/.aliases
+	. $HOME/Work/.aliases
 fi
 
+source ~/.bash_aliases
 
 #POWERLEVEL9K_MODE='nerdfont'
 #POWERLEVEL9K_MODE='awesome-fontconfig'
@@ -256,7 +257,10 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 # ibus-daemon -drx
 
 export VISUAL=vim
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_DIR="$HOME/.cache"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 
 # source the Xmodmap file to get custom keybindings
 # [[ -f ~/.Xmodmap  ]] && xmodmap ~/.Xmodmap

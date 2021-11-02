@@ -62,9 +62,10 @@
 
 (package! py-isort)
 (package! python-pytest)
-(package! ein)
 (package! python-docstring)
 (package! py-autopep8)
 
 (package! diredfl)
 (package! peep-dired)
+
+(package! fira-code-mode)
