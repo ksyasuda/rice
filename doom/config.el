@@ -33,22 +33,6 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-
-(setq rainbow-delimiters-mode t)
-(setq rainbow-mode t)
-(setq confirm-kill-emacs nil)
-(setq prettify-symbols-mode nil)
-(setq global-prettify-symbols-mode nil)
-
-(setq browse-url-browser-function 'browse-url-firefox)
-
-(use-package wakatime-mode :ensure t)
-
-
-(global-wakatime-mode)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -68,6 +52,36 @@
 ;; they are implemented.
 
 
+
+(setq python-prettify-symbols-alist
+  '(("lambda"  . ?λ)
+    ("and" . ?∧)
+    ("or" . ?∨)
+    ("in" . ?∈)
+    ("for" . ?∀)
+    ("def" . ?ƒ)
+    ("int" . ?ℤ)
+    ("not" . ?¬)))
+
+(setq prettify-symbols-alist
+  '(("lambda"  . ?λ)
+    ("&&" . ?∧)
+    ("||" . ?∨)
+    ("in" . ?∈)
+    ("for" . ?∀)
+    ("function" . ?ƒ)
+    ("int" . ?ℤ)
+    ("not" . ?¬)))
+
+
+(use-package! wakatime-mode :ensure t)
+(global-wakatime-mode)
+
+
+(use-package! fira-code-mode
+  :hook prog-mode)
+
+;;; LSP
 (use-package! lsp
   :init
   (setq lsp-pyls-plugins-pylint-enabled t)
@@ -75,6 +89,8 @@
   (setq lsp-pyls-plugins-yapf-enabled t)
   (setq lsp-pyls-plugins-pyflakes-enabled t)
 )
+
+(lsp-ui-mode)
 
 
 (use-package! lsp-mode
@@ -84,42 +100,33 @@
 
 (setq lsp-enable-folding t)
 
-(add-hook 'python-mode 'python-pylint)
-
-(add-hook 'sh-mode-hook 'flycheck-mode)
-
-
-; enable bash language server
-;(setq lsp-auto-configure nil)
-
-(add-hook 'org-mode-hook #'org-bullets-mode)
-
-(add-hook 'before-save-hook 'py-isort-before-save)
-
-;; (setq python-shell-interpreter "ipython"
-;;         python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display_page=True")
-
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)))
 
+
+;; (setq python-shell-interpreter "ipython"
+;;         python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display_page=True")
 
 (setf (lsp-session-folders-blacklist (lsp-session)) nil)
 (lsp--persist-session (lsp-session))
 
 (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
 
+;;; all the icons
 
 (add-load-path! (expand-file-name "~/Downloads/all-the-icons-dired"))
 (load "all-the-icons-dired.el")
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
+;;; peep dired
 (use-package! peep-dired
   :ensure t
   :defer t ; don't access `dired-mode-map' until `peep-dired' is loaded
   :bind (:map dired-mode-map
               ("P" . peep-dired)))
 
+;;; company tabnine
 
 (use-package! company-tabnine :ensure t)
 
@@ -127,10 +134,12 @@
     (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet company-shell))
     (setq company-show-quick-access t)
     (setq company-idle-delay 0)
+    (define-key company-active-map (kbd "C-c h") #'company-quickhelp-manual-begin)
 )
 
 (require 'company-tabnine)
 
+;;; lsp jedi
 
 (use-package! lsp-jedi
   :ensure t)
@@ -143,13 +152,73 @@
 ;;   (add-to-list 'company-backends 'company-jedi))
 
 
+;;; HOOKS
+
+
+(add-hook 'python-mode 'python-pylint)
+(add-hook 'sh-mode-hook 'flycheck-mode)
+
+; enable bash language server
+;(setq lsp-auto-configure nil)
+
+(add-hook 'org-mode-hook #'org-bullets-mode)
+(add-hook 'before-save-hook 'py-isort-before-save)
+
+;;; VARIABLES
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq display-line-numbers-type t)
+(setq rainbow-delimiters-mode t)
+(setq rainbow-mode t)
+(setq confirm-kill-emacs nil)
+(setq prettify-symbols-mode nil)
+(setq global-prettify-symbols-mode nil)
+(setq browse-url-browser-function 'browse-url-firefox)
+
+
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
 (setq jedi:environment-virtualenv ["source", "./env/bin/activate"])
 (setq jedi:key-complete ["Tab"])
-(add-hook 'python-mode-hook 'jedi:setup)
-
 (setq format-all-debug nil)
-;; (global-fira-code-mode)
-;; Enable fira-code-mode automatically for programming major modes
-(add-hook 'prog-mode-hook 'fira-code-mode)
+
+(setq lsp-ui-doc-position 'bottom)
+(setq lsp-ui-doc-alignment 'window)
+(setq lsp-ui-doc-max-height 25)
+(setq lsp-ui-doc-max-width 350)
+(setq lsp-ui-doc-mode t)
+(setq lsp-ui-peek-mode t)
+(setq lsp-ui-peek-enable t)
+(setq lsp-ui-doc-delay 0.25)
+(setq company-quickhelp-delay 0.5)
+(setq lsp-jedi-python-library-directories '(/usr .env/lib/))
+
+
+;;; KEYBINDINGS
+
+(map! :leader
+      (:prefix ("o" . "+open")
+      :desc "Launch lsp-ui-imenu"
+      "i" #'lsp-ui-imenu))
+
+(map! :leader
+      (:prefix ("c" . "+code")
+      :desc "LSP Peek"
+      (:prefix ("p" . "+peek")
+       :desc "Find references"
+       "r" #'lsp-ui-peek-find-references)))
+
+(map! :leader
+      (:prefix ("c" . "+code")
+       :desc "Peek definition of thing under the cursor"
+       (:prefix ("p" . "+peek")
+        :desc "Find definitions"
+        "d" #'lsp-ui-peek-find-definitions)))
+
+(map! :leader
+       :desc "nohls"
+       "s c" #'evil-ex-nohighlight)
+
+(map! :leader
+      :desc "Restart LSP server"
+      "c R" #'lsp-workspace-restart)

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for filename in "$@"; do
+	emacsclient -n -c "$@"
+done

@@ -1,0 +1,19 @@
+# Colors (Doom One)
+colors:
+  # Default colors
+  primary:
+    background: "#282c34"
+    foreground: "#bbc2cf"
+  cursor:
+    text: CellBackground
+    cursor: "#82aaff" # syntax-cursor-color
+  # Normal colors
+  normal:
+    black: "#464b55"
+    red: "#ff6c6b"
+    green: "#98be65"
+    yellow: "#ecbe7b"
+    blue: "#51afef"
+    magenta: "#c678dd"
+    cyan: "#46d9ff"
+    white: "#bbc2cf"

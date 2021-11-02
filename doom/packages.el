@@ -69,3 +69,5 @@
 (package! peep-dired)
 
 (package! fira-code-mode)
+(package! lsp-ui)
+(package! company-quickhelp)

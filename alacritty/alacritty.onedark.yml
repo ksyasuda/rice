@@ -18,7 +18,7 @@
 # each instance of Alacritty. If it is not present, alacritty will
 # check the local terminfo database and use `alacritty` if it is
 # available, otherwise `xterm-256color` is used.
-TERM: "alacritty|xterm-256color"
+#TERM: alacritty
 
 window:
   # Window dimensions (changes require restart)
@@ -47,7 +47,7 @@ window:
     y: 0
 
     # Spread additional padding evenly around the terminal content.
-    # dynamic_padding: true
+    dynamic_padding: true
 
   # Window decorations
   #
@@ -149,7 +149,7 @@ font:
   # style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -211,12 +211,6 @@ draw_bold_text_with_bright_colors: true
 #  cursor: CellForeground
 
 # Selection colors
-
-import:
-  # - ~/.config/alacritty/one_dark.yaml
-  # - ~/.config/alacritty/dracula.yaml
-  - ~/.config/alacritty/doom_one.yml
-
 #
 # Colors which should be used to draw the selection area.
 #
@@ -239,6 +233,8 @@ import:
 #bar:
 #  background: '#c5c8c6'
 #  foreground: '#1d1f21'
+
+import: ~/.config/alacritty/one_dark.yaml
 
 # Colors (One Dark)
 # colors:
@@ -378,7 +374,7 @@ background_opacity: 1.0
 # the style of the active value of the normal cursor.
 #
 # See `cursor.style` for available options.
-vi_mode_style: Block
+#vi_mode_style: None
 
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
@@ -770,8 +766,6 @@ vi_mode_style: Block
 #- { key: F,              mods: Command,            action: SearchForward    }
 #- { key: B,              mods: Command,            action: SearchBackward   }
 
-mouse_bindings:
-  - { mouse: Right, action: PasteSelection }
 #debug:
 # Display the time it takes to redraw each frame.
 #render_timer: false
