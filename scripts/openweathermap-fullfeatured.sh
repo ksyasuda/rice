@@ -121,13 +121,13 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     # "%{F#e5c07b}xyz%{F- }"
     COLOR=""
     if [ "$current_temp" -lt 0 ]; then
-        COLOR="%{F#1e88e5}"
+        COLOR="%{F#1E90FF}"
     elif [ "$current_temp" -ge 0 ] && [ "$current_temp" -le 40 ]; then
-        COLOR="%{F#55aebb}"
+        COLOR="%{F#46d9ff}"
     elif [ "$current_temp" -gt 40 ] && [ "$current_temp" -le 80 ]; then
-        COLOR="%{F#fc8353}"
+        COLOR="%{F#ecbe7b}"
     elif [ "$current_temp" -gt 80 ] && [ "$current_temp" -le 120 ]; then
-        COLOR="%{F#d8524c}"
+        COLOR="%{F#ff6c6b}"
     fi
     echo "$COLOR$(get_icon "$current_icon") $current_temp$SYMBOL%{F- }"
     # echo "$(get_icon "$current_icon") $current_temp$SYMBOL $now2_symbol $now2"
