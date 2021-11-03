@@ -12,7 +12,7 @@ ARGS=(
 )
 
 CHOICE=$(
-    printf "%s\n" "${ARGS[@]}" | rofi -config ~/SudacodeRice/rofi/flat-orange.rasi -dmenu -l 5 -i -p "SSH Helper"
+    printf "%s\n" "${ARGS[@]}" | rofi -config "$1" -dmenu -l 5 -i -p "SSH Helper"
 )
 
 if [[ "$CHOICE" == "Quit" ]]; then

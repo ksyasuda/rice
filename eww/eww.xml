@@ -123,7 +123,7 @@
 		<!-- Music -->
 		<def name="music">
 			<box class="genwin" orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-				<box class="album_art" vexpand="false" hexpand="false" style="background-image: url('{{COVER}}');">
+				<box class="album_art" vexpand="false" hexpand="false" style="background-image: url('.coverart/cover.png);">
 				</box>
 				<box orientation="v" spacing="20" space-evenly="false" vexpand="false" hexpand="false">
 					<label halign="center" class="song" wrap="true" limit-width="20" text="{{SONG}}"/>

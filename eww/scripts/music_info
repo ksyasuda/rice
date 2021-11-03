@@ -62,30 +62,33 @@ get_ttime() {
 
 ## Get cover
 get_cover() {
-	ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &> /dev/null
-	STATUS=$?
-
 	# # Check if the file has a embbeded album art
 	# if [ "$STATUS" -eq 0 ];then
 	# 	echo "$COVER"
 	# else
 	# 	echo "cover.png"
 	# fi
+	# echo "GETTING COVER" >> ~/.config/eww/a.out
 	current=$(mpc current -f '%file%')
+	# echo "$current" >> ~/.config/eww/a.out
 	artist=$(printf "%s\n" "$current" | awk -F '/' '{print $1}')
 	album=$(printf "%s\n" "$current" | awk -F '/' '{print $2}')
+	# echo "$artist $album" >> ~/.config/eww/a.out
 	dir="$MUSIC_DIR/$artist/$album"
 	cover_path=$(find "$dir/" -type f -name "cover*")
-	if [[ $(echo "$cover_path" | wc -l) -eq 1 ]]; then
+	lines=$(printf  "%s\n" "$cover_path" | wc -l)
+	if [[ "$lines" -eq 1 ]]; then
 		cp "$cover_path" "$HOME/.config/eww/.coverart/cover.png"
-		return 0
+		[ "$?" -eq 0 ] && return 0 || return 1
 	else
 		song=$(printf "%s\n" "$current" | awk -F "/" '{print $3}')
 		dir="$MUSIC_DIR/$artist/$album/$song/cover.png"
 		[ ! -f "$dir" ] && dir="$MUSIC_DIR/$artist/$album/$song/cover.jpg"
 		[ ! -f "$dir" ] && exit 1
 		# pth=$(echo "$dir" | sed -E 's/ /\\ /g')
+		echo "$dir"
 		cp "$dir" "$HOME/.config/eww/.coverart/cover.png"
+		[ "$?" -eq 0 ] && return 0 || return 1
 	fi
 }
 
@@ -107,7 +110,7 @@ elif [[ "$1" == "--cover" ]]; then
 elif [[ "$1" == "--toggle" ]]; then
 	mpc -q toggle
 elif [[ "$1" == "--next" ]]; then
-	{ mpc -q next; get_cover; }
+	{ mpc -q next; get_cover; }	
 elif [[ "$1" == "--prev" ]]; then
 	{ mpc -q prev; get_cover; }
 fi
