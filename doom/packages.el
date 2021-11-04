@@ -72,3 +72,5 @@
 (package! lsp-ui)
 (package! company-quickhelp)
 (package! gif-screencast)
+(package! helm-pass)
+(package! treemacs-icons-dired)

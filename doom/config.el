@@ -151,6 +151,48 @@
 ;; (defun my/python-mode-hook ()
 ;;   (add-to-list 'company-backends 'company-jedi))
 
+;;; enacs application framework
+(use-package eaf
+  :load-path "~/Downloads/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
+  :custom
+  ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+  (eaf-browser-continue-where-left-off t)
+  (eaf-browser-enable-adblocker t)
+  (browse-url-browser-function 'eaf-open-browser)
+  :config
+  (defalias 'browse-web #'eaf-open-browser))
+
+
+(require 'eaf-system-monitor)
+(require 'eaf-pdf-viewer)
+(require 'eaf-terminal)
+(require 'eaf-music-player)
+(require 'eaf-browser)
+(require 'eaf-jupyter)
+(require 'eaf-file-browser)
+(require 'eaf-markdown-previewer)
+(require 'eaf-image-viewer)
+(require 'eaf-file-manager)
+(require 'eaf-airshare)
+(require 'eaf-org-previewer)
+(require 'eaf-file-sender)
+(require 'eaf-video-player)
+
+(require 'eaf-evil)
+
+
+(define-key key-translation-map (kbd "SPC")
+    (lambda (prompt)
+      (if (derived-mode-p 'eaf-mode)
+          (pcase eaf--buffer-app-name
+            ("browser" (if  (string= (eaf-call-sync "call_function" eaf--buffer-id "is_focus") "True")
+                           (kbd "SPC")
+                         (kbd eaf-evil-leader-key)))
+            ("pdf-viewer" (kbd eaf-evil-leader-key))
+            ("image-viewer" (kbd eaf-evil-leader-key))
+            (_  (kbd "SPC")))
+        (kbd "SPC"))))
+
 
 ;;; gif screencast
 
@@ -201,6 +243,12 @@
 (setq company-quickhelp-delay 0.5)
 (setq lsp-jedi-python-library-directories '(/usr .env/lib/))
 
+(setq eaf-terminal-font-size 12)
+(setq lsp-treemacs-sync-mode 1)
+
+(treemacs-icons-dired-mode)
+(after! 'treemacs
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
 
 ;;; KEYBINDINGS
 
@@ -230,3 +278,11 @@
 (map! :leader
       :desc "Restart LSP server"
       "c R" #'lsp-workspace-restart)
+
+(map! :leader
+      :desc "Search web"
+      "o w" #'eaf-open-browser-with-history)
+
+(map! :leader
+      :desc "Open link under cursor in browser"
+      "o l" #'eaf-open-url-at-point)
