@@ -74,3 +74,5 @@
 (package! gif-screencast)
 (package! helm-pass)
 (package! treemacs-icons-dired)
+(package! howdoi)
+(package! persist)

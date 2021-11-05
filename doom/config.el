@@ -117,6 +117,22 @@
 
 (add-load-path! (expand-file-name "~/Downloads/all-the-icons-dired"))
 (load "all-the-icons-dired.el")
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode)
+  :config
+  (add-to-list 'all-the-icons-icon-alist
+               '("\\.mkv" all-the-icons-faicon "film"
+                 :face all-the-icons-blue))
+  (add-to-list 'all-the-icons-icon-alist
+               '("\\.srt" all-the-icons-octicon "file-text"
+                 :v-adjust 0.0 :face all-the-icons-dcyan))
+
+  ;; Turn off all-the-icons-dired-mode before wdired-mode
+  ;; TODO: disable icons just before save, not during wdired-mode
+  (defadvice wdired-change-to-wdired-mode (before turn-off-icons activate)
+    (all-the-icons-dired-mode -1))
+  (defadvice wdired-change-to-dired-mode (after turn-on-icons activate)
+    (all-the-icons-dired-mode 1)))
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 ;;; peep dired
@@ -126,9 +142,10 @@
   :bind (:map dired-mode-map
               ("P" . peep-dired)))
 
+
 ;;; company tabnine
 
-(use-package! company-tabnine :ensure t)
+(use-package! company-tabnine)
 
 (after! company
     (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet company-shell))
@@ -141,8 +158,7 @@
 
 ;;; lsp jedi
 
-(use-package! lsp-jedi
-  :ensure t)
+(use-package! lsp-jedi)
   ;; :config
   ;; (with-eval-after-load "lsp-mode"
     ; (add-to-list 'lsp-disabled-clients 'pyls)
