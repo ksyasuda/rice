@@ -214,6 +214,40 @@
 (add-hook 'org-mode-hook #'org-bullets-mode)
 (add-hook 'before-save-hook 'py-isort-before-save)
 
+
+;;; SQL MODE
+
+
+(defun my-sql-save-history-hook ()
+    (let ((lval 'sql-input-ring-file-name)
+          (rval 'sql-product))
+      (if (symbol-value rval)
+          (let ((filename 
+                 (concat "~/.emacs.d/sql/"
+                         (symbol-name (symbol-value rval))
+                         "-history.sql")))
+            (set (make-local-variable lval) filename))
+        (error
+         (format "SQL history will not be saved because %s is nil"
+                 (symbol-name rval))))))
+ 
+  (add-hook 'sql-interactive-mode-hook 'my-sql-save-history-hook)
+
+  (defun upcase-sql-keywords ()
+    (interactive)
+    (save-excursion
+      (dolist (keywords sql-mode-postgres-font-lock-keywords)
+        (goto-char (point-min))
+        (while (re-search-forward (car keywords) nil t)
+          (goto-char (+ 1 (match-beginning 0)))
+          (when (eql font-lock-keyword-face (face-at-point))
+            (backward-char)
+            (upcase-word 1)
+            (forward-char))))))
+
+  ; (add-hook 'sql-interactive-mode-hook 'my-sql-save-history-hook 'upercase-sql-keywords')
+
+
 ;;; VARIABLES
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
