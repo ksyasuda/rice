@@ -280,7 +280,6 @@
 (setq eaf-terminal-font-size 12)
 (setq lsp-treemacs-sync-mode 1)
 
-(treemacs-icons-dired-mode)
 (after! 'treemacs
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
 
