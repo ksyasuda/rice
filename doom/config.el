@@ -159,10 +159,11 @@
 ;;; lsp jedi
 
 (use-package! lsp-jedi)
-  ;; :config
-  ;; (with-eval-after-load "lsp-mode"
-    ; (add-to-list 'lsp-disabled-clients 'pyls)
-    ;; (add-to-list 'lsp-enabled-clients 'jedi)))
+  ; :config
+  ; (with-eval-after-load "lsp-mode"
+  ;   ;; (add-to-list 'lsp-disabled-clients 'pyls)
+  ;   (add-to-list 'lsp-enabled-clients 'jedi)
+  ;   (add-to-list 'lsp-enabled-clients 'lsp)))
 
 ;; (defun my/python-mode-hook ()
 ;;   (add-to-list 'company-backends 'company-jedi))
@@ -222,7 +223,7 @@
 
 
 (add-hook 'python-mode 'python-pylint)
-(add-hook 'sh-mode-hook 'flycheck-mode)
+; (add-hook 'sh-mode-hook 'flycheck-mode)
 
 ; enable bash language server
 ;(setq lsp-auto-configure nil)
