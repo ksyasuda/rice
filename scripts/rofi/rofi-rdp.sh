@@ -7,7 +7,7 @@ ARGS=(
     "Quit"
 )
 
-CHOICE=$(printf "%s\n" "${ARGS[@]}" | rofi -config ~/SudacodeRice/rofi/rofidmenu.rasi -dmenu -l 4 -i -p "RDP Helper")
+CHOICE=$(printf "%s\n" "${ARGS[@]}" | rofi -config ~/SudacodeRice/rofi/flat-orange.rasi -dmenu -l 4 -i -p "RDP Helper")
 
 if [[ "$CHOICE" == "Quit" ]]; then
     echo "BYE" && exit 0

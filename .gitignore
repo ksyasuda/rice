@@ -2,6 +2,7 @@
 .git
 .idea
 .vscode
+scripts/rofi/*
 eww/.coverart
 __pycache__/
 *.py[cod]
