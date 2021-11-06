@@ -13,8 +13,9 @@ fi
 export ZSH="/home/sudacode/.oh-my-zsh"
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/Work/scripts:$PATH"
+export PATH="$HOME/Work/rofi/:$PATH"
 export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/projects/Python/get_song/src/:$PATH"
+export PATH="$HOME/Projects/Python/Sudasong/src/:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
