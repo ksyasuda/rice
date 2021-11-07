@@ -1,22 +1,32 @@
-# Sudacode Dotfiles
+# Sudacode Rice
+
+A collection of my Linux (Arch btw) configuration and dotfiles
+
+## Screenshots
+
+<div align="center">
+<p><b><i>Ordering:</b> Top Left -> Top Right -> Bottom Left -> Bottom Right</i></p>
+<p>vim, bpytop, cava, ncmpcpp</p>
+<img width="80%" src="screenshots/home1.png">
+<p>(firefox, doom emacs, doom emacs, neofetch)</p>
+<img width="80%" src="screenshots/home2.png">
+</div>
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 
 **Table of Contents**
 
-- [Sudacode Dotfiles](#sudacode-dotfiles)
-  - [Current Setup](#current-setup)
+- [Sudacode Rice](#sudacode-rice)
   - [Screenshots](#screenshots)
+  - [Current Setup](#current-setup)
 
 <!-- markdown-toc end -->
-
-A collection of my Linux (Arch btw) configuration and dotfiles
 
 ## Current Setup
 
 _Click the links drowpdown to get quick access to the relevant code/files_
 
-- Desktop Environment: [EndeavourOS](https://endeavouros.com/) (Arch BTW)
+- Desktop Environment: [EndeavourOS](https://endeavouros.com/) (Arch btw)
 - Window Manager: [i3-gaps](https://github.com/Airblader/i3)
   - [i3 config](i3-wm/config)
 - Compositor: [ibhagwan's picom fork](https://github.com/ibhagwan/picom)
@@ -36,13 +46,3 @@ _Click the links drowpdown to get quick access to the relevant code/files_
   - [cava config](cava/cavaconfig)
 - System Monitor: [bpytop](https://github.com/aristocratos/bpytop)
 - Firefox Startpage: [my startpage](https://github.com/ksyasuda/Firefox-Startpage)
-
-## Screenshots
-
-<div align="center">
-<p><b><i>Ordering:</b> Top Left -> Top Right -> Bottom Left -> Bottom Right</i></p>
-<p>vim, bpytop, cava, ncmpcpp</p>
-<img width="80%" src="screenshots/home1.png">
-<p>(firefox, doom emacs, doom emacs, neofetch)</p>
-<img width="80%" src="screenshots/home2.png">
-</div>
