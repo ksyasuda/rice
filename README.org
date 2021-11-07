@@ -1,0 +1,34 @@
+#+TITLE: Readme
+#+DATE: Sun Nov  7 00:34:12 2021
+
+
+*A collection of my Linux (Arch btw) configuration and dotfiles*
+
+* Screenshots
+/Ordering of programs Top Left -> Top Right -> Bottom Left -> Bottom Right/
+#+CAPTION: Home screen with vim, bpytop, cava, and ncmpcpp
+[[./screenshots/home1.png]]
+#+CAPTION: Home screen with firefox, doom emacs, and neofetch
+[[./screenshots/home2.png]]
+
+* Current Setup
+Click the links to get quick access to the relevant code/files
+** Desktop Environment: [[https://endeavouros.com/][EndeavourOS]] (Arch BTW)
+** Window Manager: [[https://github.com/Airblader/i3][i3-gaps]]
+** Compositor: [[https://github.com/ibhagwan/picom][ibhagwan's picom fork]]
+*** [[./picom/picom.conf][picom config]]
+** Notification Server: [[https://github.com/dunst-project/dunst][dunst]]
+*** [[./dunst/dunstrc][dunst config]]
+** Terminal Emulator: [[https://aur.archlinux.org/packages/alacritty-ligatures/][alacritty-ligatures]]
+*** [[./alacritty/alacritty.yml][alacritty config]]
+** Text Editors: [[https://www.vim.org/][vim]] and [[https://github.com/hlissner/doom-emacs][doom-emacs]]
+*** [[./dotfiles/.vimrc][vimrc]]
+*** [[./doom][doom config]]
+** Audio Player: [[https://www.musicpd.org/][mpd]] with [[https://github.com/ncmpcpp/ncmpcpp][ncmpcpp]]
+*** [[./mpd/mpd.conf][mpd config]]
+*** [[./ncmpcpp/ncmpcpp.config][ncmpcpp config]]
+** Audio Visualizer: [[https://github.com/karlstav/cava][cava]]
+*** [[./cava/cavaconfig][cava config]]
+** System Monitor: [[https://github.com/aristocratos/bpytop][bpytop]]
+** Firefox Startpage: [[https://github.com/ksyasuda/Firefox-Startpage][firefox startpage]]
+
