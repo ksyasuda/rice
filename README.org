@@ -8,28 +8,28 @@ A collection of my Linux (Arch btw) configuration and dotfiles
 Click the links drowpdown to get quick access to the relevant code/files
 ** Desktop Environment: [[https://endeavouros.com/][EndeavourOS]] (Arch BTW)
 ** Window Manager: [[https://github.com/Airblader/i3][i3-gaps]]
-*** [[./i3-wm/config]]
+*** [[./i3-wm/config][i3 config]]
 ** Compositor: [[https://github.com/ibhagwan/picom][ibhagwan's picom fork]]
-*** [[./picom/picom.conf]]
+*** [[./picom/picom.conf][picom config]]
 ** Notification Server: [[https://github.com/dunst-project/dunst][dunst]]
-*** [[./dunst/dunstrc]]
+*** [[./dunst/dunstrc][dunst config]]
 ** Terminal Emulator: [[https://aur.archlinux.org/packages/alacritty-ligatures/][alacritty-ligatures]]
-*** [[./alacritty/alacritty.yml]]
-*** [colorscheme](alacritty/alacritty.onedark.yml)
+*** [[./alacritty/alacritty.yml][alacritty config]]
+*** [[alacritty/alacritty.onedark.yml][terminal colorscheme]]
 ** Text Editors: [[https://www.vim.org/][vim]] and [[https://github.com/hlissner/doom-emacs][doom-emacs]]
-*** [[./dotfiles/.vimrc]]
-*** [[./doom]]
+*** [[./dotfiles/.vimrc][vimrc]]
+*** [[./doom][doom config]]
 ** Audio Player: [[https://www.musicpd.org/][mpd]] with [[https://github.com/ncmpcpp/ncmpcpp][ncmpcpp]]
-*** [[./mpd/mpd.conf]]
-*** [[./ncmpcpp/ncmpcpp.config]]
+*** [[./mpd/mpd.conf][mpd config]]
+*** [[./ncmpcpp/ncmpcpp.config][ncmpcpp config]]
 ** Audio Visualizer: [[https://github.com/karlstav/cava][cava]]
-*** [[./cava/cavaconfig]]
+*** [[./cava/cavaconfig][cava config]]
 ** System Monitor: [[https://github.com/aristocratos/bpytop][bpytop]]
 ** Firefox Startpage: [[https://github.com/ksyasuda/Firefox-Startpage][firefox startpage]]
 
 * Screenshots
 /Ordering of programs Top Left -> Top Right -> Bottom Left -> Bottom Right/
 #+CAPTION: Home screen with vim, bpytop, cava, and ncmpcpp
-[[./screenshots/home1.png]]
+[[./screenshots/home1.png][screenshot 1 (vim, bpytop, cava, ncmpcpp)]]
 #+CAPTION: Home screen with firefox, doom emacs, and neofetch
-[[./screenshots/home2.png]]
+[[./screenshots/home2.png][screenshot 2 (firefox, doom emacs, neofetch)]]
