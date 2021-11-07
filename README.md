@@ -12,19 +12,9 @@ A collection of my Linux (Arch btw) configuration and dotfiles
 <img width="80%" src="screenshots/home2.png">
 </div>
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Sudacode Rice](#sudacode-rice)
-  - [Screenshots](#screenshots)
-  - [Current Setup](#current-setup)
-
-<!-- markdown-toc end -->
-
 ## Current Setup
 
-_Click the links drowpdown to get quick access to the relevant code/files_
+_Click the links to get quick access to the relevant code/files_
 
 - Desktop Environment: [EndeavourOS](https://endeavouros.com/) (Arch btw)
 - Window Manager: [i3-gaps](https://github.com/Airblader/i3)
