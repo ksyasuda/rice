@@ -5,9 +5,10 @@ multi-media keys on my laptop.
 """
 
 import os
-import sys
 import subprocess
+import sys
 from pathlib import Path
+
 import config
 
 
@@ -25,7 +26,7 @@ def get_volume() -> int:
     args = ['pulsemixer --get-volume']
     proc = execute_with_capture(args)
     output = proc.stdout
-    volume = int(output.split(' ')[0])
+    volume = output.split(' ')[0]
     return volume
 
 

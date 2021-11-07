@@ -368,7 +368,7 @@ exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id /usr/bin/variety --profile /home/sudacode/.config/variety/
 
 exec --no-startup-id i3-msg 'workspace 3: ﱘ'; exec $term -e ncmpcpp
-exec --no-startup-id i3-msg 'workspace 4: '; exec $HOME/SudacodeRice/scripts/emc ~/org/
+exec --no-startup-id i3-msg 'workspace 4: '; exec emc ~/org/
 exec --no-startup-id i3-msg 'workspace 6: '; exec emacsclient -n -c -e '(+vterm/here nil)'
 
 exec --no-startup-id /usr/bin/emacs --daemon
@@ -603,3 +603,4 @@ bindsym $mod+e exec --no-startup-id emacsclient -n -c ~
 bindsym $mod+Shift+v exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym $mod+Shift+Return exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym Control+Shift+a exec --no-startup-id ~/SudacodeRice/scripts/emc ~/Projects/Scripts/ani-cli
+bindsym Control+e exec --no-startup-id ~/SudacodeRice/scripts/emc ~/.config
