@@ -30,6 +30,6 @@ Click the links drowpdown to get quick access to the relevant code/files
 * Screenshots
 /Ordering of programs Top Left -> Top Right -> Bottom Left -> Bottom Right/
 #+CAPTION: Home screen with vim, bpytop, cava, and ncmpcpp
-[[./screenshots/home1.png][screenshot 1 (vim, bpytop, cava, ncmpcpp)]]
+[[./screenshots/home1.png]]
 #+CAPTION: Home screen with firefox, doom emacs, and neofetch
-[[./screenshots/home2.png][screenshot 2 (firefox, doom emacs, neofetch)]]
+[[./screenshots/home2.png]]
