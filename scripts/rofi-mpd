@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-m() { rofi -theme ~/SudacodeRice/rofi/rofimpd-desktop.rasi -dmenu -i "$@"; }
-mb() { rofi -theme ~/SudacodeRice/rofi/rofimpd-desktop.rasi -dmenu -i -kb-custom-1 "Alt+q" "$@"; }
+m() { rofi -theme -dmenu -config ~/SudacodeRice/rofi/dracula-4k.rasi  -l 24 -i "$@"; }
+mb() { rofi  -dmenu -config ~/SudacodeRice/rofi/dracula-4k.rasi -l 24 -i -kb-custom-1 "Alt+q" "$@"; }
 
 artist() {
   lines="$(mpc list artist | wc -l)"
