@@ -1,0 +1,13 @@
+# Lines starting with # are comments
+
+# Always extract audio
+# -x
+
+# Do not copy the mtime
+--no-mtime
+
+--embed-thumbnail
+--embed-subs
+
+# Save all videos under YouTube directory in your home directory
+-o ~/Videos/YouTube/%(title)s.%(ext)s
