@@ -18,7 +18,7 @@ _Click the links to get quick access to the relevant code/files_
 
 - Desktop Environment: [EndeavourOS](https://endeavouros.com/) (Arch btw)
 - Window Manager: [i3-gaps](https://github.com/Airblader/i3)
-  - [i3 config](i3-wm/config.desktop)
+  - [i3 config](i3-wm/config-desktop)
 - Compositor: [ibhagwan's picom fork](https://github.com/ibhagwan/picom)
   - [picom config](picom/picom.conf)
 - Notification Server: [dunst](https://github.com/dunst-project/dunst)
