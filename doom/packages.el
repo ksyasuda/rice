@@ -76,3 +76,4 @@
 (package! treemacs-icons-dired)
 (package! howdoi)
 (package! persist)
+(package! mozc)

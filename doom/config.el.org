@@ -1,3 +1,4 @@
+* config
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
@@ -269,9 +270,6 @@
 
   ; (add-hook 'sql-interactive-mode-hook 'my-sql-save-history-hook 'upercase-sql-keywords')
 
-;;; mozc for emacs
-(require 'mozc)
-(setq default-input-method "japanese-mozc")
 
 ;;; VARIABLES
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -290,7 +288,6 @@
 (setq jedi:environment-virtualenv ["source", "./env/bin/activate"])
 (setq jedi:key-complete ["Tab"])
 (setq format-all-debug nil)
-(setq projectile-project-search-path '("~/Projects/" "~/Work/Projects/"))
 
 (setq lsp-ui-doc-position 'bottom)
 (setq lsp-ui-doc-alignment 'window)

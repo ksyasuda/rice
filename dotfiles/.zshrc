@@ -253,10 +253,10 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 ## ibus config
 # export GTK_IM_MODULE=ibus
 # # will make libreoffice work
-# export XMODIFIERS=@im=ibus
-# export QT_IM_MODULE=ibus
-# export QT4_IM_MODULE=xim
-# ibus-daemon -drx
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+export QT4_IM_MODULE=xim
+ibus-daemon -drx
 
 export VISUAL=vim
 export XDG_CONFIG_HOME="$HOME/.config"

@@ -581,7 +581,7 @@ bindsym Control+Mod1+f exec --no-startup-id firefox
 bindsym $mod+t exec --no-startup-id thunar
 
 # ROFI
-bindsym $mod+m exec --no-startup-id bash /usr/bin/rofi-mpd -s
+bindsym $mod+m exec --no-startup-id ~/SudacodeRice/scripts/rofi-mpd-desktop -s
 
 bindsym $mod+Shift+p exec --no-startup-id ~/SudacodeRice/scripts/rofi/rofi-picom.sh
 bindsym Control+g exec --no-startup-id ~/SudacodeRice/scripts/rofi/rofi-search.sh
@@ -602,5 +602,5 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+e exec --no-startup-id emacsclient -n -c ~
 bindsym $mod+Shift+v exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym $mod+Shift+Return exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
-bindsym Control+Shift+a exec --no-startup-id ~/SudacodeRice/scripts/emc ~/Projects/Scripts/ani-cli
+bindsym Control+Shift+a exec --no-startup-id ~/SudacodeRice/scripts/emc ~/Projects/Scripts/aniwrapper
 bindsym Control+e exec --no-startup-id ~/SudacodeRice/scripts/emc ~/.config
