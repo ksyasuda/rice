@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+[ -f "$HOME/.weatherkey" ] && source "$HOME/.weatherkey"
 
 get_icon() {
     case $1 in
@@ -52,7 +54,7 @@ get_duration() {
 
 }
 
-KEY="6865df0d489817348e4c7941aaa6cdeb"
+KEY="$OPENWEATHERMAP_KEY"
 # CITY="Ann Arbor"
 CITY="Los%20Angeles"
 UNITS="imperial"
