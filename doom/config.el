@@ -117,7 +117,7 @@
 
 (add-load-path! (expand-file-name "~/Downloads/all-the-icons-dired"))
 (load "all-the-icons-dired.el")
-(use-package all-the-icons-dired
+(use-package! all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode)
   :config
   (add-to-list 'all-the-icons-icon-alist
@@ -144,7 +144,6 @@
 
 
 ;;; company tabnine
-
 (use-package! company-tabnine)
 
 (after! company
@@ -273,6 +272,9 @@
 (require 'mozc)
 (setq default-input-method "japanese-mozc")
 
+(after! flyspell
+  (setq flyspell-lazy-idle-seconds 2))
+
 ;;; VARIABLES
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -345,3 +347,7 @@
 (map! :leader
       :desc "Open link under cursor in browser"
       "o l" #'eaf-open-url-at-point)
+
+(map! :leader
+      :desc "Toggle hlline for current buffer"
+      "t h" #'display-fill-column-indicator-mode)

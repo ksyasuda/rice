@@ -26,7 +26,7 @@ def get_volume() -> int:
     args = ['pulsemixer --get-volume']
     proc = execute_with_capture(args)
     output = proc.stdout
-    volume = output.split(' ')[0]
+    volume = int(output.split(' ')[0])
     return volume
 
 

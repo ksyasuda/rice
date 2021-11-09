@@ -275,7 +275,7 @@ set $blue #2C4762
 # client.focused #56a7b5 #282c34 #ffffff #2e9ef4 #56a7b5 
 # client.focused #a8d385 #282c34 #ffffff #50b62c #a8d385
 # client.focused #2878af #282c34 #ffffff #2e9ef4 #2878af
-client.focused #2C4762 #282c34 #ffffff #2e9ef4 #2878af
+client.focused #46d9ff #282c34 #ffffff #2e9ef4 #51afef
 client.unfocused #3d4450 #282c34 #ffffff #1e90ff #3d4450
 
 # ------------------------------------------------------------------------------
@@ -298,9 +298,10 @@ for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="(?i)*nextcloud*"] floating disable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+
+
 no_focus [class="plasmashell" window_type="notification"]
 # for_window [class="plasmashell" window_type="notification"] floating enable, move position 4060 100, resize set 400 150;
-
 for_window [class="Microsoft Teams - Preview"] border none
 for_window [class="Steam"] floating enable; border none
 for_window [class="plasmawindowed"] border none
@@ -314,6 +315,7 @@ for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [title="System Tray"] floating enable, border none
 for_window [title="System Tray" window_type="normal"] move scratchpad
+for_window [class="mpv"] floating enable, border none;
 
 
 # ------------------------------------------------------------------------------
@@ -604,3 +606,4 @@ bindsym $mod+Shift+v exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil
 bindsym $mod+Shift+Return exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym Control+Shift+a exec --no-startup-id ~/SudacodeRice/scripts/emc ~/Projects/Scripts/aniwrapper
 bindsym Control+e exec --no-startup-id ~/SudacodeRice/scripts/emc ~/.config
+bindsym Control+h exec --no-startup-id emacsclient -n -c ~/org/help/links.org
