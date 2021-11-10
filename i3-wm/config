@@ -11,45 +11,22 @@
 
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status; exec --no-startup-id ~/i3/scripts/dunst_volume/dunst_volume.py increase
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status; exec --no-startup-id ~/i3/scripts/dunst_volume/dunst_volume.py decrease
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status; exec --no-startup-id ~/i3/scripts/dunst_volume/dunst_volume.py mute
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3; exec --no-startup-id ~/i3/scripts/dunst_volume/dunst_volume.py mute
-
 set $up k
 set $down j
 set $left h
 set $right l
 
+# set $term gnome-terminal
+set $term alacritty
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty 
+bindsym $mod+Return exec --no-startup-id $term
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
@@ -93,9 +70,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+w layout tabbed
-bindsym $mod+Shift+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -115,7 +92,8 @@ set $ws10 "0: ﭮ"
 set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: ﬏"
-set $ws4 "4: "
+# set $ws4 "4: "
+set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -312,17 +290,21 @@ mode "$mode_gaps_left" {
 }
 
 # set default gaps to 20
-gaps inner 20
+gaps top 20
+gaps left 5
+gaps right 5
+gaps bottom 5
+gaps inner 15
 
 ## I3-GAPS END
 
 # BORDERS
 
 # make all windows have a 3 pixel border
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 4
 
 # make calendar, todo, and spotify always only have border 3 pixels
-for_window[workspace="4: "] border pixel 3 
+# for_window[workspace="4: "] border pixel 5
 for_window[class="^Spotify$"] border none, gaps inner 60
 for_window[class="discord"] border none
 for_window[title="ncmpcpp 0.9.2"] border none
@@ -331,9 +313,9 @@ for_window[title="ncmpcpp 0.9.2"] border none
 title_align center
 
 ## client colors
-# class			border backgr  text    indicate  child_border
+# class border backgr  text    indicate  child_border
 # client.focused #56a7b5 #282c34 #ffffff #2e9ef4 #56a7b5 
-client.focused #2878af #282c34 #ffffff #2e9ef4 #2878af 
+client.focused #51afef #282c34 #ffffff #2e9ef4 #2878af
 # client.focused #a8d385 #282c34 #ffffff #50b62c #a8d385
 client.unfocused #3d4450 #282c34 #ffffff #1e90ff #3d4450
 
@@ -354,7 +336,40 @@ for_window [class="plasmashell" window_type="notification"] floating enable, bor
 # no_focus [class="plasmashell" window_type="notification"]
 for_window [class="Steam"] floating enable
 
-## Keybindings
+
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono 10
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+
+
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## KEYBINDINGS
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status; exec --no-startup-id ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py increase
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status; exec --no-startup-id ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py decrease
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status; exec --no-startup-id ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py mute
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3; exec --no-startup-id ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py mute
+
 # Alt+: a, b, d, f, h, j, k, l, m, n, o, p, r, s, u, v, y, space, tab, windows,
 # F5
 # Alt+Shift: s, w, e, q, r, h, j, k, l, n, p, space
@@ -370,7 +385,7 @@ bindsym $mod+F7 exec --no-startup-id rofi-mpd -a
 bindsym $mod+m exec --no-startup-id rofi-mpd -s
 
 # start rofi tabswitcher
-bindsym Mod1+ISO_Left_Tab exec --no-startup-id $HOME/scripts/tabswitcher.sh
+bindsym Mod1+ISO_Left_Tab exec --no-startup-id $HOME/SudacodeRice/scripts/tabswitcher.sh
 # changer borders
 bindsym Mod1+y border pixel 3
 # bindsym Mod1+t border normal 3
@@ -384,42 +399,45 @@ bindsym Mod1+u border none
 bindsym Mod1+d exec --no-startup-id ~/scripts/dmenu.sh 
 
 # launch rofi menu and menu full
-bindsym Mod1+o exec --no-startup-id $HOME/scripts/menu_full
+bindsym Mod1+o exec --no-startup-id $HOME/SudacodeRice/scripts/menu_full
 # bindsym Mod1+d exec --no-startup-id /home/sudacode/scripts/menu
 
 # bind the windows key to menu
-bindsym Super_L exec --no-startup-id $HOME/scripts/menu
-
-# bind Alt s to flameshot_full script
-bindsym Mod1+s exec --no-startup-id $HOME/scripts/flameshot_full.sh
+# bindsym Super_L exec --no-startup-id $HOME/SudacodeRice/scripts/menu
+bindsym Super_L exec --no-startup-id $HOME/.config/eww/launch_eww
 
 # launch pavucontrol with Alt+p
-bindsym Mod1+p exec --no-startup-id $HOME/scripts/pavucontrol.sh
+bindsym Mod1+p exec --no-startup-id $HOME/SudacodeRice/scripts/pavucontrol.sh
 
 ## Spotify/Mpd controls
 # Bind F4 to Next Song
 bindsym XF86AudioPrev exec --no-startup-id $HOME/SudacodeRice/scripts/spotify-controls.sh -b;\
-        exec --no-startup-id $HOME/i3/scripts/music-controls.sh -p
+        exec --no-startup-id $HOME/SudacodeRice/scripts/music-controls.sh -p
 # Bind F6 to Pause/Play
 bindsym XF86AudioPlay exec --no-startup-id $HOME/SudacodeRice/scripts/spotify-controls.sh -p;\
-        exec --no-startup-id $HOME/i3/scripts/music-controls.sh -t
+        exec --no-startup-id $HOME/SudacodeRice/scripts/music-controls.sh -t
 # Bind F5 to Next Song
 bindsym XF86AudioNext exec --no-startup-id $HOME/SudacodeRice/scripts/spotify-controls.sh -n;\
-        exec --no-startup-id $HOME/i3/scripts/music-controls.sh -n
+        exec --no-startup-id $HOME/SudacodeRice/scripts/music-controls.sh -n
 
 ## Music Mpd/Ncmpcpp/Playerctl
 # Bind Alt n to open ncmpcpp
-bindsym Mod1+n exec --no-startup-id alacritty -e ncmpcpp
+bindsym Mod1+n exec --no-startup-id $term -e ncmpcpp
 
 # Bind Alt b to launch bpytop
-bindsym Mod1+b exec --no-startup-id alacritty -e bpytop
+bindsym Mod1+b exec --no-startup-id $term -e bpytop
 
 # get a new wallpaper
 bindsym Control+Mod1+n exec --no-startup-id $HOME/SudacodeRice/scripts/new-wallpaper.sh
+# bindsym Control+Mod1+n exec --no-startup-id variety -n
+# bindsym Mod1+Shift++ exec --no-startup-id variety -f
 
 bindsym Control+Mod1+f exec --no-startup-id firefox
 
+
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ASSIGN TO WORKSPACES
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 assign [class="^firefox$"] "2: "
 assign [class="^Code$"] "3: ﬏"
 # assign [class="^plasmawindowed$" name="TodoList"] "4: "
@@ -436,19 +454,30 @@ assign [class="^discord$"] workspace $ws10
 
 ## ON STARTUP
 # launch polybar on startup
-exec_always --no-startup-id ~/SudacodeRice/scripts/launch.sh
+exec_always --no-startup-id /home/sudacode/SudacodeRice/scripts/launch.sh
 
 # launch picom in the background
-exec_always --no-startup-id ~/SudacodeRice/scripts/picom.sh
+exec_always --no-startup-id /home/sudacode/scripts/picom.sh
 
 # run wallpaper script to set random wallpaper
-exec_always --no-startup-id ~/SudacodeRice/scripts/wallpaper.sh
+exec_always --no-startup-id /home/sudacode/SudacodeRice/scripts/new-wallpaper.sh
+exec --no-startup-id /home/sudacode/SudacodeRice/scripts/new-wallpaper.sh
 
 # start the calendar and todolist plasmoids
-exec --no-startup-id ~/SudacodeRice/scripts/calendar.sh
-exec --no-startup-id ~/SudacodeRice/scripts/todo.sh
+# exec --no-startup-id ~/SudacodeRice/scripts/calendar.sh
+# exec --no-startup-id ~/SudacodeRice/scripts/todo.sh
 
-exec --no-startup-id alacritty -e ncmpcpp
+exec --no-startup-id /usr/bin/alternating_layouts.py
+
+
+exec --no-startup-id ~/.bin/eww daemon
+
+exec --no-startup-id $term -e ncmpcpp
+
+# exec --no-startup-id variety
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+a exec --no-startup-id /usr/local/bin/aniwrapper
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -456,12 +485,17 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+bindsym Control+Shift+s exec --no-startup-id ~/SudacodeRice/scripts/rofi/rofi-ssh.sh "~/SudacodeRice/rofi/flat-orange-4k.rasi"
+bindsym $mod+Shift+s exec --no-startup-id ~/SudacodeRice/scripts/rofi/rofi-stream.sh
+
+bindsym $mod+Shift+e exec --no-startup-id ~/SudacodeRice/scripts/emc $HOME
+
 for_window [title="System Tray"] floating enable, border none
 for_window [title="System Tray" window_type="normal"] move scratchpad
 bindsym Mod1+t [title="System Tray"] scratchpad show, resize set 250 260, move position center, move up 855px, move right 1740px
 exec_always --no-startup-id "plasmawindowed org.kde.plasma.systemtray"
 
-for_window [class="plasmawindowed" title="TodoList"] resize set 1200 2000, border none, move --no-auto-back-and-forth to workspace "4: "
-for_window [class="plasmawindowed" title="Event Calendar"] border none, move --no-auto-back-and-forth to workspace "4: "
+# for_window [class="plasmawindowed" title="TodoList"] resize set 1200 2000, border none, move --no-auto-back-and-forth to workspace "4: "
+# for_window [class="plasmawindowed" title="Event Calendar"] border none, move --no-auto-back-and-forth to workspace "4: "
 for_window [class="eecs285-proj3-ksyasuda-WheelOfFortune"] floating enable
 for_window [title="Android Emulator - Pixel_3a_API_30_x86:5554"] floating enable, border none

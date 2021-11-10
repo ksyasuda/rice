@@ -2,7 +2,7 @@
 colors:
   # Default colors
   primary:
-    background: "#282c34"
+    background: "#24282f"
     foreground: "#bbc2cf"
   cursor:
     text: CellBackground
