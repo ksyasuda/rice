@@ -280,7 +280,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 (setq rainbow-delimiters-mode t)
-(setq rainbow-mode t)
 (setq confirm-kill-emacs nil)
 (setq prettify-symbols-mode nil)
 (setq global-prettify-symbols-mode nil)
@@ -307,6 +306,7 @@
 
 (setq eaf-terminal-font-size 12)
 (setq lsp-treemacs-sync-mode 1)
+
 
 (after! 'treemacs
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
