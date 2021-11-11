@@ -93,11 +93,11 @@ set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: ﬏"
 # set $ws4 "4: "
-set $ws4 "4"
-set $ws5 "5"
+set $ws4 "4: ﮷"
+set $ws5 "5: "
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8: "
 set $ws9 "9: "
 
 # switch to workspace
@@ -290,7 +290,7 @@ mode "$mode_gaps_left" {
 }
 
 # set default gaps to 20
-gaps top 20
+gaps top 30
 gaps left 5
 gaps right 5
 gaps bottom 5
@@ -307,7 +307,7 @@ for_window [class=".*"] border pixel 5
 # for_window[workspace="4: "] border pixel 5
 for_window[class="^Spotify$"] border none, gaps inner 60
 for_window[class="discord"] border none
-for_window[title="ncmpcpp 0.9.2"] border none
+# for_window[title="ncmpcpp 0.9.2"] border none
 
 # if title, make the title center aligned
 title_align center
@@ -467,8 +467,8 @@ exec --no-startup-id /home/sudacode/SudacodeRice/scripts/new-wallpaper.sh
 # exec --no-startup-id ~/SudacodeRice/scripts/calendar.sh
 # exec --no-startup-id ~/SudacodeRice/scripts/todo.sh
 
+# autotiling
 exec_always --no-startup-id /usr/bin/alternating_layouts.py
-
 
 exec --no-startup-id ~/.bin/eww daemon
 
@@ -485,10 +485,12 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-bindsym Control+Shift+s exec --no-startup-id ~/SudacodeRice/scripts/rofi/rofi-ssh.sh "~/SudacodeRice/rofi/flat-orange-4k.rasi"
+bindsym Control+Shift+s exec --no-startup-id ~/Work/rofi/rofi-ssh.sh ~/SudacodeRice/rofi/flat-orange-4k.rasi
+bindsym Control+Shift+r exec --no-startup-id ~/Work/rofi/rofi-rdp.sh ~/SudacodeRice/rofi/flat-orange-4k.rasi
 bindsym $mod+Shift+s exec --no-startup-id ~/SudacodeRice/scripts/rofi/rofi-stream.sh
-
 bindsym $mod+Shift+e exec --no-startup-id ~/SudacodeRice/scripts/emc $HOME
+
+bindsym Control+g exec --no-startup-id ~/Work/rofi/rofi-search.sh
 
 for_window [title="System Tray"] floating enable, border none
 for_window [title="System Tray" window_type="normal"] move scratchpad

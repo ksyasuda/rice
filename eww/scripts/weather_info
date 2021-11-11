@@ -12,7 +12,7 @@ cache_weather_icon=${cache_dir}/weather-icon
 
 ## Weather data
 KEY="$OPENWEATHERMAP_KEY"
-ID="5341114"
+ID="LosAngeles"
 UNIT="imperial"	# Available options : 'metric' or 'imperial'
 
 ## Make cache dir
