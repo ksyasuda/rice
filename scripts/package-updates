@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 format() {
     if [ "$1" -eq 0 ]; then
         echo '-'
@@ -20,7 +20,8 @@ updates="$((updates_arch + updates_aur))"
 if [ "$updates" -gt 0 ]; then
     #echo " ($(format $updates_arch)/$(format $updates_aur))"
     # echo " ($(format $updates_arch)/$(format $updates_aur))"
-    # dunstify " Outdated Packages: ($(format $updates_arch)/$(format $updates_aur))"
+    # dunstify -i "/usr/share/icons/breeze-dark/mimetypes/24/package-x-generic.svg" " Outdated Packages: ($(format $updates_arch)/$(format $updates_aur))"
+    # dunstify -i "/usr/share/icons/breeze-dark/mimetypes/24/package-x-generic.svg" "Outdated Packages: ($(format $updates_arch)/$(format $updates_aur))"
     echo " ($(format $updates_arch)/$(format $updates_aur))"
 else
     echo
