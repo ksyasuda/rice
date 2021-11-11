@@ -227,13 +227,17 @@ mode "$mode_gaps_left" {
 }
 
 # set default gaps to 20
+gaps top 35
+gaps left 10
+gaps right 10
+gaps bottom 10
 gaps inner 20
 
 ## I3-GAPS END
 
 
 # make all windows have a 3 pixel border
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 5
 
 # make calendar, todo, and spotify always only have border 3 pixels
 for_window[workspace="4: "] border pixel 3 
@@ -275,7 +279,9 @@ set $blue #2C4762
 # client.focused #56a7b5 #282c34 #ffffff #2e9ef4 #56a7b5 
 # client.focused #a8d385 #282c34 #ffffff #50b62c #a8d385
 # client.focused #2878af #282c34 #ffffff #2e9ef4 #2878af
-client.focused #46d9ff #282c34 #ffffff #2e9ef4 #51afef
+# client.focused #46d9ff #282c34 #ffffff #2e9ef4 #51afef
+# client.unfocused #3d4450 #282c34 #ffffff #1e90ff #3d4450
+client.focused #51afef #282c34 #ffffff #2e9ef4 #2878af
 client.unfocused #3d4450 #282c34 #ffffff #1e90ff #3d4450
 
 # ------------------------------------------------------------------------------
@@ -316,6 +322,7 @@ for_window [class="Galculator" instance="galculator"] floating enable
 for_window [title="System Tray"] floating enable, border none
 for_window [title="System Tray" window_type="normal"] move scratchpad
 for_window [class="mpv"] floating enable, border none;
+for_window [class="VirtualBox Machine"] floating enable, border none;
 
 
 # ------------------------------------------------------------------------------
@@ -375,6 +382,7 @@ exec --no-startup-id i3-msg 'workspace 6: '; exec emacsclient -n -c -e '(+vte
 
 exec --no-startup-id /usr/bin/emacs --daemon
 
+exec --no-startup-id /usr/bin/alternating_layouts.py
 
 # ------------------------------------------------------------------------------
 #

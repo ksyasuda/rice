@@ -301,7 +301,7 @@ gaps inner 15
 # BORDERS
 
 # make all windows have a 3 pixel border
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 5
 
 # make calendar, todo, and spotify always only have border 3 pixels
 # for_window[workspace="4: "] border pixel 5
@@ -467,7 +467,7 @@ exec --no-startup-id /home/sudacode/SudacodeRice/scripts/new-wallpaper.sh
 # exec --no-startup-id ~/SudacodeRice/scripts/calendar.sh
 # exec --no-startup-id ~/SudacodeRice/scripts/todo.sh
 
-exec --no-startup-id /usr/bin/alternating_layouts.py
+exec_always --no-startup-id /usr/bin/alternating_layouts.py
 
 
 exec --no-startup-id ~/.bin/eww daemon
