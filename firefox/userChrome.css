@@ -1,6 +1,5 @@
- :root {
-
-   /* Minimal Functional Fox variables*/
+:root {
+  /* Minimal Functional Fox variables*/
   --mff-bg: #292f36;
   --mff-icon-color: #e0fbfc;
   --mff-nav-toolbar-padding: 8px;
@@ -78,7 +77,7 @@
 }
 
 .tab-close-button {
- display: none !important;
+  display: none !important;
 }
 
 .tab-text {
@@ -94,24 +93,23 @@ hbox.tab-content .tab-icon-image {
 }
 
 /* Show the favicon for tabs that are pinned */
-hbox.tab-content[pinned=true] .tab-icon-image {
+hbox.tab-content[pinned="true"] .tab-icon-image {
   display: initial !important;
 }
 
-hbox.tab-content[pinned=true] .tab-text {
+hbox.tab-content[pinned="true"] .tab-text {
   display: none !important;
 }
 
 #tabbrowser-tabs {
   --tab-loading-fill: #033433 !important;
-
 }
 
 .tab-label-container:not([textoverflow]) {
   display: flex;
   overflow: hidden;
   justify-content: center;
-width: 50% !important;
+  width: 50% !important;
   max-width: 50% !important;
   min-width: 50% !important;
 }
@@ -162,15 +160,14 @@ width: 50% !important;
 }
 
 .toolbarbutton-text {
-  color: var(--mff-icon-color)  !important;
+  color: var(--mff-icon-color) !important;
 }
 .urlbar-icon {
-  color: var(--mff-icon-color)  !important;
-
+  color: var(--mff-icon-color) !important;
 }
 
 .toolbarbutton-icon {
-/* filter: drop-shadow(0 0 0.75rem crimson); */
+  /* filter: drop-shadow(0 0 0.75rem crimson); */
 }
 
 #urlbar-results {
@@ -180,22 +177,24 @@ width: 50% !important;
   color: var(--mff-urlbar-results-color) !important;
 }
 
-.urlbarView-row[type="bookmark"] > span{
+.urlbarView-row[type="bookmark"] > span {
   color: green !important;
 }
 
-.urlbarView-row[type="switchtab"] > span{
+.urlbarView-row[type="switchtab"] > span {
   color: orange !important;
 }
 
-.urlbarView-url, .search-panel-one-offs-container {
+.urlbarView-url,
+.search-panel-one-offs-container {
   color: var(--mff-urlbar-results-url-color) !important;
   font-family: var(--mff-urlbar-font-family);
   font-weight: var(--mff-urlbar-results-font-weight);
   font-size: var(--mff-urlbar-font-size) !important;
 }
 
-.urlbarView-favicon, .urlbarView-type-icon {
+.urlbarView-favicon,
+.urlbarView-type-icon {
   display: none !important;
 }
 
@@ -203,15 +202,16 @@ width: 50% !important;
   font-size: var(--mff-urlbar-font-size) !important;
   color: var(--mff-urlbar-color) !important;
   font-family: var(--mff-urlbar-font-family) !important;
-  font-weight: var(--mff-urlbar-font-weight)!important;
+  font-weight: var(--mff-urlbar-font-weight) !important;
   text-align: center !important;
 }
 
-#tracking-protection-icon-container, #identity-box {
+#tracking-protection-icon-container,
+#identity-box {
   display: none;
 }
 
-#back-button > .toolbarbutton-icon{
+#back-button > .toolbarbutton-icon {
   --backbutton-background: transparent !important;
   border: none !important;
 }
@@ -229,10 +229,11 @@ toolbar {
 }
 
 #urlbar-background {
-  opacity: .98 !important;
+  opacity: 0.98 !important;
 }
 
-#navigator-toolbox, toolbaritem {
+#navigator-toolbox,
+toolbaritem {
   border: none !important;
 }
 
@@ -263,7 +264,7 @@ tab.tabbrowser-tab {
 }
 
 tab.tabbrowser-tab:hover {
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 image#star-button {
@@ -281,13 +282,12 @@ toolbar#nav-bar {
 #urlbar {
   max-width: 70% !important;
   margin: 0 15% !important;
-  /* 	position: unset!important; */;
+  /* 	position: unset!important; */
 }
 
 #urlbar-input:focus {
   color: var(--mff-urlbar-focused-color) !important;
 }
-
 
 .megabar[breakout-extend="true"]:not([open="true"]) > #urlbar-background {
   box-shadow: none !important;
@@ -298,7 +298,6 @@ toolbarbutton {
   box-shadow: none !important;
 }
 
-
 /*
   ___ ___ ___  ___ ___   _   ___
  / __|_ _|   \| __| _ ) /_\ | _ \
@@ -306,7 +305,8 @@ toolbarbutton {
  |___/___|___/|___|___/_/ \_\_|_\
 */
 
-.close-icon, .urlbar-icon {
+.close-icon,
+.urlbar-icon {
   fill: var(--mff-icon-color) !important;
 }
 
@@ -315,7 +315,7 @@ toolbarbutton {
 }
 
 #sidebar-switcher-target {
-/*   color: white !important; */
+  /*   color: white !important; */
 }
 
 #sidebar-box {
@@ -335,7 +335,6 @@ image#sidebar-icon {
   display: none;
 }
 
-
 /*
     _   ___ ___  _____      _____  _   _  _ ___ _
    /_\ | _ \ _ \/ _ \ \    / / _ \/_\ | \| | __| |
@@ -350,4 +349,8 @@ image#sidebar-icon {
 
 toolbarseparator {
   display: none;
+}
+
+#contentAreaContextMenu {
+  margin-left: 4px;
 }
