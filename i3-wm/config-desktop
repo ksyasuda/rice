@@ -227,17 +227,17 @@ mode "$mode_gaps_left" {
 }
 
 # set default gaps to 20
-gaps top 35
+gaps top 40
 gaps left 10
 gaps right 10
 gaps bottom 10
-gaps inner 20
+gaps inner 15
 
 ## I3-GAPS END
 
 
 # make all windows have a 3 pixel border
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 7
 
 # make calendar, todo, and spotify always only have border 3 pixels
 for_window[workspace="4: "] border pixel 3 
@@ -366,7 +366,7 @@ exec --no-startup-id nm-applet
 # Unlock KWallet
 exec --no-startup-id /usr/lib/pam_kwallet_init
 
-# exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+exec_always --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # start the calendar and todolist plasmoids
 # exec --no-startup-id ~/scripts/calendar.sh
@@ -376,13 +376,13 @@ exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
 
 exec --no-startup-id /usr/bin/variety --profile /home/sudacode/.config/variety/
 
-exec --no-startup-id i3-msg 'workspace 3: ﱘ'; exec $term -e ncmpcpp
+# exec --no-startup-id i3-msg 'workspace 3: ﱘ'; exec $term -e ncmpcpp
 exec --no-startup-id i3-msg 'workspace 4: '; exec emc ~/org/
 exec --no-startup-id i3-msg 'workspace 6: '; exec emacsclient -n -c -e '(+vterm/here nil)'
 
 exec --no-startup-id /usr/bin/emacs --daemon
 
-exec --no-startup-id /usr/bin/alternating_layouts.py
+exec_always --no-startup-id /usr/bin/alternating_layouts.py
 
 # ------------------------------------------------------------------------------
 #
@@ -545,8 +545,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # start rofi tabswitcher
 bindsym Mod1+ISO_Left_Tab exec --no-startup-id $HOME/SudacodeRice/scripts/tabswitcher.sh
 # changer borders
-bindsym Mod1+y border pixel 3
-# bindsym Mod1+t border normal 3
+bindsym Mod1+y border pixel 7
 bindsym Mod1+u border none
 
 # set menu to the krunner
