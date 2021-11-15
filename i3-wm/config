@@ -302,6 +302,7 @@ gaps inner 15
 
 # make all windows have a 3 pixel border
 for_window [class=".*"] border pixel 5
+# for_window [class=".*"] border none
 
 # make calendar, todo, and spotify always only have border 3 pixels
 # for_window[workspace="4: "] border pixel 5
