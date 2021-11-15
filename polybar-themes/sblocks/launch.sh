@@ -2,7 +2,7 @@
 
 # Add this script to your wm startup file.
 
-DIR="$HOME/.config/polybar/blocks"
+DIR="$HOME/SudacodeRice/polybar-themes/sblocks"
 
 # Terminate already running bar instances
 killall -q polybar
