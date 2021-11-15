@@ -612,5 +612,5 @@ bindsym $mod+Shift+e exec --no-startup-id emacsclient -n -c ~
 bindsym $mod+Shift+v exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym $mod+Shift+Return exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym Control+Shift+a exec --no-startup-id ~/SudacodeRice/scripts/emc ~/Projects/Scripts/aniwrapper
-bindsym Control+e exec --no-startup-id ~/SudacodeRice/scripts/emc ~/.config
-bindsym Control+h exec --no-startup-id emacsclient -n -c ~/org/help/links.org
+bindsym Control+Shift+e exec --no-startup-id ~/SudacodeRice/scripts/emc ~/.config
+bindsym Control+Shift+h exec --no-startup-id emacsclient -n -c ~/org/help/links.org
