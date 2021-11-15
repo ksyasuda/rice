@@ -8,8 +8,8 @@ if [[ $checkRunning == '' ]]; then
 fi
 
 arg=$1
-if [[ $arg == 'next' ]]; then
+if [[ $arg == 'next' ]] || [[ "$arg" == "-n" ]]; then
 	echo "怜"
-elif [[ $arg == 'prev' ]]; then
+elif [[ $arg == 'prev' ]] || [[ "$arg" == "-p" ]]; then
 	echo "玲"
 fi

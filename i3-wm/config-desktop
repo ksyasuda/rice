@@ -479,7 +479,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+Shift+e layout toggle split
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -608,7 +608,7 @@ bindsym $mod+minus scratchpad show
 
 # bindsym Mod1+Shift+t [title="System Tray"] scratchpad show, resize set 250 260, move position center
 
-bindsym $mod+e exec --no-startup-id emacsclient -n -c ~
+bindsym $mod+Shift+e exec --no-startup-id emacsclient -n -c ~
 bindsym $mod+Shift+v exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym $mod+Shift+Return exec --no-startup-id emacsclient -n -c -e '(+vterm/here nil)'
 bindsym Control+Shift+a exec --no-startup-id ~/SudacodeRice/scripts/emc ~/Projects/Scripts/aniwrapper

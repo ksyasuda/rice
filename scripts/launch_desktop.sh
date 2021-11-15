@@ -10,7 +10,9 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if type "xrandr"; then
 	for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-		MONITOR=$m polybar --reload -c ~/SudacodeRice/polybar/config.desktop.ini main &
+		# MONITOR=$m polybar --reload -c ~/SudacodeRice/polybar/config.desktop.ini main &
+		# update to use new theme
+		MONITOR=$m polybar --reload -c "$HOME/SudacodeRice/polybar-themes/sblocks/config.ini" main &
 	done
 else
 	polybar --reload example &
