@@ -1,11 +1,13 @@
 alias suda='sudo'
 
 ## Colorls
-alias lca='colorls -A --sd -X'
-alias lc='colorls --sd -X'
-alias lcl='colorls --sd -Xl'
-alias lcla='colorls -lA --sd -X'
-alias lcal='colorls -lA --sd -X'
+alias lca='colorls -A --sd --gs -X'
+alias lc='colorls --sd --gs -X'
+alias lcl='colorls --sd --gs -Xl'
+alias lcla='colorls -lA --sd --gs -X'
+alias lcal='colorls -lA --sd --gs -X'
+alias lct='colorls --gs --tree=5'
+alias ls='colorls --sd -Xl'
 
 ## Pacman/Yay
 # update without noconfirm
@@ -73,3 +75,15 @@ alias whatsmyip='http ipinfo.io'
 alias edit='sudoedit'
 alias ports='sudo netstat -tupln'
 alias ncdu='ncdu --color dark'
+alias updates='~/SudacodeRice/scripts/package-updates'
+alias aliases='cat ~/.bash_aliases'
+alias sauce='~/Videos/sauce/'
+alias aniedit='emc ~/Projects/Scripts/ani-cli/'
+alias wmedit='emc ~/.config/i3/config'
+alias ani='cd $HOME/Projects/Scripts/ani-cli'
+alias archvm='VBoxManage startvm "arch-vm"'
+alias chrome='google-chrome-beta --profile-directory="Profile 1" &>/dev/null &'
+alias bar='~/SudacodeRice/scripts/launch_desktop.sh'
+
+## Rice
+alias config='/usr/bin/git --git-dir=$HOME/rice/ --work-tree=$HOME'

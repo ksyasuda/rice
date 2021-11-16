@@ -1,0 +1,4 @@
+# FIFO for mpv queue
+rm -f /tmp/mp_pipe && mkfifo /tmp/mp_pipe
+setxkbmap -option caps:escape &>/dev/null
+setxkbmap -option caps:escape_shifted_capslock &>/dev/null
