@@ -301,7 +301,8 @@ gaps inner 15
 # BORDERS
 
 # make all windows have a 3 pixel border
-for_window [class=".*"] border pixel 5
+# for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 3
 # for_window [class=".*"] border none
 
 # make calendar, todo, and spotify always only have border 3 pixels
@@ -316,8 +317,16 @@ title_align center
 ## client colors
 # class border backgr  text    indicate  child_border
 # client.focused #56a7b5 #282c34 #ffffff #2e9ef4 #56a7b5 
-client.focused #51afef #282c34 #ffffff #2e9ef4 #2878af
 # client.focused #a8d385 #282c34 #ffffff #50b62c #a8d385
+
+# magenta
+# client.focused #ecbe7b #282c34 #ffffff #c678dd #c678dd
+# white
+# client.focused #ecbe7b #282c34 #ffffff #ffffff #bbc2cf 
+# yellow
+# client.focused #ecbe7b #282c34 #ffffff #d19a66 #ecbe7b
+# blue
+client.focused #51afef #282c34 #ffffff #2e9ef4 #2878af
 client.unfocused #3d4450 #282c34 #ffffff #1e90ff #3d4450
 
 ## disable floating, borders
@@ -474,11 +483,12 @@ exec_always --no-startup-id /usr/bin/alternating_layouts.py
 exec --no-startup-id ~/.bin/eww daemon
 
 exec --no-startup-id $term -e ncmpcpp
+exec --no-startup-id SVPManager
 
 # exec --no-startup-id variety
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+a exec --no-startup-id /usr/local/bin/aniwrapper
+bindsym $mod+Shift+a exec --no-startup-id /usr/bin/aniwrapper
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
