@@ -49,31 +49,19 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! pyenv-mode)
-(package! company-mode)
 (package! lsp-jedi)
-(package! company-jedi)
 (package! flycheck)
-(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
-
 (package! org-bullets)
-
 (package! wakatime-mode)
-
 (package! py-isort)
 (package! python-pytest)
 (package! python-docstring)
 (package! py-autopep8)
-
-(package! diredfl)
-(package! peep-dired)
-
 (package! fira-code-mode)
 (package! lsp-ui)
-(package! company-quickhelp)
 (package! gif-screencast)
-(package! helm-pass)
 (package! treemacs-icons-dired)
 (package! howdoi)
 (package! persist)
-(package! mozc)
+(package! pipenv)
+(package! lsp-python-ms)
