@@ -302,6 +302,7 @@ gaps inner 15
 
 # make all windows have a 3 pixel border
 # for_window [class=".*"] border pixel 5
+smart_borders on
 for_window [class=".*"] border pixel 3
 # for_window [class=".*"] border none
 
@@ -385,9 +386,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Alt+Shift: s, w, e, q, r, h, j, k, l, n, p, space
 
 # bind Alt+Shift+n to next sonF5g
-bindsym $mod+Shift+n exec --no-startup-id mpc next
+# bindsym $mod+Shift+n exec --no-startup-id mpc next
 # bind Alt+Shift+n to prev sonF5g
-bindsym $mod+Shift+p exec --no-startup-id mpc prev
+# bindsym $mod+Shift+p exec --no-startup-id mpc prev
 
 # bind rofi-mpd ask mode to Alt+F7
 bindsym $mod+F7 exec --no-startup-id rofi-mpd -a
@@ -498,6 +499,7 @@ bindsym $mod+minus scratchpad show
 
 bindsym Control+Shift+s exec --no-startup-id ~/Work/rofi/rofi-ssh.sh ~/SudacodeRice/rofi/flat-orange-4k.rasi
 bindsym Control+Shift+r exec --no-startup-id ~/Work/rofi/rofi-rdp.sh ~/SudacodeRice/rofi/flat-orange-4k.rasi
+bindsym $mod+Shift+p exec --no-startup-id ~/Work/rofi/rofi-picom.sh
 bindsym $mod+Shift+s exec --no-startup-id ~/SudacodeRice/scripts/rofi/rofi-stream.sh
 bindsym $mod+Shift+e exec --no-startup-id ~/SudacodeRice/scripts/emc $HOME
 
