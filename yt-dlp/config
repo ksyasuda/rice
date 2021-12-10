@@ -1,13 +1,15 @@
-# Lines starting with # are comments
+--geo-bypass
+--embed-metadata
+--embed-thumbnail
+--embed-subs
 
 # Always extract audio
-# -x
+-x
 
 # Do not copy the mtime
 --no-mtime
 
---embed-thumbnail
---embed-subs
 
 # Save all videos under YouTube directory in your home directory
 -o ~/Videos/YouTube/%(title)s.%(ext)s
+
