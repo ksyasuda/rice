@@ -2,9 +2,9 @@ syntax on
 set laststatus=2		"enable status bar
 set number				"turn on line numbers
 set colorcolumn=80		"set color column on col 80
-set tw=80				
-set shiftwidth=4		
-set tabstop=4			
+set tw=80
+set shiftwidth=4
+set tabstop=4
 set autoindent			"auto indents code
 set smartindent			"smart indents code
 set hlsearch			"highlight search
@@ -12,20 +12,18 @@ set smartcase			"set search case based on search query
 set noerrorbells		"no error bells
 set title				"set title of vim based on file open
 set mouse=a             " enable mouse in vim
-set spell               "enable spell check in vim
+set nospell
 
 set encoding=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ 18
-
-autocmd BufNewFile *.py  0r ~/templates/skeleton.py
-autocmd BufNewFile *.jsx  0r ~/templates/skeleton.jsx
-autocmd BufNewFile *.tsx  0r ~/templates/skeleton.tsx
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
+
+Plug 'tabnine/YouCompleteMe'
 
 Plug 'sheerun/vim-polyglot'
 
@@ -38,8 +36,6 @@ Plug 'ap/vim-css-color'
 Plug 'wakatime/vim-wakatime'
 
 Plug 'itchyny/lightline.vim'
-
-Plug 'ryanoasis/vim-devicons'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
@@ -63,22 +59,34 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug '~/.fzf'
 
+Plug 'tpope/vim-fugitive'
+
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
+Plug 'prabirshrestha/vim-lsp'
+
+Plug 'ryanoasis/vim-devicons'
+
+
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'ntk148v/vim-horizon'
-Plug 'ghifarit53/tokyonight-vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'tomasr/molokai'
 Plug 'joshdick/onedark.vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
+Plug 'romgrk/doom-one.vim'
 
 call plug#end()
+
+let g:doom_one_terminal_colors = v:true
+
+" carbon now
+" let g:carbon_now_sh_base_url = 'http://localhost:8888'
+let g:carbon_now_sh_browser = 'firefox'
 
 
 "jump to remembered position in file if available
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
-
 
 "fzf
 "
@@ -128,7 +136,6 @@ let g:fzf_colors =
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-
 "livedown
 " should markdown preview get shown automatically upon opening markdown buffer
 let g:livedown_autorun = 0
@@ -139,10 +146,22 @@ let g:livedown_port = 3001
 " the browser to use, can also be firefox, chrome or other, depending on your executable
 let g:livedown_browser = "firefox"
 
+function! FormatShell(buffer) abort
+  return {
+  \   'command': 'shfmt -i=0 -ci -sr'
+  \}
+endfunction
+
+execute ale#fix#registry#Add('shfmt', 'FormatShell', ['sh'], 'shfmt for shell')
+
 "ale
-let b:ale_linter_aliases = {'javascriptreact': ['css', 'javascript'], 'typescriptreact': ['css', 'javascript']} 
+let g:ale_linter_aliases = {'javascriptreact': ['css', 'javascript'], 'typescriptreact': ['css', 'javascript']}
+let g:ale_linters = {'javascriptreact': ['css', 'javascript'], 'typescriptreact': ['css', 'javascript'], 'python': ['pylint','pycodestyle', 'pydocstyle'], 'sh': ['shellcheck']}
 " Fix files with prettier, and then ESLint.
-let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'sh': ['shellcheck'], 'typescript': ['eslint'], 'python': ['pycodestyle', 'pylint']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'javascript': ['prettier', 'eslint'], 'sh': ['FormatShell'], 'typescript': ['eslint'], 'python': ['autopep8'], 'sql': ['pgformatter']}
+
+let g:ale_fix_on_save = 1
+let g:ale_virtualenv_dir_names = ['env']
 
 "vim-closetag
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -178,7 +197,20 @@ let g:closetag_regions = {
 
 
 let g:ycm_autoclose_preview_window_after_insertion = 1 "close ycm help window after accepting option
-" let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_language_server =
+  \ [
+  \   {
+  \     'name': 'python',
+  \     'filetypes': [ 'py' ],
+  \     'cmdline': [ '/usr/bin/jedi-language-server' ]
+  \    },
+  \   {
+  \     'name': 'bash',
+  \     'filetypes': [ 'sh' ],
+  \     'cmdline': [ '/usr/bin/bash-language-server' ]
+  \    }
+  \ ]
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
 let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
@@ -259,31 +291,77 @@ let g:prettier#exec_cmd_path = "/usr/bin/prettier"
 let g:lightline = {
       \ 'colorscheme': 'deus',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'gitbranch' ],
-      \             [ 'readonly', 'filename', 'modified',  ] ],
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
       \              [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'fugitive': 'MyFugitive',
+      \   'readonly': 'Readonly',
+      \   'modified': 'Modified',
+      \   'filename': 'Filename'
+      \
       \ },
 	  \ 'component': {
 	  \   'charhexvalue': '0x%B'
 	  \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"  },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3"  }
       \ }
+
+function! Modified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! Readonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "\ue0a2"
+  else
+    return ""
+  endif
+endfunction
+
+function! MyFugitive()
+    let _ = fugitive#head()
+    return strlen(_) ? "\ue0a0 "._ : ''
+endfunction
+
+function! Filename()
+  return ('' != Readonly() ? Readonly() . ' ' : '') .
+    \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+    \ ('' != Modified() ? ' ' . Modified() : '')
+endfunction
 
 "COLORSCHEME
 if !has('gui_running')
   set t_Co=256
 endif
 
-set termguicolors
 
 set noshowmode "disable default vim insert text at bottom
 let g:onedark_termcolors=256 "enable 256 colors
-packadd! onedark.vim "add onedark colorcheme may not work
-colorscheme onedark  "set colorsheme as onedark
+" packadd! onedark.vim "add onedark colorcheme may not work
+" colorscheme onedark  "set colorsheme as onedark
+
+"material theme
+" let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'darker'
+" let g:material_theme_style = 'default'
+colorscheme material
+
 
 "Tokyo night conifg
 let g:tokyonight_style='night'
@@ -292,6 +370,17 @@ let g:tokyonight_enable_italic=1
 
 "let g:molokai_original = 1
 let g:rehash256 = 1
+
+
+"bash language server
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'allowlist': ['sh'],
+        \ })
+endif
+
 
 "KEYBINDINGS
 map <C-c> :nohls<Cr>

@@ -15,7 +15,7 @@ if [[ -d $dir$chosen ]]; then
 		file=$chosen
 	else
 		file=$(ls $dir$chosen$EXT2 | shuf -n 1)
-		feh --bg-scale $dir$chosen$EXT2$file 
+		feh --bg-scale $dir$chosen$EXT2$file
 	fi
 	echo $file
 else
