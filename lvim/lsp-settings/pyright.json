@@ -1,0 +1,5 @@
+{
+  "python.venvPath": "./env",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.useLibraryCodeForTypes": true
+}
