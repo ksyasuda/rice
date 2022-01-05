@@ -1,0 +1,211 @@
+#
+# wm independent hotkeys
+#
+
+# sauce
+alt + shift + a
+	aniwrapper
+
+control + alt + n
+  variety -n
+
+# terminal emulator
+alt + Return
+	alacritty
+
+# program launcher
+alt + d
+  rofi -modi drun -show drun
+
+# show open window
+alt + ctrl + d
+	rofi -modi drun -show window -line-padding 4 \
+                -columns 2 -padding 50 -hide-scrollbar -terminal alacritty \
+                -show-icons -drun-icon-theme "Arc-X-D" \
+				-font "Droid Sans Regular 10" -dpi 200
+
+# show ssh sesssions
+alt + shift + d
+	rofi -modi drun -show ssh -line-padding 4 \
+                -columns 2 -padding 50 -hide-scrollbar -terminal alacritty \
+                -show-icons -drun-icon-theme "Arc-X-D" \
+				-font "Droid Sans Regular 10" -dpi 200
+
+# power-menu 
+alt + shift + e
+     ~/.config/rofi/powermenu.sh
+
+# make sxhkd reload its configuration files:
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+alt + {_,shift + }q
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+alt + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+alt + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+alt + g
+	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+alt + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+alt + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+alt + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+alt + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+alt + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+alt + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+alt + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + shift + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+#
+# Special hotkeys
+#
+
+# Multimedia keys
+XF86AudioRaiseVolume
+  amixer -q set Master 5%+ unmute && ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py increase
+
+XF86AudioLowerVolume
+  amixer -q set Master 5%- unmute && ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py decrease
+
+XF86AudioMute
+  amixer -D pulse sset Master toggle-mute && ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py mute
+
+# XF86AudioRaiseVolume @DEFAULT_SINK@ +10%; ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py increase
+
+# XF86AudioLowerVolume pactl set-sink-volume @DEFAULT_SINK@ -10%; ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py decrease
+
+# XF86AudioMute @DEFAULT_SINK@ toggle; ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py mute
+
+  
+# amixer -q set Master toggle
+# Simple amixer command seems to have problems unmuting device
+
+# Brightness up
+XF86MonBrightnessUp
+  xbacklight -inc 5
+
+# And brightness down
+XF86MonBrightnessDown
+  xbacklight -dec 5
+
+# Screenshot
+Print
+  scrot ~/Pictures/Screenshot-$(date +%F_%T).png
+
+alt+Print
+  ~/.config/bspwm/scripts/screenshot.sh
+
+# Shortcuts
+super + w 
+  firefox
+
+super + t 
+  thunar  
+
+super + F1
+  ~/.config/bspwm/scripts/keybindings_rofi.sh
+
+# ncmpcpp
+alt + n
+  alacritty -e ncmpcpp
+
+# bpytop
+alt + b
+  alacritty -e bpytop
+
+
+# Rofi
+control + shift + s
+  ~/Work/rofi/rofi-ssh.sh "$HOME/SudacodeRice/rofi/flat-orange-4k.rasi"
+alt + shift + p
+  ~/Work/rofi/rofi-picom.sh
+control + shift + r
+  ~/Work/rofi/rofi-rdp.sh "$HOME/SudacodeRice/rofi/flat-orange-4k.rasi"
