@@ -63,15 +63,15 @@
     ("int" . ?ℤ)
     ("not" . ?¬)))
 
-(setq prettify-symbols-alist
-  '(("lambda"  . ?λ)
-    ("&&" . ?∧)
-    ("||" . ?∨)
-    ("in" . ?∈)
-    ("for" . ?∀)
-    ("function" . ?ƒ)
-    ("int" . ?ℤ)
-    ("not" . ?¬)))
+;; (setq prettify-symbols-alist
+;;   '(("lambda"  . ?λ)
+;;     ("&&" . ?∧)
+;;     ("||" . ?∨)
+;;     ("in" . ?∈)
+;;     ("for" . ?∀)
+;;     ("function" . ?ƒ)
+;;     ("int" . ?ℤ)
+;;     ("not" . ?¬)))
 
 
 (use-package! wakatime-mode :ensure t)
@@ -92,13 +92,18 @@
 
 (lsp-ui-mode)
 
-(use-package lsp-python-ms
-  :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-python-ms)
-                          (lsp))))  ; or lsp-deferred
+;; (require 'lsp-python-ms)
+;; (use-package lsp-python-ms
+;;   :init (setq lsp-python-ms-auto-install-server t)
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-python-ms)
+;;                           (lsp))))  ; or lsp-deferred
 
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 
 (use-package! lsp-mode
   :commands lsp
@@ -189,7 +194,7 @@
 
 (after! vterm
   (set-popup-rule! "*doom:vterm-popup:main" :size 0.45 :vslot -4 :select t :quit nil :ttl 0 :side 'right)
-  )
+)
 
 ;;; gif screencast
 
@@ -204,38 +209,6 @@
 
 (add-hook 'org-mode-hook #'org-bullets-mode)
 (add-hook 'before-save-hook 'py-isort-before-save)
-
-;;; SQL MODE
-
-
-(defun my-sql-save-history-hook ()
-    (let ((lval 'sql-input-ring-file-name)
-          (rval 'sql-product))
-      (if (symbol-value rval)
-          (let ((filename 
-                 (concat "~/.emacs.d/sql/"
-                         (symbol-name (symbol-value rval))
-                         "-history.sql")))
-            (set (make-local-variable lval) filename))
-        (error
-         (format "SQL history will not be saved because %s is nil"
-                 (symbol-name rval))))))
- 
-  (add-hook 'sql-interactive-mode-hook 'my-sql-save-history-hook)
-
-  (defun upcase-sql-keywords ()
-    (interactive)
-    (save-excursion
-      (dolist (keywords sql-mode-postgres-font-lock-keywords)
-        (goto-char (point-min))
-        (while (re-search-forward (car keywords) nil t)
-          (goto-char (+ 1 (match-beginning 0)))
-          (when (eql font-lock-keyword-face (face-at-point))
-            (backward-char)
-            (upcase-word 1)
-            (forward-char))))))
-
-  ; (add-hook 'sql-interactive-mode-hook 'my-sql-save-history-hook 'upercase-sql-keywords')
 
 (after! flyspell
   (setq flyspell-lazy-idle-seconds 2))
@@ -263,7 +236,7 @@
 (setq eaf-terminal-font-size 12)
 (setq lsp-treemacs-sync-mode 1)
 
-(setq lsp-python-ms-auto-install-server t)
+;; (setq lsp-python-ms-auto-install-server t)
 (add-hook 'python-mode-hook #'lsp) ; or lsp-deferred
 
 

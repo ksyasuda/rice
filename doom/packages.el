@@ -64,4 +64,5 @@
 (package! howdoi)
 (package! persist)
 (package! pipenv)
-(package! lsp-python-ms)
+;; (package! lsp-python-ms)
+(package! lsp-pyright)
