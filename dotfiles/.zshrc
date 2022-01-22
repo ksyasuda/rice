@@ -10,12 +10,13 @@ fi
 #If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="/home/sudacode/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/Work/scripts:$PATH"
 export PATH="$HOME/Work/rofi/:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/Projects/Python/Sudasong/src/:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
@@ -223,29 +224,29 @@ PS2="===>"
 
 # # Add gem to PATH
 # export PATH=$PATH:/home/sudacode/.gem/ruby/2.7.0/bin
-# 
+#
 # # Add go to PATH
 # export PATH=$PATH:/home/sudacode/go/bin
-# 
+#
 # alias freud='cd /home/sudacode/'
-# 
+#
 # # Add yarn to PATH
 # export PATH="$PATH:`yarn global bin`"
-# 
+#
 # # set terminal color to 256 color
-# export TERM=xterm-256color
-# 
+export TERM=xterm-256color
+#
 # export PATH=$PATH:/home/sudacode/.local/bin
-# 
+#
 # add emacs to path
 export PATH=$PATH:/home/sudacode/.emacs.d/bin
-# 
+#
 #Enable tab completions for flags in colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
-# 
+#
 # # add pythno to PATH
 # export PATH="$PATH:/usr/bin/python"
-# 
+#
 # # add jdk-8 to path
 # export PATH="$PATH:/usr/lib/jvm/java-8-openjdk/bin"
 # export CLASSPATH="$CLASSPATH:/usr/share/java/mariadb-jdbc/mariadb-java-client.jar"
@@ -261,7 +262,9 @@ ibus-daemon -drx
 export VISUAL=vim
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_DIR="$HOME/.cache"
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+bindkey '^ ' autosuggest-accept
 
 
 # source the Xmodmap file to get custom keybindings
@@ -287,3 +290,10 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # # <<< conda initialize <<<
 
 # neofetch
+
+# added by Snowflake SnowSQL installer
+export PATH=/home/sudacode/.bin:$PATH
+
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/yubikey-agent/yubikey-agent.sock"
+
+eval $(thefuck --alias)
