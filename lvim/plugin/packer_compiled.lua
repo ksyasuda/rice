@@ -111,6 +111,11 @@ _G.packer_plugins = {
     path = "/home/sudacode/.local/share/lunarvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-tabnine"] = {
+    loaded = true,
+    path = "/home/sudacode/.local/share/lunarvim/site/pack/packer/start/cmp-tabnine",
+    url = "https://github.com/tzachar/cmp-tabnine"
+  },
   cmp_luasnip = {
     loaded = true,
     path = "/home/sudacode/.local/share/lunarvim/site/pack/packer/start/cmp_luasnip",
@@ -138,18 +143,23 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["goto-preview"] = {
-    config = { "\27LJ\1\2k\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\4\vheight\3\25\ndebug\1\21default_mappings\1\nwidth\3x\nsetup\17goto-preview\frequire\0" },
+    config = { "\27LJ\1\2k\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\4\vheight\3\25\ndebug\1\21default_mappings\1\nwidth\3d\nsetup\17goto-preview\frequire\0" },
     loaded = true,
     path = "/home/sudacode/.local/share/lunarvim/site/pack/packer/start/goto-preview",
     url = "https://github.com/rmagatti/goto-preview"
   },
   ["lsp_signature.nvim"] = {
-    config = { "\27LJ\1\2A\0\0\2\1\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0+\1\0\0>\0\2\1G\0\1\0\4À\nsetup\18lsp_signature\frequire\0" },
+    config = { "\27LJ\1\2A\0\0\2\1\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0+\1\0\0>\0\2\1G\0\1\0\3À\nsetup\18lsp_signature\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/sudacode/.local/share/lunarvim/site/pack/packer/opt/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/sudacode/.local/share/lunarvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["lua-dev.nvim"] = {
     loaded = false,
@@ -318,7 +328,7 @@ _G.packer_plugins = {
     needs_bufread = false,
     only_cond = false,
     path = "/home/sudacode/.local/share/lunarvim/site/pack/packer/opt/which-key.nvim",
-    url = "https://github.com/folke/which-key.nvim"
+    url = "https://github.com/zeertzjq/which-key.nvim"
   }
 }
 
@@ -365,7 +375,7 @@ try_loadstring("\27LJ\1\2@\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G
 time([[Config for nvim-tree.lua]], false)
 -- Config for: goto-preview
 time([[Config for goto-preview]], true)
-try_loadstring("\27LJ\1\2k\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\4\vheight\3\25\ndebug\1\21default_mappings\1\nwidth\3x\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
+try_loadstring("\27LJ\1\2k\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\4\vheight\3\25\ndebug\1\21default_mappings\1\nwidth\3d\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
 time([[Config for goto-preview]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
