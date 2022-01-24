@@ -1,96 +1,95 @@
 syntax on
-set laststatus=2		"enable status bar
-set number				"turn on line numbers
-set colorcolumn=80		"set color column on col 80
+set laststatus=2
+set number
+set colorcolumn=80
 set tw=80
 set shiftwidth=4
 set tabstop=4
-set autoindent			"auto indents code
-set smartindent			"smart indents code
-set hlsearch			"highlight search
-set smartcase			"set search case based on search query
-set noerrorbells		"no error bells
-set title				"set title of vim based on file open
-set mouse=a             " enable mouse in vim
-set nospell
+set autoindent
+set smartindent
+set hlsearch
+set smartcase
+set ignorecase
+set noerrorbells
+set title
+set mouse=a
+set relativenumber
+set splitright
+set expandtab
+set cursorline
+set scrolloff=8
+set sidescrolloff=8
+" show candidates for vim commands with tab
+set wildmenu
 
 set encoding=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ 18
 
+" lsp handled by coc
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Plug 'valloric/youcompleteme'
-
-Plug 'tabnine/YouCompleteMe'
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'vim-scripts/SQLUtilities'
-
-Plug 'itchyny/vim-gitbranch'
-
-Plug 'ap/vim-css-color'
-
-Plug 'wakatime/vim-wakatime'
-
-Plug 'itchyny/lightline.vim'
-
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-Plug 'jiangmiao/auto-pairs'
-
 Plug 'mhinz/vim-startify'
-
-Plug 'alvan/vim-closetag'
-
-Plug 'MathSquared/vim-python-sql'
-
-Plug 'MaxMEllon/vim-jsx-pretty'
-
-Plug 'tpope/vim-commentary'
-
-Plug 'dense-analysis/ale'
-
-Plug 'shime/vim-livedown'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-Plug '~/.fzf'
-
-Plug 'tpope/vim-fugitive'
-
 Plug 'kristijanhusak/vim-carbon-now-sh'
-
-Plug 'prabirshrestha/vim-lsp'
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'ryanoasis/vim-devicons'
-
-
-Plug 'morhetz/gruvbox'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tpope/vim-fugitive'
+Plug 'pechorin/any-jump.vim'
+Plug 'tpope/vim-commentary'
+Plug 'shime/vim-livedown'
+Plug 'jiangmiao/auto-pairs'
+Plug 'alvan/vim-closetag'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'ap/vim-css-color'
+Plug 'itchyny/lightline.vim'
+Plug 'wakatime/vim-wakatime'
+Plug 'itchyny/vim-gitbranch'
+Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'maximbaz/lightline-ale'
+" On-demand lazy load
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+" colorschemes
 Plug 'joshdick/onedark.vim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
+Plug 'sainnhe/sonokai'
 Plug 'romgrk/doom-one.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
-let g:doom_one_terminal_colors = v:true
-
+"------------------------------------------------------------------------------
+" Carbon Now
+"------------------------------------------------------------------------------
 " carbon now
 " let g:carbon_now_sh_base_url = 'http://localhost:8888'
 let g:carbon_now_sh_browser = 'firefox'
-
 
 "jump to remembered position in file if available
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
+"------------------------------------------------------------------------------
 "fzf
-"
+"------------------------------------------------------------------------------
 " This is the default extra key bindings
+let g:fzf_commands_expect = 'ctrl-enter'
+let g:fzf_buffers_jump = 1
+let g:fzf_tags_command = 'ctags -R'
+" This is the default option:
+"   - Preview window on the right with 50% width
+"   - CTRL-/ will toggle preview window.
+" - Note that this array is passed as arguments to fzf#vim#with_preview function.
+" - To learn more about preview window options, see `--preview-window` section of `man fzf`.
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.75 } }
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -108,10 +107,6 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-
-"Center of screen and popup
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
@@ -136,7 +131,9 @@ let g:fzf_colors =
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+"------------------------------------------------------------------------------
 "livedown
+"------------------------------------------------------------------------------
 " should markdown preview get shown automatically upon opening markdown buffer
 let g:livedown_autorun = 0
 " should the browser window pop-up upon previewing
@@ -146,6 +143,9 @@ let g:livedown_port = 3001
 " the browser to use, can also be firefox, chrome or other, depending on your executable
 let g:livedown_browser = "firefox"
 
+"------------------------------------------------------------------------------
+"ale
+"------------------------------------------------------------------------------
 function! FormatShell(buffer) abort
   return {
   \   'command': 'shfmt -i=0 -ci -sr'
@@ -154,7 +154,6 @@ endfunction
 
 execute ale#fix#registry#Add('shfmt', 'FormatShell', ['sh'], 'shfmt for shell')
 
-"ale
 let g:ale_linter_aliases = {'javascriptreact': ['css', 'javascript'], 'typescriptreact': ['css', 'javascript']}
 let g:ale_linters = {'javascriptreact': ['css', 'javascript'], 'typescriptreact': ['css', 'javascript'], 'python': ['pylint','pycodestyle', 'pydocstyle'], 'sh': ['shellcheck']}
 " Fix files with prettier, and then ESLint.
@@ -163,7 +162,9 @@ let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'javascri
 let g:ale_fix_on_save = 1
 let g:ale_virtualenv_dir_names = ['env']
 
+"------------------------------------------------------------------------------
 "vim-closetag
+"------------------------------------------------------------------------------
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.ts,*.jsx,*.tsx'
@@ -195,7 +196,9 @@ let g:closetag_regions = {
     \ 'javascript.jsx': 'jsxRegion',
     \ }
 
-
+"------------------------------------------------------------------------------
+" YOUCOMPLETEME (replaced with coc)
+"------------------------------------------------------------------------------
 let g:ycm_autoclose_preview_window_after_insertion = 1 "close ycm help window after accepting option
 let g:ycm_language_server =
   \ [
@@ -212,6 +215,9 @@ let g:ycm_language_server =
   \ ]
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+"------------------------------------------------------------------------------
+" WAKATIME
+"------------------------------------------------------------------------------
 let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
 let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
 
@@ -220,13 +226,14 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=1
 let vim_markdown_preview_temp_file=0
 
+"------------------------------------------------------------------------------
 "NERDTREE
-"autocmd vimenter * NERDTree "launch nerdtree on vim start
+"------------------------------------------------------------------------------
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeWinPos = "right" "open nerdtree on the right
 let NERDTreeShowHidden=0 "show hidden files use capital 'I' to toggle
+let g:NERDTreeWinSize=45
 "autocmd VimEnter * wincmd p "put the cursor back into the editing pane on start
-
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -244,14 +251,11 @@ let g:NERDTreeGitStatusUseNerdFonts = 1
 autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 "avoid crashes when calling vim-plug functions while the cursor is on the NERDTree window
 let g:plug_window = 'noautocmd vertical topleft new'
-
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-
-
 "NERDTree hilight files by extension
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#282c34')
 call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#282c34')
@@ -271,7 +275,6 @@ call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#282c34')
 call NERDTreeHighlightFile('cpp', 'blue', 'none', 'blue', '#282c34')
 call NERDTreeHighlightFile('h', 'cyan', 'none', 'cyan', '#282c34')
 call NERDTreeHighlightFile('txt', 'blue', 'none', 'red', '#282c34')
-
 let g:NERDTreeColorMapCustom = {
     \ "Modified"  : ["#528AB3", "NONE", "NONE", "NONE"],
     \ "Staged"    : ["#538B54", "NONE", "NONE", "NONE"],
@@ -280,37 +283,64 @@ let g:NERDTreeColorMapCustom = {
     \ "Clean"     : ["#87939A", "NONE", "NONE", "NONE"]
     \ }
 
+"------------------------------------------------------------------------------
 "PRETTIER
+"------------------------------------------------------------------------------
 packloadall "enable prettier
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#exec_cmd_path = "/usr/bin/prettier"
 
-"LIGHTLINE
-" 'onedark', 'material', 'darcula'
-let g:lightline = {
-      \ 'colorscheme': 'deus',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component_function': {
+"------------------------------------------------------------------------------
+" Lightline
+"------------------------------------------------------------------------------
+let g:lightline = {}
+" 'one', 'material', 'darcula', 'deus'
+let g:lightline.colorscheme = "deus"
+let g:lightline.component_function = {
       \   'fugitive': 'MyFugitive',
       \   'readonly': 'Readonly',
       \   'modified': 'Modified',
-      \   'filename': 'Filename'
-      \
-      \ },
-	  \ 'component': {
-	  \   'charhexvalue': '0x%B'
-	  \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"  },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3"  }
+      \   'filename': 'Filename',
+      \   'cocstatus': 'coc#status',
+      \}
+
+let g:lightline.component = { 'charhexvalue': '0x%B' }
+let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2"  }
+let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3"  }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
       \ }
 
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+let g:lightline.active = {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'cocstatus', 'fugitive', 'filename' ] ],
+            \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+            \            [ 'lineinfo' ],
+	        \            [ 'percent' ],
+	        \            [ 'fileformat', 'fileencoding', 'filetype'] ] }
+
+let g:lightline#ale#indicator_checking = "\uf110 "
+let g:lightline#ale#indicator_infos = "\uf129 "
+let g:lightline#ale#indicator_warnings = "\uf071 "
+let g:lightline#ale#indicator_errors = "\uf05e "
+let g:lightline#ale#indicator_ok = "\uf00c "
+
+" Use autocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 function! Modified()
   if &filetype == "help"
     return ""
@@ -344,35 +374,27 @@ function! Filename()
     \ ('' != Modified() ? ' ' . Modified() : '')
 endfunction
 
+"------------------------------------------------------------------------------
 "COLORSCHEME
-if !has('gui_running')
-  set t_Co=256
-endif
-
-
+"------------------------------------------------------------------------------
+set t_Co=256
+set termguicolors
 set noshowmode "disable default vim insert text at bottom
 let g:onedark_termcolors=256 "enable 256 colors
-" packadd! onedark.vim "add onedark colorcheme may not work
 " colorscheme onedark  "set colorsheme as onedark
-
 "material theme
 " let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'darker'
-" let g:material_theme_style = 'default'
+" let g:material_theme_style = 'darker-community'
 colorscheme material
 
+let g:doom_one_terminal_colors = v:true
+" colorscheme doom-one
 
-"Tokyo night conifg
-let g:tokyonight_style='night'
-let g:tokyonight_transparent_background=1
-let g:tokyonight_enable_italic=1
-
-"let g:molokai_original = 1
-let g:rehash256 = 1
-
-
-"bash language server
+"------------------------------------------------------------------------------
+"""bash language server
+"------------------------------------------------------------------------------
 if executable('bash-language-server')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'bash-language-server',
@@ -381,15 +403,180 @@ if executable('bash-language-server')
         \ })
 endif
 
+"------------------------------------------------------------------------------
+" NICE COC
+"------------------------------------------------------------------------------
 
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json,python,py,sh,bash setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"------------------------------------------------------------------------------
+" custom commands
+"------------------------------------------------------------------------------
+command! Reload execute "source ~/.vimrc"
+command! Config execute ":e ~/.vimrc"
+"------------------------------------------------------------------------------
 "KEYBINDINGS
-map <C-c> :nohls<Cr>
-map <F2> :NERDTreeToggle<CR>
-map <C-n> :NERDTreeToggle<CR>
-map <C-s> <Plug>(Prettier)
-map<C-c> :nohls<CR>
+"------------------------------------------------------------------------------
+let mapleader = "\<Space>"
 map <F5> :!
-map <C-T> :ter++close<CR>
-map <C-D> :YcmShowDetailedDiagnostic<CR>
+map <C-n> :NERDTreeToggle<CR>
 map <C-l> :LivedownToggle<CR>
-map <C-o> :FZF ~<CR>
+nnoremap <C-T> :wa<CR>:vertical botright term ++kill=term<CR>
+" fzf
+nmap // :CocCommand fzf-preview.Lines<CR>
+nmap ?? :CocCommand fzf-preview.BufferLines<CR>
+nmap <leader>sf :FZF<CR>
+" buffers
+nmap <leader>bb :CocCommand fzf-preview.Buffers<CR>
+nmap <leader>bB :CocCommand fzf-preview.AllBuffers<CR>
+nmap <leader>bk :bdelete<CR>
+nmap <leader>bn :enew<CR>
+" git
+nmap <leader>gg :tab term ++close lazygit<CR>
+nmap <leader>gc :CocCommand fzf-preview.GitLogs<CR>
+nmap <leader>gf :CocCommand fzf-preview.GitFiles<CR>
+nmap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
+" help
+nmap <leader>hc :CocCommand fzf-preview.CommandPalette<CR>
+nmap <leader>hk :Maps<CR>
+" any jump plugin
+nmap <leader>j  :AnyJump<CR>
+" toggle/open
+nmap <leader>on  :NERDTreeToggle<CR>
+nmap <leader>ot  :vertical botright ter<CR>
+" peek/preview
+nmap <leader>pr :CocCommand fzf-preview.CocReferences<Cr>
+nmap <leader>pi :CocCommand fzf-preview.CocImplementations<Cr>
+nmap <leader>pd :CocCommand fzf-preview.CocDiagnostics<Cr>
+" search
+nmap <leader>sc :nohls<Cr>
+"toggle coc outline
+nmap <leader>to :CocOutline<CR>
+"which key
+set timeoutlen=400
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>

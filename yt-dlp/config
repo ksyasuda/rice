@@ -4,7 +4,7 @@
 --embed-subs
 
 # Always extract audio
--x
+# -x
 
 # Do not copy the mtime
 --no-mtime
@@ -12,4 +12,3 @@
 
 # Save all videos under YouTube directory in your home directory
 -o ~/Videos/YouTube/%(title)s.%(ext)s
-
