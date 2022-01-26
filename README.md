@@ -16,6 +16,7 @@ _Click the links to get quick access to the relevant code/files_
 - Desktop Environment: [EndeavourOS](https://endeavouros.com/) (Arch btw)
 - Window Manager: [bspwm](https://github.com/baskerville/bspwm)
   - [bspwm config](bspwm/bspwmrc)
+  - [sxhkd config](sxhkd/sxhkdrc)
 - Shell: [zsh (oh-my-zsh)](https://ohmyz.sh/)
   - [zshrc](dotfiles/.zshrc)
 - Compositor: [ibhagwan's picom fork](https://github.com/ibhagwan/picom)
