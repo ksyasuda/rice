@@ -200,11 +200,13 @@ alt + n
 alt + b
   alacritty -e bpytop
 
+alt + shift + p
+  ~/.config/rofi/scripts/rofi-picom.sh
+alt + shift + n
+  ~/.config/rofi/scripts/rofi-networks.sh
 
 # Rofi
 control + shift + s
   ~/Work/rofi/rofi-ssh.sh "$HOME/SudacodeRice/rofi/flat-orange.rasi"
-alt + shift + p
-  ~/Work/rofi/rofi-picom.sh
 control + shift + r
   ~/Work/rofi/rofi-rdp.sh "$HOME/SudacodeRice/rofi/flat-orange.rasi"
