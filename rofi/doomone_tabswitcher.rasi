@@ -1,17 +1,16 @@
 configuration {
-    font: "Open Sans 12";
+    font: "Open Sans 10";
     show-icons:	true;
     icon-theme:	"Fluent-Dark";
     display-drun:	"Apps";
     drun-display-format: "{name}";
     dpi: 144;
-    markup: true;
 }
 
 
 * {
     /* background: #24282f; */
-    background: rgba(36, 40, 47, 0.50);
+    background: rgba(36, 40, 47);
     foreground: #bbc2cf;
     black: #464b55;
     red: #ff6c6b;
@@ -47,12 +46,13 @@ configuration {
     selected-urgent-background: var(background);
     selected-urgent-foreground: var(background);
 }
+box {
+    orientation: vertical;
+}
 element {
     padding: 4px 0px 4px 7px;
     spacing: 5px;
     border:  0;
-    cursor:  pointer;
-    margin:  1px 0px;
     border-radius: 6px;
 }
 element normal.normal {
@@ -98,11 +98,12 @@ element-text {
     text-color: inherit;
     highlight: inherit;
     cursor: inherit;
-    margin: 0.75%;
+    margin: 2%;
+    width: 18.5%;
 }
 element-icon {
     background-color: rgba(0, 0, 0, 0%);
-    size: 1.75em;
+    size: 2.75em;
     text-color: inherit;
     cursor: inherit;
 }
@@ -112,7 +113,7 @@ window {
     background-color: var(background);
     border-radius: 12px;
     width: 90%;
-    height: 85%;
+    height: 15%;
     anchor: center;
     location: center;
 }
@@ -128,14 +129,14 @@ textbox {
     border: 0;
     text-color: var(foreground);
     margin: 0;
+    width: 5px;
 }
 listview {
-    margin: 0px 5px 2px 5px;
-    scrollbar: true;
-    spacing: 2px;
-    fixed-height: 0;
-    columns: 4;
     border: 0;
+    columns: 5;
+    lines: 5;
+    layout: horizontal;
+    margin: 0 0 0 1%;
 }
 scrollbar {
     padding: 0;
@@ -153,19 +154,14 @@ button selected {
     text-color: var(selected-normal-foreground);
 }
 
-entry {
-    spacing: 0;
-    cursor: text;
-    text-color: var(normal-foreground);
-    background-color: var(black);
-}
-
 inputbar {
-    margin: 11px 0px 5px 0px;
+    padding: 7px;
+    margin: 7px;
     spacing: 0;
     text-color: var(normal-foreground);
     children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
     background-color: transparent;
+    orientation: horizontal;
 }
 
 case-indicator {

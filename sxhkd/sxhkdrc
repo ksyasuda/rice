@@ -17,21 +17,20 @@ alt + Return
 alt + d
   rofi -modi drun -show drun
 
-# show open window
-alt + ctrl + d
-	rofi -modi drun -show window -line-padding 4 \
-                -columns 2 -padding 50 -hide-scrollbar -terminal alacritty \
-                -show-icons -drun-icon-theme "Arc-X-D" \
-				-font "Droid Sans Regular 10" -dpi 200
-
 # show ssh sesssions
-alt + shift + d
+alt + shift + s
 	rofi -modi drun -show ssh -line-padding 4 \
                 -columns 2 -padding 50 -hide-scrollbar -terminal alacritty \
                 -show-icons -drun-icon-theme "Arc-X-D" \
 				-font "Droid Sans Regular 10" -dpi 200
 
-# power-menu 
+alt + shift + w
+    rofi -sort -sorting-method fzf -show window -config "$HOME/.config/rofi/doomone_tabswitcher.rasi"
+alt + Tab
+    rofi -sort -sorting-method fzf -show window -config "$HOME/.config/rofi/doomone_tabswitcher.rasi"
+
+
+# power-menu
 alt + shift + e
      ~/.config/rofi/powermenu.sh
 
@@ -96,8 +95,8 @@ alt + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-alt + {grave,Tab}
-	bspc {node,desktop} -f last
+# alt + {grave,Tab}
+# 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -164,7 +163,7 @@ XF86AudioMute
 
 # XF86AudioMute @DEFAULT_SINK@ toggle; ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py mute
 
-  
+
 # amixer -q set Master toggle
 # Simple amixer command seems to have problems unmuting device
 
@@ -184,11 +183,11 @@ alt+Print
   ~/.config/bspwm/scripts/screenshot.sh
 
 # Shortcuts
-super + w 
+super + w
   firefox
 
-super + t 
-  thunar  
+super + t
+  thunar
 
 super + F1
   ~/.config/bspwm/scripts/keybindings_rofi.sh
@@ -204,8 +203,8 @@ alt + b
 
 # Rofi
 control + shift + s
-  ~/Work/rofi/rofi-ssh.sh "$HOME/SudacodeRice/rofi/flat-orange-4k.rasi"
+  ~/Work/rofi/rofi-ssh.sh "$HOME/SudacodeRice/rofi/flat-orange.rasi"
 alt + shift + p
   ~/Work/rofi/rofi-picom.sh
 control + shift + r
-  ~/Work/rofi/rofi-rdp.sh "$HOME/SudacodeRice/rofi/flat-orange-4k.rasi"
+  ~/Work/rofi/rofi-rdp.sh "$HOME/SudacodeRice/rofi/flat-orange.rasi"
