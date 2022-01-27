@@ -76,18 +76,29 @@ Plug 'vv9k/vim-github-dark'
 
 call plug#end()
 
+
+"------------------------------------------------------------------------------
+" Enable :Man <man_page>
+"------------------------------------------------------------------------------
+runtime ftplugin/man.vim
+"------------------------------------------------------------------------------
+" Force help/man buffers into vertical split
+"------------------------------------------------------------------------------
+autocmd FileType help wincmd L
+autocmd FileType man wincmd L
+
+"------------------------------------------------------------------------------
+"jump to remembered position in file if available
+"------------------------------------------------------------------------------
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
 "------------------------------------------------------------------------------
 " Carbon Now
 "------------------------------------------------------------------------------
 " carbon now
 " let g:carbon_now_sh_base_url = 'http://localhost:8888'
 let g:carbon_now_sh_browser = 'firefox'
-
-"jump to remembered position in file if available
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-endif
-
 "------------------------------------------------------------------------------
 "fzf
 "------------------------------------------------------------------------------
