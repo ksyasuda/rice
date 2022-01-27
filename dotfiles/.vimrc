@@ -40,20 +40,18 @@ endif
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
+  \| PlugInstall --sync | source '~/.vimrc'
 \| endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'mhinz/vim-startify'
-Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-fugitive'
 Plug 'pechorin/any-jump.vim'
-Plug 'tpope/vim-commentary'
-Plug 'shime/vim-livedown'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
 Plug 'ap/vim-buftabline'
@@ -67,6 +65,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'maximbaz/lightline-ale'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'osyo-manga/vim-over'
+Plug 'voldikss/vim-floaterm'
+" Plug 'windwp/vim-floaterm-repl'
+
 " colorschemes
 Plug 'joshdick/onedark.vim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
@@ -576,12 +577,23 @@ nnoremap <leader><nowait> <space>ci  :<C-U>CocCommand fzf-preview.CocImplementat
 "which key
 "------------------------------------------------------------------------------
 set timeoutlen=400
-
+"------------------------------------------------------------------------------
+" dadbod ui
+"------------------------------------------------------------------------------
+let g:db_ui_save_location = '~/.sql'
+"------------------------------------------------------------------------------
+" Floaterm
+"------------------------------------------------------------------------------
+let g:floaterm_width = 0.80
+let g:floaterm_height = 0.88
+let g:floaterm_opener = 'vsplit'
+let g:floaterm_autoclose = 1
 "------------------------------------------------------------------------------
 " custom commands
 "------------------------------------------------------------------------------
 command! Reload execute "source ~/.vimrc"
 command! Config execute ":e ~/.vimrc"
+command! Env execute ":Dotenv .env"
 "------------------------------------------------------------------------------
 "KEYBINDINGS
 "------------------------------------------------------------------------------
@@ -592,24 +604,25 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 map <F5> :!
 map <C-n> :NERDTreeToggle<CR>
 map <C-l> :LivedownToggle<CR>
-nnoremap <C-T> :wa<CR>:vertical botright term ++kill=term<CR>
+" nnoremap <C-T> :wa<CR>:vertical botright term ++kill=term<CR>
+nnoremap <C-T> :wa<CR>:FloatermToggle<CR>
 " fzf
 nmap // :CocCommand fzf-preview.Lines<CR>
 nmap ?? :CocCommand fzf-preview.BufferLines<CR>
 " search fzf, refs, impls, defs
-nmap <leader>sf :FZF<CR>
+nmap <leader>ff :FloatermNew --title=fzf fzf<CR>
 " buffers
-nmap <leader>bb :CocCommand fzf-preview.Buffers<CR>
 nmap <leader>bB :CocCommand fzf-preview.AllBuffers<CR>
+nmap <leader>bb :CocCommand fzf-preview.Buffers<CR>
 nmap <leader>bk :bdelete<CR>
 nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprev<CR>
 map <C-J> :bnext<CR>
 map <C-K> :bprev<CR>
 " git
-nmap <leader>gg :tab term ++close lazygit<CR>
 nmap <leader>gc :CocCommand fzf-preview.GitLogs<CR>
 nmap <leader>gf :CocCommand fzf-preview.GitFiles<CR>
+nmap <leader>gg :FloatermNew --title=lazygit lazygit<CR>
 nmap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
 " help
 nmap <leader>hc :CocCommand fzf-preview.CommandPalette<CR>
@@ -617,9 +630,12 @@ nmap <leader>hk :Maps<CR>
 " any jump plugin
 nmap <leader>j  :AnyJump<CR>
 " toggle/open
-nmap <leader>on  :NERDTreeToggle<CR>
-nmap <leader>ot  :vertical botright ter ++kill=terminal ++close<CR>
+nmap <leader>ob :FloatermNew --title=bpytop bpytop<CR>
+nmap <leader>od :FloatermNew --title=lazydocker lazydocker<CR>
+nmap <leader>on :FloatermNew --title=ncmpcpp ncmpcpp<CR>
 nmap <leader>oo :OverCommandLine<CR>
+nmap <leader>or :FloatermNew --title=ranger ranger --cmd="cd $PWD"<CR>
+nmap <leader>ot :vertical botright ter ++kill=terminal ++close<CR>
 " search
 nmap <leader>sc :nohls<Cr>
 "toggle coc outline
