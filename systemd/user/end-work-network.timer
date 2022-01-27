@@ -1,0 +1,12 @@
+[Unit]
+Description=Enable pihole
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=Mon..Fri 17:30:00
+Persistent=true
+Unit=end-work-network.service
+
+[Install]
+WantedBy=timers.target

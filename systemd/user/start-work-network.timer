@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable pihole DNS and wireguard VPN
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=Mon..Fri 7:30:00
+Persistent=true
+Unit=start-work-network.service
+
+[Install]
+WantedBy=timers.target

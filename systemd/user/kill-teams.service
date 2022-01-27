@@ -1,0 +1,5 @@
+[Unit]
+Description=Kill Teams after work (5:30 PM)
+
+[Service]
+ExecStart=killall teams

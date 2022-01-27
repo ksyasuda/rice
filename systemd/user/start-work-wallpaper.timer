@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable wallpaper change notifications
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=Mon..Fri 7:30:00
+Persistent=true
+Unit=start-work-wallpaper.service
+
+[Install]
+WantedBy=timers.target

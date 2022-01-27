@@ -1,0 +1,8 @@
+[Unit]
+Description=enable wallpaper change notifications
+
+[Service]
+Type=oneshot
+ExecStart=sed -ie '252s/#//' /home/sudacode/.config/variety/scripts/set_wallpaper
+User=dedicated-user
+Group=dedicated-user

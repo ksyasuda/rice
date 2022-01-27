@@ -1,0 +1,10 @@
+[Unit]
+Description=Kill teams after work (5:30 PM)
+
+[Timer]
+OnCalendar=Mon..Fri 17:30:00
+Persistent=true
+Unit=kill-teams.service
+
+[Install]
+WantedBy=timers.target

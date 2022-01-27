@@ -1,0 +1,7 @@
+[Unit]
+Description=enable pihole network after work
+
+[Service]
+Type=oneshot
+ExecStartPre=nmcli conn up wg0
+ExecStart=nmcli conn up IndianWay

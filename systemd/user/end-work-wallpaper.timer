@@ -1,0 +1,12 @@
+[Unit]
+Description=Enable wallpaper notifications after work
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=Mon..Fri 17:30:00
+Persistent=true
+Unit=end-work-wallpaper.service
+
+[Install]
+WantedBy=timers.target

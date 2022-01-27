@@ -1,0 +1,7 @@
+[Unit]
+Description=disable pihole
+
+[Service]
+Type=oneshot
+ExecStartPre=nmcli conn down wg0
+ExecStart=nmcli conn up NoPihole
