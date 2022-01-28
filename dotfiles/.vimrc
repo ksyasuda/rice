@@ -1,4 +1,5 @@
-syntax on
+syntax enable
+filetype plugin on
 set noshowmode "disable default vim insert text at bottom
 set laststatus=2
 set number
@@ -22,12 +23,16 @@ set expandtab
 set cursorline
 set scrolloff=8
 set sidescrolloff=8
-" show candidates for vim commands with tab
-set wildmenu
+set wildmenu " show candidates for vim commands with tab
 set background=dark
+set showmatch
+set nocompatible " no more vi
+" set path from current directory and all directories under
+set path=$PWD/**
 
 set encoding=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ 18
+
 
 " lsp handled by coc
 let g:ale_disable_lsp = 1
@@ -76,7 +81,6 @@ Plug 'morhetz/gruvbox'
 Plug 'vv9k/vim-github-dark'
 
 call plug#end()
-
 
 "------------------------------------------------------------------------------
 " Enable :Man <man_page>
@@ -594,6 +598,7 @@ let g:floaterm_autoclose = 1
 command! Reload execute "source ~/.vimrc"
 command! Config execute ":e ~/.vimrc"
 command! Env execute ":Dotenv .env"
+command! MakeTags !ctags -R .
 "------------------------------------------------------------------------------
 "KEYBINDINGS
 "------------------------------------------------------------------------------
@@ -627,6 +632,8 @@ nmap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
 " help
 nmap <leader>hc :CocCommand fzf-preview.CommandPalette<CR>
 nmap <leader>hk :Maps<CR>
+" insert snippets
+nmap <leader>isp :-1read $HOME/Templates/python.py<CR>4jw
 " any jump plugin
 nmap <leader>j  :AnyJump<CR>
 " toggle/open
