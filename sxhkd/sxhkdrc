@@ -147,31 +147,25 @@ super + {Left,Down,Up,Right}
 # Special hotkeys
 #
 
-# Multimedia keys
+# Volume Control
 XF86AudioRaiseVolume
   amixer -q set Master 5%+ unmute && ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py increase
-
 XF86AudioLowerVolume
   amixer -q set Master 5%- unmute && ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py decrease
-
 XF86AudioMute
   amixer -D pulse sset Master toggle-mute && ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py mute
 
-# XF86AudioRaiseVolume @DEFAULT_SINK@ +10%; ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py increase
+# Next/Toggle/Prev Song
+XF86AudioPrev
+  ~/SudacodeRice/scripts/music-controls.sh -p
+XF86AudioPlay
+  ~/SudacodeRice/scripts/music-controls.sh -t
+XF86AudioNext
+  ~/SudacodeRice/scripts/music-controls.sh -n
 
-# XF86AudioLowerVolume pactl set-sink-volume @DEFAULT_SINK@ -10%; ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py decrease
-
-# XF86AudioMute @DEFAULT_SINK@ toggle; ~/SudacodeRice/scripts/dunst_volume/dunst_volume.py mute
-
-
-# amixer -q set Master toggle
-# Simple amixer command seems to have problems unmuting device
-
-# Brightness up
+# Brightness
 XF86MonBrightnessUp
   xbacklight -inc 5
-
-# And brightness down
 XF86MonBrightnessDown
   xbacklight -dec 5
 
@@ -183,29 +177,29 @@ alt+Print
   ~/.config/bspwm/scripts/screenshot.sh
 
 # Shortcuts
-super + w
-  firefox
-
-super + t
+alt + p
+  pavucontrol
+alt + t
   thunar
-
-super + F1
+alt + F1
   ~/.config/bspwm/scripts/keybindings_rofi.sh
-
-# ncmpcpp
 alt + n
   alacritty -e ncmpcpp
-
-# bpytop
 alt + b
   alacritty -e bpytop
 
+# Rofi
 alt + shift + p
   ~/.config/rofi/scripts/rofi-picom.sh
 alt + shift + n
   ~/.config/rofi/scripts/rofi-networks.sh
+alt + shift + m
+  ~/SudacodeRice/scripts/rofi-mpd-desktop -s
+alt + shift + g
+  ~/SudacodeRice/scripts/rofi/rofi-search.sh
+alt + shift + y
+  ~/.bin/rofi-stream
 
-# Rofi
 control + shift + s
   ~/Work/rofi/rofi-ssh.sh "$HOME/SudacodeRice/rofi/flat-orange.rasi"
 control + shift + r
