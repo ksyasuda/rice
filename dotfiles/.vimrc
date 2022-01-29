@@ -53,25 +53,25 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wakatime/vim-wakatime'
+Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
 Plug 'pechorin/any-jump.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
 Plug 'ap/vim-buftabline'
-Plug 'itchyny/lightline.vim'
-Plug 'wakatime/vim-wakatime'
-Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'maximbaz/lightline-ale'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'osyo-manga/vim-over'
-Plug 'voldikss/vim-floaterm'
-" Plug 'windwp/vim-floaterm-repl'
+Plug 'mhinz/vim-startify'
 
 " colorschemes
 Plug 'joshdick/onedark.vim'
@@ -599,31 +599,37 @@ command! Reload execute "source ~/.vimrc"
 command! Config execute ":e ~/.vimrc"
 command! Env execute ":Dotenv .env"
 command! MakeTags !ctags -R .
+command! Ovewrite execute ":w !sudo tee %"
+command! Aniwrapper execute ":FloatermNew aniwrapper -qtdoomone -D 144"
 "------------------------------------------------------------------------------
 "KEYBINDINGS
 "------------------------------------------------------------------------------
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-map <F5> :!
-map <C-n> :NERDTreeToggle<CR>
-map <C-l> :LivedownToggle<CR>
+nmap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nmap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+nmap <F5> :!
+nmap <C-n> :NERDTreeToggle<CR>
 " nnoremap <C-T> :wa<CR>:vertical botright term ++kill=term<CR>
-nnoremap <C-T> :wa<CR>:FloatermToggle<CR>
+nmap <C-T> :wa<CR>:FloatermToggle<CR>
+nmap Q !!$SHELL<CR>
+
 " fzf
-nmap // :CocCommand fzf-preview.Lines<CR>
-nmap ?? :CocCommand fzf-preview.BufferLines<CR>
+nnoremap // :CocCommand fzf-preview.Lines<CR>
+nnoremap ?? :CocCommand fzf-preview.BufferLines<CR>
 " search fzf, refs, impls, defs
 nmap <leader>ff :FloatermNew --title=fzf fzf<CR>
+" aniwrapper/ani-cli (until i find better use for a keys)
+nmap <leader>as :FloatermNew --title=aniwrapper aniwrapper -qtdoomone -D144<CR>
+nmap <leader>ad :FloatermNew --title=aniwrapper ani-cli -q720p -cd/home/sudacode/Videos/sauce -D144<CR>
 " buffers
 nmap <leader>bB :CocCommand fzf-preview.AllBuffers<CR>
 nmap <leader>bb :CocCommand fzf-preview.Buffers<CR>
 nmap <leader>bk :bdelete<CR>
 nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprev<CR>
-map <C-J> :bnext<CR>
-map <C-K> :bprev<CR>
+nmap <C-J> :bnext<CR>
+nmap <C-K> :bprev<CR>
 " git
 nmap <leader>gc :CocCommand fzf-preview.GitLogs<CR>
 nmap <leader>gf :CocCommand fzf-preview.GitFiles<CR>
@@ -645,5 +651,5 @@ nmap <leader>or :FloatermNew --title=ranger ranger --cmd="cd $PWD"<CR>
 nmap <leader>ot :vertical botright ter ++kill=terminal ++close<CR>
 " search
 nmap <leader>sc :nohls<Cr>
-"toggle coc outline
-noremap <leader>to :CocOutline<CR>
+" toggle coc outline
+nmap <leader>to :CocOutline<CR>
