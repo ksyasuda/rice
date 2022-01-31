@@ -13,8 +13,8 @@ _Click the links to get quick access to the relevant code/files_
 
 </div>
 
-- Desktop Environment: [EndeavourOS](https://endeavouros.com/) (Arch btw)
-- Window Manager: [bspwm](https://github.com/baskerville/bspwm)
+- Desktop Environment: [EndeavourOS](https://endeavouros.com/)
+- Window Manager: [bspwm rounded corners](https://github.com/j-james/bspwm-rounded-corners)
   - [bspwm config](bspwm/bspwmrc)
   - [sxhkd config](sxhkd/sxhkdrc)
 - Shell: [zsh (oh-my-zsh)](https://ohmyz.sh/)
