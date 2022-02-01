@@ -45,7 +45,7 @@ endif
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source '~/.vimrc'
+  \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
 call plug#begin('~/.vim/plugged')
@@ -159,19 +159,6 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-"------------------------------------------------------------------------------
-"livedown
-"------------------------------------------------------------------------------
-" should markdown preview get shown automatically upon opening markdown buffer
-let g:livedown_autorun = 0
-" should the browser window pop-up upon previewing
-let g:livedown_open = 1
-" the port on which Livedown server will run
-let g:livedown_port = 3001
-" the browser to use, can also be firefox, chrome or other, depending on your executable
-let g:livedown_browser = "firefox"
-
 "------------------------------------------------------------------------------
 "ale
 "------------------------------------------------------------------------------
@@ -249,12 +236,6 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 "------------------------------------------------------------------------------
 let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
 let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
-
-"Markdown preview
-let vim_markdown_preview_github=1
-let vim_markdown_preview_toggle=1
-let vim_markdown_preview_temp_file=0
-
 "------------------------------------------------------------------------------
 "NERDTREE
 "------------------------------------------------------------------------------
@@ -590,8 +571,11 @@ let g:db_ui_save_location = '~/.sql'
 "------------------------------------------------------------------------------
 let g:floaterm_width = 0.80
 let g:floaterm_height = 0.88
-let g:floaterm_opener = 'vsplit'
+let g:floaterm_wintype = 'float'
+let g:floaterm_position = 'center'
+
 let g:floaterm_autoclose = 1
+" let g:floaterm_autohide = 2
 "------------------------------------------------------------------------------
 " custom commands
 "------------------------------------------------------------------------------
@@ -618,7 +602,7 @@ nmap Q !!$SHELL<CR>
 nnoremap // :CocCommand fzf-preview.Lines<CR>
 nnoremap ?? :CocCommand fzf-preview.BufferLines<CR>
 " search fzf, refs, impls, defs
-nmap <leader>ff :FloatermNew --title=fzf fzf<CR>
+nmap <leader>ff :FloatermNew --title=fzf --opener=vsplit fzf<CR>
 " aniwrapper/ani-cli (until i find better use for a keys)
 nmap <leader>as :FloatermNew --title=aniwrapper aniwrapper -qtdoomone -D144<CR>
 nmap <leader>ad :FloatermNew --title=aniwrapper ani-cli -q720p -cd/home/sudacode/Videos/sauce -D144<CR>
@@ -633,7 +617,7 @@ nmap <C-K> :bprev<CR>
 " git
 nmap <leader>gc :CocCommand fzf-preview.GitLogs<CR>
 nmap <leader>gf :CocCommand fzf-preview.GitFiles<CR>
-nmap <leader>gg :FloatermNew --title=lazygit lazygit<CR>
+nmap <leader>gg :FloatermNew --title=lazygit --opener=vsplit lazygit<CR>
 nmap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
 " help
 nmap <leader>hc :CocCommand fzf-preview.CommandPalette<CR>
@@ -643,12 +627,14 @@ nmap <leader>isp :-1read $HOME/Templates/python.py<CR>4jw
 " any jump plugin
 nmap <leader>j  :AnyJump<CR>
 " toggle/open
-nmap <leader>ob :FloatermNew --title=bpytop bpytop<CR>
-nmap <leader>od :FloatermNew --title=lazydocker lazydocker<CR>
-nmap <leader>on :FloatermNew --title=ncmpcpp ncmpcpp<CR>
+nmap <leader>ob :FloatermNew --title=bpytop --opener=vsplit bpytop<CR>
+nmap <leader>od :FloatermNew --title=lazydocker --opener=vsplit lazydocker<CR>
+nmap <leader>on :FloatermNew --title=ncmpcpp --opener=vsplit ncmpcpp<CR>
 nmap <leader>oo :OverCommandLine<CR>
-nmap <leader>or :FloatermNew --title=ranger ranger --cmd="cd $PWD"<CR>
-nmap <leader>ot :vertical botright ter ++kill=terminal ++close<CR>
+nmap <leader>or :FloatermNew --title=ranger --opener=vsplit ranger --cmd="cd $PWD"<CR>
+" nmap <leader>ot :vertical botright ter ++kill=terminal ++close<CR>
+nmap <leader>ot :FloatermNew --title=floaterm --wintype=vsplit --position=rightbelow --width=0.5<CR>
+
 " search
 nmap <leader>sc :nohls<Cr>
 " toggle coc outline
