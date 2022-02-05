@@ -598,6 +598,10 @@ nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-T> :wa<CR>:FloatermToggle<CR>
 nmap Q !!$SHELL<CR>
 
+" reselect visual selection after indent
+vnoremap < <gv
+vnoremap > >gv
+
 " fzf
 nnoremap // :CocCommand fzf-preview.Lines<CR>
 nnoremap ?? :CocCommand fzf-preview.BufferLines<CR>
