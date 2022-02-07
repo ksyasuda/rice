@@ -24,9 +24,11 @@ set cursorline
 set scrolloff=8
 set sidescrolloff=8
 set wildmenu " show candidates for vim commands with tab
+set wildignore=*.o,*.obj,*.bak,*.exe
 set background=dark
 set showmatch
 set nocompatible " no more vi
+set list
 " set path from current directory and all directories under
 set path=$PWD/**
 
@@ -576,6 +578,7 @@ let g:floaterm_position = 'center'
 
 let g:floaterm_autoclose = 1
 " let g:floaterm_autohide = 2
+
 "------------------------------------------------------------------------------
 " custom commands
 "------------------------------------------------------------------------------
@@ -590,23 +593,30 @@ command! Aniwrapper execute ":FloatermNew aniwrapper -qtdoomone -D 144"
 "------------------------------------------------------------------------------
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
+" imap <TAB> <C-N>
+nmap <F4> :set paste!<Bar>set paste?<CR>
+nmap <F5> :!
 nmap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nmap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-nmap <F5> :!
 nmap <C-n> :NERDTreeToggle<CR>
 " nnoremap <C-T> :wa<CR>:vertical botright term ++kill=term<CR>
-nmap <C-T> :wa<CR>:FloatermToggle<CR>
+nmap <C-T> :wa<CR>:FloatermToggle floatingterm<CR>
+tnoremap <C-T> <C-\><C-n>:FloatermToggle floatingterm<CR>
 nmap Q !!$SHELL<CR>
 
 " reselect visual selection after indent
 vnoremap < <gv
 vnoremap > >gv
 
+" open file under cursor, create if necessary
+nnoremap gF :view <cfile><cr>
+
 " fzf
 nnoremap // :CocCommand fzf-preview.Lines<CR>
 nnoremap ?? :CocCommand fzf-preview.BufferLines<CR>
+
 " search fzf, refs, impls, defs
-nmap <leader>ff :FloatermNew --title=fzf --opener=vsplit fzf<CR>
+nmap <leader>ff :FloatermNew --title=fzf --opener=edit fzf<CR>
 " aniwrapper/ani-cli (until i find better use for a keys)
 nmap <leader>as :FloatermNew --title=aniwrapper aniwrapper -qtdoomone -D144<CR>
 nmap <leader>ad :FloatermNew --title=aniwrapper ani-cli -q720p -cd/home/sudacode/Videos/sauce -D144<CR>
@@ -621,9 +631,9 @@ nmap <C-K> :bprev<CR>
 " git
 nmap <leader>gc :CocCommand fzf-preview.GitLogs<CR>
 nmap <leader>gf :CocCommand fzf-preview.GitFiles<CR>
-nmap <leader>gg :FloatermNew --title=lazygit --opener=vsplit lazygit<CR>
+nmap <leader>gg :FloatermNew --title=lazygit --opener=vsplit --width=1.0 --height=1.0 lazygit<CR>
 nmap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
-" help
+" help/history
 nmap <leader>hc :CocCommand fzf-preview.CommandPalette<CR>
 nmap <leader>hk :Maps<CR>
 " insert snippets
@@ -637,9 +647,11 @@ nmap <leader>on :FloatermNew --title=ncmpcpp --opener=vsplit ncmpcpp<CR>
 nmap <leader>oo :OverCommandLine<CR>
 nmap <leader>or :FloatermNew --title=ranger --opener=vsplit ranger --cmd="cd $PWD"<CR>
 " nmap <leader>ot :vertical botright ter ++kill=terminal ++close<CR>
-nmap <leader>ot :FloatermNew --title=floaterm --wintype=vsplit --position=rightbelow --width=0.5<CR>
+nmap <leader>ot :FloatermNew --title=floaterm --name=vsplit-term --wintype=vsplit --position=botright --width=0.5<CR>
 
 " search
 nmap <leader>sc :nohls<Cr>
 " toggle coc outline
 nmap <leader>to :CocOutline<CR>
+nmap <leader>tt :FloatermToggle vsplit-term<CR>
+tnoremap <leader>tt <C-\><C-N>:FloatermToggle vsplit-term<CR>
