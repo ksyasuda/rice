@@ -28,7 +28,7 @@ set wildignore=*.o,*.obj,*.bak,*.exe
 set background=dark
 set showmatch
 set nocompatible " no more vi
-set list
+" set list
 " set path from current directory and all directories under
 set path=$PWD/**
 
@@ -161,6 +161,10 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
 "------------------------------------------------------------------------------
 "ale
 "------------------------------------------------------------------------------
@@ -545,7 +549,7 @@ nnoremap <silent><nowait> <space>cd  :<C-u>CocCommand fzf-preview.CocDiagnostics
 " Manage extensions.
 nnoremap <silent><nowait> <space>ce  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>cc  :<C-u>CocCommand fzf-preview.CommandPallete<cr>
+nnoremap <silent><nowait> <space>cc  :<C-u>CocCommand fzf-preview.CommandPalette<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>co  :<C-u>CocOutline<cr>
 " Search workspace symbols.
@@ -560,6 +564,7 @@ nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
 nnoremap <silent><nowait> <space>cr  :<C-u>CocCommand fzf-preview.CocReferences<CR>
 " show implementations with fzf
 nnoremap <leader><nowait> <space>ci  :<C-U>CocCommand fzf-preview.CocImplementations<Cr>
+
 "------------------------------------------------------------------------------
 "which key
 "------------------------------------------------------------------------------
@@ -616,7 +621,7 @@ nnoremap // :CocCommand fzf-preview.Lines<CR>
 nnoremap ?? :CocCommand fzf-preview.BufferLines<CR>
 
 " search fzf, refs, impls, defs
-nmap <leader>ff :FloatermNew --title=fzf --opener=edit fzf<CR>
+nmap <leader>ff :CocCommand fzf-preview.ProjectFiles<CR>
 " aniwrapper/ani-cli (until i find better use for a keys)
 nmap <leader>as :FloatermNew --title=aniwrapper aniwrapper -qtdoomone -D144<CR>
 nmap <leader>ad :FloatermNew --title=aniwrapper ani-cli -q720p -cd/home/sudacode/Videos/sauce -D144<CR>
