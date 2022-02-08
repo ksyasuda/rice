@@ -19,7 +19,6 @@ set title
 set mouse=a
 set relativenumber
 set splitright
-set expandtab
 set cursorline
 set scrolloff=8
 set sidescrolloff=8
@@ -28,13 +27,21 @@ set wildignore=*.o,*.obj,*.bak,*.exe
 set background=dark
 set showmatch
 set nocompatible " no more vi
-" set list
+set list
+set listchars=tab:\ ,trail:
 " set path from current directory and all directories under
 set path=$PWD/**
-
 set encoding=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ 18
-
+set expandtab
+" coc settings
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 
 " lsp handled by coc
 let g:ale_disable_lsp = 1
@@ -55,7 +62,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
@@ -63,26 +69,67 @@ Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wakatime/vim-wakatime'
 Plug 'voldikss/vim-floaterm'
-Plug 'ryanoasis/vim-devicons'
 Plug 'pechorin/any-jump.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
-Plug 'ap/vim-buftabline'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'maximbaz/lightline-ale'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'osyo-manga/vim-over'
-Plug 'mhinz/vim-startify'
 
-" colorschemes
-Plug 'joshdick/onedark.vim'
-Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
-Plug 'romgrk/doom-one.vim'
-Plug 'morhetz/gruvbox'
-Plug 'vv9k/vim-github-dark'
+if has('nvim')
+  Plug 'akinsho/bufferline.nvim'
+  Plug 'chentau/marks.nvim'
+  Plug 'folke/which-key.nvim'
+  Plug 'github/copilot.vim'
+  Plug 'glepnir/dashboard-nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'kyazdani42/nvim-tree.lua'
+
+  Plug 'NTBBloodbath/doom-one.nvim'
+  Plug 'Mofiqul/dracula.nvim'
+  Plug 'projekt0n/github-nvim-theme'
+else
+  Plug 'ap/vim-buftabline'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'mhinz/vim-startify'
+  Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+  " vim colorschemes
+  Plug 'joshdick/onedark.vim'
+  Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
+  Plug 'morhetz/gruvbox'
+  Plug 'vv9k/vim-github-dark'
+endif
 
 call plug#end()
+
+if has('nvim')
+  source ~/.config/nvim/plugins/bufferline.lua
+  source ~/.config/nvim/plugins/marks.lua
+  source ~/.config/nvim/plugins/whichkey.lua
+  source ~/.config/nvim/plugins/dashboard-nvim.lua
+  source ~/.config/nvim/plugins/nvimtree.lua
+  source ~/.config/nvim/plugins/doomone.lua
+  " source ~/.config/nvim/plugins/dracula.lua
+  " source ~/.config/nvim/plugins/github-theme.lua
+
+  " makes fzf match colorscheme (I think)
+  augroup fzf_preview
+	autocmd!
+	autocmd User fzf_preview#rpc#initialized call s:fzf_preview_settings() " fzf_preview#remote#initialized or fzf_preview#coc#initialized
+  augroup END
+
+  function! s:fzf_preview_settings() abort
+	let g:fzf_preview_command = 'COLORTERM=truecolor ' . g:fzf_preview_command
+	let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
+  endfunction
+  " make terminal not have line numbers
+  autocmd TermOpen * setlocal nonumber norelativenumber
+else
+  source ~/.vim/plugins/nerdtree.vim
+  source ~/.vim/plugins/whichkey.vim
+endif
 
 "------------------------------------------------------------------------------
 " Enable :Man <man_page>
@@ -93,22 +140,17 @@ runtime ftplugin/man.vim
 "------------------------------------------------------------------------------
 autocmd FileType help wincmd L
 autocmd FileType man wincmd L
-
 "------------------------------------------------------------------------------
 "jump to remembered position in file if available
 "------------------------------------------------------------------------------
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
-"------------------------------------------------------------------------------
-" Carbon Now
-"------------------------------------------------------------------------------
-" carbon now
-" let g:carbon_now_sh_base_url = 'http://localhost:8888'
-let g:carbon_now_sh_browser = 'firefox'
+
 "------------------------------------------------------------------------------
 "fzf
 "------------------------------------------------------------------------------
+
 " This is the default extra key bindings
 let g:fzf_commands_expect = 'ctrl-enter'
 let g:fzf_buffers_jump = 1
@@ -137,7 +179,9 @@ let g:fzf_action = {
   \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-n': 'next',
+  \}
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
@@ -165,28 +209,33 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#run(fzf#wrap('files', fzf#vim#with_preview({'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden'}), <bang>0))
+
+command! -bang -nargs=? -complete=dir AllFiles
+  \ call fzf#run(fzf#wrap('allfiles', fzf#vim#with_preview({'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden --no-ignore'}), <bang>0))
+
+
 "------------------------------------------------------------------------------
 "ale
 "------------------------------------------------------------------------------
-function! FormatShell(buffer) abort
-  return {
-  \   'command': 'shfmt -i=0 -ci -sr'
-  \}
-endfunction
 
-execute ale#fix#registry#Add('shfmt', 'FormatShell', ['sh'], 'shfmt for shell')
+let g:ale_sh_shellcheck_executable = '/usr/bin/shellcheck'
+let g:ale_sh_shellcheck_options = '-s bash -o all -e 2250'
+let g:ale_sh_shfmt_options = '-i=4 -ci -sr'
+let g:ale_fix_on_save = 1
+" let g:ale_set_quickfix = 1
+let g:ale_virtualenv_dir_names = ['env']
 
 let g:ale_linter_aliases = {'javascriptreact': ['css', 'javascript'], 'typescriptreact': ['css', 'javascript']}
 let g:ale_linters = {'javascriptreact': ['css', 'javascript'], 'typescriptreact': ['css', 'javascript'], 'python': ['pylint','pycodestyle', 'pydocstyle'], 'sh': ['shellcheck']}
 " Fix files with prettier, and then ESLint.
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'javascript': ['prettier', 'eslint'], 'sh': ['FormatShell'], 'typescript': ['eslint'], 'python': ['autopep8'], 'sql': ['pgformatter']}
-
-let g:ale_fix_on_save = 1
-let g:ale_virtualenv_dir_names = ['env']
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'javascript': ['prettier', 'eslint'], 'sh': ['shfmt'], 'typescript': ['eslint'], 'python': ['black']}
 
 "------------------------------------------------------------------------------
 "vim-closetag
 "------------------------------------------------------------------------------
+
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.ts,*.jsx,*.tsx'
@@ -219,89 +268,16 @@ let g:closetag_regions = {
     \ }
 
 "------------------------------------------------------------------------------
-" YOUCOMPLETEME (replaced with coc)
-"------------------------------------------------------------------------------
-let g:ycm_autoclose_preview_window_after_insertion = 1 "close ycm help window after accepting option
-let g:ycm_language_server =
-  \ [
-  \   {
-  \     'name': 'python',
-  \     'filetypes': [ 'py' ],
-  \     'cmdline': [ '/usr/bin/jedi-language-server' ]
-  \    },
-  \   {
-  \     'name': 'bash',
-  \     'filetypes': [ 'sh' ],
-  \     'cmdline': [ '/usr/bin/bash-language-server' ]
-  \    }
-  \ ]
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-"------------------------------------------------------------------------------
 " WAKATIME
 "------------------------------------------------------------------------------
+
 let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
 let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
-"------------------------------------------------------------------------------
-"NERDTREE
-"------------------------------------------------------------------------------
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeWinPos = "right" "open nerdtree on the right
-let NERDTreeShowHidden=0 "show hidden files use capital 'I' to toggle
-let g:NERDTreeWinSize=45
-"autocmd VimEnter * wincmd p "put the cursor back into the editing pane on start
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-let g:NERDTreeGitStatusUseNerdFonts = 1
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
-"avoid crashes when calling vim-plug functions while the cursor is on the NERDTree window
-let g:plug_window = 'noautocmd vertical topleft new'
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-"NERDTree hilight files by extension
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#282c34')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#282c34')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#282c34')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#282c34')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#282c34')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#282c34')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#282c34')
-call NERDTreeHighlightFile('html', 'red', 'none', 'yellow', '#282c34')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#282c34')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#282c34')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#282c34')
-call NERDTreeHighlightFile('js', 'yellow', 'none', '#ffa500', '#282c34')
-call NERDTreeHighlightFile('jsx', 'yellow', 'none', '#ffa500', '#282c34')
-call NERDTreeHighlightFile('tsx', 'yellow', 'none', '#ffa500', '#282c34')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#282c34')
-call NERDTreeHighlightFile('cpp', 'blue', 'none', 'blue', '#282c34')
-call NERDTreeHighlightFile('h', 'cyan', 'none', 'cyan', '#282c34')
-call NERDTreeHighlightFile('txt', 'blue', 'none', 'red', '#282c34')
-let g:NERDTreeColorMapCustom = {
-    \ "Modified"  : ["#528AB3", "NONE", "NONE", "NONE"],
-    \ "Staged"    : ["#538B54", "NONE", "NONE", "NONE"],
-    \ "Untracked" : ["#BE5849", "NONE", "NONE", "NONE"],
-    \ "Dirty"     : ["#299999", "NONE", "NONE", "NONE"],
-    \ "Clean"     : ["#87939A", "NONE", "NONE", "NONE"]
-    \ }
 
 "------------------------------------------------------------------------------
 "PRETTIER
 "------------------------------------------------------------------------------
+
 packloadall "enable prettier
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
@@ -310,6 +286,7 @@ let g:prettier#exec_cmd_path = "/usr/bin/prettier"
 "------------------------------------------------------------------------------
 " Lightline
 "------------------------------------------------------------------------------
+
 let g:lightline = {}
 " 'one', 'material', 'darcula', 'deus'
 let g:lightline.colorscheme = "deus"
@@ -395,29 +372,29 @@ endfunction
 "------------------------------------------------------------------------------
 "COLORSCHEME
 "------------------------------------------------------------------------------
+
 set t_Co=256
-" set termguicolors
-" let g:onedark_termcolors=256 "enable 256 colors
-" colorscheme onedark  "set colorsheme as onedark
+if has('nvim')
+    set termguicolors
+    " colorscheme doom-one
+    " colorscheme dracula
+    colorscheme github_dark
+else
+    " let g:onedark_termcolors=256 "enable 256 colors
+    " colorscheme onedark  "set colorsheme as onedark
 
-"material theme
-" let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'darker'
-" let g:material_theme_style = 'darker-community'
-" colorscheme material
+    "material theme
+    " let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+    " let g:material_terminal_italics = 1
+    " let g:material_theme_style = 'darker'
+    " colorscheme material
+    let g:gruvbox_contrast_dark = "medium" "default
+    " let g:gruvbox_contrast_dark = "soft"
+    let g:gruvbox_improved_strings = 0
+    let g:gruvbox_improved_warnings = 1
+    colorscheme gruvbox
+endif
 
-" let g:doom_one_terminal_colors = v:true
-" colorscheme doom-one
-
-let g:gruvbox_contrast_dark = "medium" "default
-" let g:gruvbox_contrast_dark = "soft"
-let g:gruvbox_improved_strings = 0
-let g:gruvbox_improved_warnings = 1
-colorscheme gruvbox
-
-" let g:gh_color = "soft"
-" colorscheme ghdark
 
 "------------------------------------------------------------------------------
 """bash language server
@@ -434,13 +411,6 @@ endif
 " NICE COC
 "------------------------------------------------------------------------------
 
-set hidden
-set nobackup
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
@@ -568,18 +538,18 @@ nnoremap <leader><nowait> <space>ci  :<C-U>CocCommand fzf-preview.CocImplementat
 "------------------------------------------------------------------------------
 "which key
 "------------------------------------------------------------------------------
+
 set timeoutlen=400
-"------------------------------------------------------------------------------
-" dadbod ui
-"------------------------------------------------------------------------------
-let g:db_ui_save_location = '~/.sql'
+
 "------------------------------------------------------------------------------
 " Floaterm
 "------------------------------------------------------------------------------
+
 let g:floaterm_width = 0.80
 let g:floaterm_height = 0.88
 let g:floaterm_wintype = 'float'
 let g:floaterm_position = 'center'
+let g:floaterm_opener = 'edit'
 
 let g:floaterm_autoclose = 1
 " let g:floaterm_autohide = 2
@@ -587,26 +557,26 @@ let g:floaterm_autoclose = 1
 "------------------------------------------------------------------------------
 " custom commands
 "------------------------------------------------------------------------------
+
 command! Reload execute "source ~/.vimrc"
 command! Config execute ":e ~/.vimrc"
 command! Env execute ":Dotenv .env"
 command! MakeTags !ctags -R .
 command! Ovewrite execute ":w !sudo tee %"
 command! Aniwrapper execute ":FloatermNew aniwrapper -qtdoomone -D 144"
+
 "------------------------------------------------------------------------------
 "KEYBINDINGS
 "------------------------------------------------------------------------------
+
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 " imap <TAB> <C-N>
 nmap <F4> :set paste!<Bar>set paste?<CR>
 nmap <F5> :!
-nmap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nmap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-nmap <C-n> :NERDTreeToggle<CR>
+" nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-n> :NvimTreeToggle<CR>
 " nnoremap <C-T> :wa<CR>:vertical botright term ++kill=term<CR>
-nmap <C-T> :wa<CR>:FloatermToggle floatingterm<CR>
-tnoremap <C-T> <C-\><C-n>:FloatermToggle floatingterm<CR>
 nmap Q !!$SHELL<CR>
 
 " reselect visual selection after indent
@@ -614,7 +584,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " open file under cursor, create if necessary
-nnoremap gF :view <cfile><cr>
+nnoremap gF :edit <cfile><cr>
 
 " fzf
 nnoremap // :CocCommand fzf-preview.Lines<CR>
@@ -638,6 +608,7 @@ nmap <leader>gc :CocCommand fzf-preview.GitLogs<CR>
 nmap <leader>gf :CocCommand fzf-preview.GitFiles<CR>
 nmap <leader>gg :FloatermNew --title=lazygit --opener=vsplit --width=1.0 --height=1.0 lazygit<CR>
 nmap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
+nmap gr  :<C-u>CocCommand fzf-preview.CocReferences<CR>
 " help/history
 nmap <leader>hc :CocCommand fzf-preview.CommandPalette<CR>
 nmap <leader>hk :Maps<CR>
@@ -645,6 +616,7 @@ nmap <leader>hk :Maps<CR>
 nmap <leader>isp :-1read $HOME/Templates/python.py<CR>4jw
 " any jump plugin
 nmap <leader>j  :AnyJump<CR>
+nmap <leader>n :NvimTreeToggle<CR>
 " toggle/open
 nmap <leader>ob :FloatermNew --title=bpytop --opener=vsplit bpytop<CR>
 nmap <leader>od :FloatermNew --title=lazydocker --opener=vsplit lazydocker<CR>
@@ -653,10 +625,18 @@ nmap <leader>oo :OverCommandLine<CR>
 nmap <leader>or :FloatermNew --title=ranger --opener=vsplit ranger --cmd="cd $PWD"<CR>
 " nmap <leader>ot :vertical botright ter ++kill=terminal ++close<CR>
 nmap <leader>ot :FloatermNew --title=floaterm --name=vsplit-term --wintype=vsplit --position=botright --width=0.5<CR>
-
+" refresh nvimtree for now
+nmap <leader>r :NvimTreeRefresh<CR>
 " search
 nmap <leader>sc :nohls<Cr>
+nmap <leader>sf :Files<Cr>
+nmap <leader>sF :AllFiles<Cr>
 " toggle coc outline
 nmap <leader>to :CocOutline<CR>
+" terminal
 nmap <leader>tt :FloatermToggle vsplit-term<CR>
+nmap <C-T> :wa<CR>:FloatermToggle floatingterm<CR>
+" for toggling/hiding the vsplit-term
 tnoremap <leader>tt <C-\><C-N>:FloatermToggle vsplit-term<CR>
+tnoremap <C-T> <C-\><C-n>:FloatermToggle floatingterm<CR>
+tnoremap <Esc> <C-\><C-n>
