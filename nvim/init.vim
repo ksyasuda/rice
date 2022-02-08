@@ -534,6 +534,8 @@ nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
 nnoremap <silent><nowait> <space>cr  :<C-u>CocCommand fzf-preview.CocReferences<CR>
 " show implementations with fzf
 nnoremap <leader><nowait> <space>ci  :<C-U>CocCommand fzf-preview.CocImplementations<Cr>
+" show locationlist with fzf_preview
+nnoremap <silent><nowait> <space>cl  :<C-u>CocCommand fzf-preview.LocationList<CR>
 
 "------------------------------------------------------------------------------
 "which key
@@ -590,8 +592,6 @@ nnoremap gF :edit <cfile><cr>
 nnoremap // :CocCommand fzf-preview.Lines<CR>
 nnoremap ?? :CocCommand fzf-preview.BufferLines<CR>
 
-" search fzf, refs, impls, defs
-nmap <leader>ff :CocCommand fzf-preview.ProjectFiles<CR>
 " aniwrapper/ani-cli (until i find better use for a keys)
 nmap <leader>as :FloatermNew --title=aniwrapper aniwrapper -qtdoomone -D144<CR>
 nmap <leader>ad :FloatermNew --title=aniwrapper ani-cli -q720p -cd/home/sudacode/Videos/sauce -D144<CR>
@@ -640,3 +640,15 @@ nmap <C-T> :wa<CR>:FloatermToggle floatingterm<CR>
 tnoremap <leader>tt <C-\><C-N>:FloatermToggle vsplit-term<CR>
 tnoremap <C-T> <C-\><C-n>:FloatermToggle floatingterm<CR>
 tnoremap <Esc> <C-\><C-n>
+
+
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+" search fzf, refs, impls, defs
+nmap <leader>ff :CocCommand fzf-preview.ProjectFiles<CR>
+" nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
