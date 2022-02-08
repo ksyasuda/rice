@@ -1,0 +1,38 @@
+{
+    "diagnostic.displayByAle": false,
+    "diagnostic.enable": true,
+    "diagnostic.level": "hint",
+    "diagnostic-languageserver.enable": true,
+    "diagnostic-languageserver.filetypes": {
+        "sh": "shellcheck",
+        "python": "pylint"
+    },
+    "diagnostic-languageserver.mergeConfig": true,
+    "diagnostic-languageserver.formatFiletypes": {
+        "sh": "shfmt",
+        "python": ["black", "isort"]
+    },
+    "diagnostic-languageserver.formatters": {
+        "shfmt": {
+            "command": "shfmt",
+            "args": ["-i", "4", "-ci", "-sr"]
+        },
+        "black": {
+            "command": "black"
+        }
+    },
+    "pyright.organizeimports.provider": "isort",
+    "pyright.completion.importSupport": true,
+    "pyright.enable": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "/usr/bin/pylint",
+    "python.formatting.blackPath": "/usr/bin/black",
+    "python.analysis.autoSearchPaths": true,
+    "python.venvPath": "env",
+    "languageserver": {
+        "python": {
+            "command": "pyright",
+            "filetypes": ["python", "py"]
+        }
+    }
+}
