@@ -79,12 +79,13 @@ Plug 'osyo-manga/vim-over'
 
 if has('nvim')
   Plug 'akinsho/bufferline.nvim'
-  Plug 'chentau/marks.nvim'
+  " Plug 'chentau/marks.nvim'
   Plug 'folke/which-key.nvim'
   Plug 'github/copilot.vim'
   Plug 'glepnir/dashboard-nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   Plug 'NTBBloodbath/doom-one.nvim'
   Plug 'Mofiqul/dracula.nvim'
@@ -106,10 +107,13 @@ call plug#end()
 
 if has('nvim')
   source ~/.config/nvim/plugins/bufferline.lua
-  source ~/.config/nvim/plugins/marks.lua
+  " source ~/.config/nvim/plugins/marks.lua
   source ~/.config/nvim/plugins/whichkey.lua
   source ~/.config/nvim/plugins/dashboard-nvim.lua
   source ~/.config/nvim/plugins/nvimtree.lua
+  source ~/.config/nvim/plugins/treesitter.lua
+
+
   source ~/.config/nvim/plugins/doomone.lua
   " source ~/.config/nvim/plugins/dracula.lua
   " source ~/.config/nvim/plugins/github-theme.lua
