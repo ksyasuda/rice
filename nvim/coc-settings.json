@@ -34,5 +34,17 @@
             "command": "pyright",
             "filetypes": ["python", "py"]
         }
-    }
+    },
+    "hover.floatConfig": {
+        "border": true,
+        "shadow": true,
+        "focusable": true,
+        "highlight": "CocFloating",
+        "borderhighlight": "CocFloating"
+    },
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextLines": 5,
+    "diagnostic.virtualTextLevel": "information",
+    "codeLens.enable": true,
+    "codeLens.position": "eol"
 }

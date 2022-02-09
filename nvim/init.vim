@@ -86,6 +86,7 @@ if has('nvim')
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'TimUntersberger/neogit'
 
   Plug 'NTBBloodbath/doom-one.nvim'
   Plug 'Mofiqul/dracula.nvim'
@@ -112,6 +113,7 @@ if has('nvim')
   source ~/.config/nvim/plugins/dashboard-nvim.lua
   source ~/.config/nvim/plugins/nvimtree.lua
   source ~/.config/nvim/plugins/treesitter.lua
+  source ~/.config/nvim/plugins/neogit.lua
 
 
   source ~/.config/nvim/plugins/doomone.lua
@@ -225,7 +227,7 @@ command! -bang -nargs=? -complete=dir AllFiles
 "------------------------------------------------------------------------------
 
 let g:ale_sh_shellcheck_executable = '/usr/bin/shellcheck'
-let g:ale_sh_shellcheck_options = '-s bash -o all -e 2250'
+let g:ale_sh_shellcheck_options = '-S info -s bash -o all -e 2250'
 let g:ale_sh_shfmt_options = '-i=4 -ci -sr'
 let g:ale_fix_on_save = 1
 " let g:ale_set_quickfix = 1
@@ -610,7 +612,11 @@ nmap <C-K> :bprev<CR>
 " git
 nmap <leader>gc :CocCommand fzf-preview.GitLogs<CR>
 nmap <leader>gf :CocCommand fzf-preview.GitFiles<CR>
-nmap <leader>gg :FloatermNew --title=lazygit --opener=vsplit --width=1.0 --height=1.0 lazygit<CR>
+if has('nvim')
+  nmap <leader>gg :Neogit<CR>
+else
+  nmap <leader>gg :FloatermNew --title=lazygit --opener=vsplit --width=1.0 --height=1.0 lazygit<CR>
+endif
 nmap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
 nmap gr  :<C-u>CocCommand fzf-preview.CocReferences<CR>
 " help/history
