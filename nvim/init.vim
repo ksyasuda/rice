@@ -1,5 +1,5 @@
-" syntax enable
-" filetype plugin on
+syntax enable
+filetype plugin on
 set noshowmode "disable default vim insert text at bottom
 set laststatus=2
 set number
