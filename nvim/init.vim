@@ -1,5 +1,5 @@
-syntax enable
-filetype plugin on
+" syntax enable
+" filetype plugin on
 set noshowmode "disable default vim insert text at bottom
 set laststatus=2
 set number
@@ -63,8 +63,6 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wakatime/vim-wakatime'
 Plug 'voldikss/vim-floaterm'
 Plug 'pechorin/any-jump.vim'
@@ -74,6 +72,9 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'maximbaz/lightline-ale'
 Plug 'osyo-manga/vim-over'
+
+" Plug 'dense-analysis/ale'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if has('nvim')
   Plug 'akinsho/bufferline.nvim'
@@ -91,6 +92,13 @@ if has('nvim')
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'simrat39/symbols-outline.nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'onsails/lspkind-nvim'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'L3MON4D3/LuaSnip'
 
   Plug 'NTBBloodbath/doom-one.nvim'
   Plug 'Mofiqul/dracula.nvim'
@@ -120,19 +128,19 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/treesitter.lua
   source ~/.config/nvim/plugin-confs/neogit.lua
 
-  " source ~/.config/nvim/plugin-confs/lspconfig.lua
+  set completeopt=menu,menuone,noselect
+  source ~/.config/nvim/plugin-confs/lspconfig.lua
   source ~/.config/nvim/plugin-confs/lsp-signature.lua
-  source ~/.config/nvim/symbols-outline.lua
-  " source ~/.config/nvim/null-ls.lua
+  source ~/.config/nvim/plugin-confs/symbols-outline.lua
+  source ~/.config/nvim/plugin-confs/null-ls.lua
+  source ~/.config/nvim/plugin-confs/nvim-cmp.lua
+  source ~/.config/nvim/plugin-confs/lsp-kind.lua
 
   source ~/.vim/plugin-confs/fzf.vim
   source ~/.vim/plugin-confs/vim-closetag.vim
   source ~/.vim/plugin-confs/wakatime.vim
   source ~/.vim/plugin-confs/lightline.vim
   source ~/.vim/plugin-confs/floaterm.vim
-
-  source ~/.vim/plugin-confs/ale.vim
-  source ~/.vim/plugin-confs/coc.vim
 
   source ~/.config/nvim/plugin-confs/doomone.lua
   source ~/.config/nvim/plugin-confs/dracula.lua
