@@ -14,6 +14,7 @@ require("null-ls").setup({
     end,
     sources = {
         require("null-ls").builtins.completion.spell,
+        require("null-ls").builtins.code_actions.gitsigns,
         require("null-ls").builtins.formatting.shfmt.with({
             filetypes = {"sh", "bash"},
             extra_args = { "-i", "4", "-ci", "-sr" }

@@ -57,63 +57,69 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
+Plug 'ap/vim-css-color'
+Plug 'github/copilot.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'wakatime/vim-wakatime'
-Plug 'voldikss/vim-floaterm'
-Plug 'pechorin/any-jump.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'ap/vim-css-color'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'sheerun/vim-polyglot'
 Plug 'osyo-manga/vim-over'
-Plug 'github/copilot.vim'
+Plug 'pechorin/any-jump.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'voldikss/vim-floaterm'
+Plug 'wakatime/vim-wakatime'
 
 " Plug 'dense-analysis/ale'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+
 if has('nvim')
+  Plug 'nvim-lua/plenary.nvim'
+
+  " Plug 'TimUntersberger/neogit'
   Plug 'akinsho/bufferline.nvim'
-  " Plug 'chentau/marks.nvim'
+  Plug 'f-person/git-blame.nvim'
   Plug 'folke/which-key.nvim'
   Plug 'glepnir/dashboard-nvim'
-  Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'TimUntersberger/neogit'
-  Plug 'ojroques/nvim-lspfuzzy'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'ojroques/nvim-lspfuzzy'
 
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/nvim-lsp-installer'
-  Plug 'ray-x/lsp_signature.nvim'
-  Plug 'simrat39/symbols-outline.nvim'
-  Plug 'jose-elias-alvarez/null-ls.nvim'
-  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'folke/trouble.nvim'
   Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'neovim/nvim-lspconfig'
   Plug 'onsails/lspkind-nvim'
-  Plug 'saadparwaiz1/cmp_luasnip'
-  Plug 'L3MON4D3/LuaSnip'
+  Plug 'ray-x/lsp_signature.nvim'
   Plug 'rmagatti/goto-preview',
-  Plug 'folke/trouble.nvim'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'simrat39/symbols-outline.nvim'
+  Plug 'williamboman/nvim-lsp-installer'
 
-  Plug 'olimorris/onedarkpro.nvim'
-  Plug 'NTBBloodbath/doom-one.nvim'
   Plug 'Mofiqul/dracula.nvim'
+  Plug 'NTBBloodbath/doom-one.nvim'
+  Plug 'olimorris/onedarkpro.nvim'
   Plug 'projekt0n/github-nvim-theme'
 else
   Plug 'ap/vim-buftabline'
-  Plug 'ryanoasis/vim-devicons'
+  Plug 'itchyny/lightline.vim'
+  Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+  Plug 'maximbaz/lightline-ale'
   Plug 'mhinz/vim-startify'
   Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-  Plug 'itchyny/lightline.vim'
-  Plug 'maximbaz/lightline-ale'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tpope/vim-fugitive'
 
   Plug 'joshdick/onedark.vim'
   Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
@@ -124,33 +130,36 @@ endif
 call plug#end()
 
 if has('nvim')
+  set completeopt=menu,menuone,noselect
+  source ~/.config/nvim/keybindings.vim
+
   source ~/.config/nvim/plugin-confs/bufferline.lua
-  " source ~/.config/nvim/plugin-confs/marks.lua
-  source ~/.config/nvim/plugin-confs/whichkey.lua
-  source ~/.config/nvim/plugin-confs/dashboard-nvim.lua
   source ~/.config/nvim/plugin-confs/dashboard-art.vim
-  source ~/.config/nvim/plugin-confs/nvimtree.lua
-  source ~/.config/nvim/plugin-confs/treesitter.lua
-  source ~/.config/nvim/plugin-confs/neogit.lua
+  source ~/.config/nvim/plugin-confs/dashboard-nvim.lua
+  source ~/.config/nvim/plugin-confs/git-blame.lua
+  source ~/.config/nvim/plugin-confs/gitsigns.lua
   source ~/.config/nvim/plugin-confs/lspfuzzy.lua
   source ~/.config/nvim/plugin-confs/lualine.lua
+  " source ~/.config/nvim/plugin-confs/neogit.lua
+  source ~/.config/nvim/plugin-confs/nvimtree.lua
+  source ~/.config/nvim/plugin-confs/treesitter.lua
+  source ~/.config/nvim/plugin-confs/whichkey.lua
 
-  set completeopt=menu,menuone,noselect
   source ~/.config/nvim/plugin-confs/code_actions.lua
-  source ~/.config/nvim/plugin-confs/lspconfig.lua
+  source ~/.config/nvim/plugin-confs/goto-preview.lua
+  source ~/.config/nvim/plugin-confs/lsp-kind.lua
   source ~/.config/nvim/plugin-confs/lsp-signature.lua
-  source ~/.config/nvim/plugin-confs/symbols-outline.lua
+  source ~/.config/nvim/plugin-confs/lspconfig.lua
   source ~/.config/nvim/plugin-confs/null-ls.lua
   source ~/.config/nvim/plugin-confs/nvim-cmp.lua
-  source ~/.config/nvim/plugin-confs/lsp-kind.lua
-  source ~/.config/nvim/plugin-confs/goto-preview.lua
+  source ~/.config/nvim/plugin-confs/symbols-outline.lua
   source ~/.config/nvim/plugin-confs/trouble.lua
 
+  source ~/.vim/plugin-confs/floaterm.vim
   source ~/.vim/plugin-confs/fzf.vim
+  source ~/.vim/plugin-confs/lightline.vim
   source ~/.vim/plugin-confs/vim-closetag.vim
   source ~/.vim/plugin-confs/wakatime.vim
-  source ~/.vim/plugin-confs/lightline.vim
-  source ~/.vim/plugin-confs/floaterm.vim
 
   source ~/.config/nvim/plugin-confs/doomone.lua
   source ~/.config/nvim/plugin-confs/dracula.lua
@@ -170,6 +179,8 @@ if has('nvim')
   autocmd TermOpen * setlocal nonumber norelativenumber
 
 else
+  source ~/.vim/keybindings.vim
+
   source ~/.vim/plugin-confs/nerdtree.vim
   source ~/.vim/plugin-confs/whichkey.vim
   source ~/.vim/plugin-confs/ale.vim
@@ -231,13 +242,16 @@ endif
 "------------------------------------------------------------------------------
 " custom commands
 "------------------------------------------------------------------------------
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#run(fzf#wrap('files', fzf#vim#with_preview({'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden'}), <bang>0))
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0)
 
 command! -bang -nargs=? -complete=dir AllFiles
-  \ call fzf#run(fzf#wrap('allfiles', fzf#vim#with_preview({'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden --no-ignore'}), <bang>0))
+  \ call fzf#run(fzf#wrap('allfiles', fzf#vim#with_preview({'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden --no-ignore', 'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0))
+
+command! Lines call fzf#vim#lines(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir Buffers
+    \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0)
 
 command! Reload execute "source ~/.vimrc"
 command! Config execute ":e ~/.vimrc"
@@ -245,13 +259,3 @@ command! Env execute ":Dotenv .env"
 command! MakeTags !ctags -R .
 command! Ovewrite execute ":w !sudo tee %"
 command! Aniwrapper execute ":FloatermNew aniwrapper -qtdoomone -D 144"
-"------------------------------------------------------------------------------
-"KEYBINDINGS
-"------------------------------------------------------------------------------
-let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
-if has('nvim')
-  source ~/.config/nvim/keybindings.vim
-else
-  source ~/.vim/keybindings.vim
-endif
