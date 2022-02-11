@@ -62,7 +62,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'voldikss/vim-floaterm'
 Plug 'pechorin/any-jump.vim'
@@ -70,8 +69,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
-Plug 'maximbaz/lightline-ale'
 Plug 'osyo-manga/vim-over'
+Plug 'github/copilot.vim'
 
 " Plug 'dense-analysis/ale'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -80,12 +79,13 @@ if has('nvim')
   Plug 'akinsho/bufferline.nvim'
   " Plug 'chentau/marks.nvim'
   Plug 'folke/which-key.nvim'
-  Plug 'github/copilot.vim'
   Plug 'glepnir/dashboard-nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'TimUntersberger/neogit'
+  Plug 'ojroques/nvim-lspfuzzy'
+  Plug 'nvim-lualine/lualine.nvim'
 
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
@@ -99,7 +99,10 @@ if has('nvim')
   Plug 'onsails/lspkind-nvim'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'L3MON4D3/LuaSnip'
+  Plug 'rmagatti/goto-preview',
+  Plug 'folke/trouble.nvim'
 
+  Plug 'olimorris/onedarkpro.nvim'
   Plug 'NTBBloodbath/doom-one.nvim'
   Plug 'Mofiqul/dracula.nvim'
   Plug 'projekt0n/github-nvim-theme'
@@ -109,6 +112,8 @@ else
   Plug 'mhinz/vim-startify'
   Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+  Plug 'itchyny/lightline.vim'
+  Plug 'maximbaz/lightline-ale'
 
   Plug 'joshdick/onedark.vim'
   Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
@@ -127,14 +132,19 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/nvimtree.lua
   source ~/.config/nvim/plugin-confs/treesitter.lua
   source ~/.config/nvim/plugin-confs/neogit.lua
+  source ~/.config/nvim/plugin-confs/lspfuzzy.lua
+  source ~/.config/nvim/plugin-confs/lualine.lua
 
   set completeopt=menu,menuone,noselect
+  source ~/.config/nvim/plugin-confs/code_actions.lua
   source ~/.config/nvim/plugin-confs/lspconfig.lua
   source ~/.config/nvim/plugin-confs/lsp-signature.lua
   source ~/.config/nvim/plugin-confs/symbols-outline.lua
   source ~/.config/nvim/plugin-confs/null-ls.lua
   source ~/.config/nvim/plugin-confs/nvim-cmp.lua
   source ~/.config/nvim/plugin-confs/lsp-kind.lua
+  source ~/.config/nvim/plugin-confs/goto-preview.lua
+  source ~/.config/nvim/plugin-confs/trouble.lua
 
   source ~/.vim/plugin-confs/fzf.vim
   source ~/.vim/plugin-confs/vim-closetag.vim
@@ -145,6 +155,7 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/doomone.lua
   source ~/.config/nvim/plugin-confs/dracula.lua
   source ~/.config/nvim/plugin-confs/github-theme.lua
+  source ~/.config/nvim/plugin-confs/onedarkpro.lua
 
   " makes fzf match colorscheme (I think)
   augroup fzf_preview
@@ -239,4 +250,8 @@ command! Aniwrapper execute ":FloatermNew aniwrapper -qtdoomone -D 144"
 "------------------------------------------------------------------------------
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
-source ~/.vim/keybindings.vim
+if has('nvim')
+  source ~/.config/nvim/keybindings.vim
+else
+  source ~/.vim/keybindings.vim
+endif
