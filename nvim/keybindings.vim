@@ -35,10 +35,6 @@ nmap Q !!$SHELL<CR>
 
 nmap rn :lua vim.lsp.buf.rename()<CR>
 
-nmap wa :lua vim.lsp.buf.add_workspace_folder()<CR>
-nmap wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
-nmap wr :lua vim.lsp.buf.remove_workspace_folder()<CR>
-
 nmap <leader>as :FloatermNew --title=aniwrapper aniwrapper -qtdoomone -D144<CR>
 nmap <leader>ad :FloatermNew --title=aniwrapper ani-cli -q720p -cd/home/sudacode/Videos/sauce -D144<CR>
 
@@ -98,6 +94,10 @@ nmap <leader>s/ :History/<CR>
 nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
 nmap <leader>to :SymbolsOutline<CR>
 nmap <leader>tt :FloatermToggle vsplit-term<CR>
+
+nmap <leader>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
+nmap <leader>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
+nmap <leader>wr :lua vim.lsp.buf.remove_workspace_folder()<CR>
 
 nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>

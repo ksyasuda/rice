@@ -44,15 +44,30 @@ end
 vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
+-- squared corners
+
+-- local border = {
+--       {"┌", "FloatBorder"},
+--       {"─", "FloatBorder"},
+--       {"┐", "FloatBorder"},
+--       {"|", "FloatBorder"},
+--       {"┘", "FloatBorder"},
+--       {"─", "FloatBorder"},
+--       {"└", "FloatBorder"},
+--       {"|", "FloatBorder"},
+-- }
+
+-- rounded
+
 local border = {
-      {"🭽", "FloatBorder"},
-      {"▔", "FloatBorder"},
-      {"🭾", "FloatBorder"},
-      {"▕", "FloatBorder"},
-      {"🭿", "FloatBorder"},
-      {"▁", "FloatBorder"},
-      {"🭼", "FloatBorder"},
-      {"▏", "FloatBorder"},
+    {"╭", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╮", "FloatBorder"},
+    {"│", "FloatBorder"},
+    {"╯", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╰", "FloatBorder"},
+    {"│", "FloatBorder"},
 }
 
 local handlers =  {
@@ -85,7 +100,7 @@ local DEFAULT_SETTINGS = {
     },
 
     -- The directory in which to install all servers.
-    install_root_dir = "~/.vim/lsp",
+    -- install_root_dir = "/home/sudacode/.vim/lsp",
 
     pip = {
         -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
@@ -95,7 +110,7 @@ local DEFAULT_SETTINGS = {
         install_args = {},
     },
     on_attach = on_attach,
-    -- handlers=handlers,
+    handlers=handlers,
 
     -- Controls to which degree logs are written to the log file. It's useful to set this to vim.log.levels.DEBUG when
     -- debugging issues with server installations.
@@ -161,13 +176,13 @@ end)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
--- local servers = { 'pyright', 'bashls', 'sqlls' }
--- for _, lsp in pairs(servers) do
---   require('lspconfig')[lsp].setup {
---     on_attach = on_attach,
---     flags = {
---       -- This will be the default in neovim 0.7+
---       debounce_text_changes = 150,
---     }
---   }
--- end
+local servers = { 'pyright', 'bashls', 'sqls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'jsonls', 'dotls' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
