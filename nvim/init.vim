@@ -77,6 +77,8 @@ let g:maplocalleader = ','
 
 if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  " Plug 'nvim-telescope/telescope.nvim'
 
   " Plug 'TimUntersberger/neogit'
   Plug 'akinsho/bufferline.nvim'
@@ -131,6 +133,7 @@ call plug#end()
 
 if has('nvim')
   set completeopt=menu,menuone,noselect
+  let g:fzf_command = 'fzf --height 90% --width=85% --layout=reverse --preview "bat --color=always {}"'
   source ~/.config/nvim/keybindings.vim
 
   source ~/.config/nvim/plugin-confs/bufferline.lua
