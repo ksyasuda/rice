@@ -17,8 +17,16 @@ export PATH="$HOME/Work/rofi/:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/Projects/Python/Sudasong/src/:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export EDITOR=vim
-export VISUAL=vim
+# export EDITOR=vim
+# export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER='nvim +Man!'
+
+# export FZF_DEFAULT_COMMAND='fd --type f'
+# follow symbolic links and no git
+# export FZF_DEFAULT_COMMAND='fd --type f --follow --exclude .git'
 
 if [ -f ~/.bash_aliases ]; then
 	. $HOME/.bash_aliases
@@ -111,7 +119,8 @@ HISTCONTROL=ignoreboth
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting colored-man-pages vi-mode git zsh-z)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode git zsh-z)
+# plugins=(zsh-syntax-highlighting vi-mode git zsh-z)
 
 source $ZSH/oh-my-zsh.sh
 #source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
@@ -119,17 +128,17 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='vim'
+# fi
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -259,7 +268,6 @@ export QT_IM_MODULE=ibus
 export QT4_IM_MODULE=xim
 ibus-daemon -drx
 
-export VISUAL=vim
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_DIR="$HOME/.cache"
 # export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
