@@ -62,7 +62,6 @@ Plug 'github/copilot.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'osyo-manga/vim-over'
 Plug 'pechorin/any-jump.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'

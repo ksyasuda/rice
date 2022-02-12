@@ -77,7 +77,6 @@ nmap <leader>n :NvimTreeToggle<CR>
 nmap <leader>ob :FloatermNew --title=bpytop --opener=vsplit bpytop<CR>
 nmap <leader>od :FloatermNew --title=lazydocker --opener=vsplit lazydocker<CR>
 nmap <leader>on :FloatermNew --title=ncmpcpp --opener=vsplit ncmpcpp<CR>
-nmap <leader>oo :OverCommandLine<CR>
 nmap <leader>or :FloatermNew --title=ranger --opener=vsplit ranger --cmd="cd $PWD"<CR>
 nmap <leader>ot :FloatermNew --title=floaterm --name=vsplit-term --wintype=vsplit --position=botright --width=0.5<CR>
 
