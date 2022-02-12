@@ -68,6 +68,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'wakatime/vim-wakatime'
+" Plug 'christoomey/vim-tmux-navigator'
 
 " Plug 'dense-analysis/ale'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}

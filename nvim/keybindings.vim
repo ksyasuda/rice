@@ -25,7 +25,7 @@ nmap gD :lua vim.lsp.buf.declaration()<CR>
 nmap gF :edit <cfile><cr>
 nmap gT :lua vim.lsp.buf.type_definition()<CR>
 nmap gb :lua vim.lsp.buf.document_symbol()<CR>
-nmap gd :lua vim.lsp.buf.definition()<CR>
+" nmap gd :lua vim.lsp.buf.definition()<CR>
 nmap gi :lua vim.lsp.buf.implementation()<CR>
 nmap gl :lua vim.lsp.buf.code_lens()<CR>
 nmap gr :lua vim.lsp.buf.references()<CR>
