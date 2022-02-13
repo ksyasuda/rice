@@ -44,6 +44,7 @@ nmap <leader>bp :bprev<CR>
 
 nmap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nmap <leader>cd :LspDiagnostics <bufnr><CR>
+nmap <leader>cl :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 
 nmap <leader>ff :CocCommand fzf-preview.ProjectFiles<CR>

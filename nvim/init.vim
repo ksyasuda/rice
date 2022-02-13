@@ -82,6 +82,7 @@ if has('nvim')
 
   " Plug 'TimUntersberger/neogit'
   Plug 'akinsho/bufferline.nvim'
+  Plug 'andweeb/presence.nvim'
   Plug 'f-person/git-blame.nvim'
   Plug 'folke/which-key.nvim'
   Plug 'glepnir/dashboard-nvim'
@@ -137,6 +138,7 @@ if has('nvim')
   source ~/.config/nvim/keybindings.vim
 
   source ~/.config/nvim/plugin-confs/bufferline.lua
+  source ~/.config/nvim/plugin-confs/presence.lua
   source ~/.config/nvim/plugin-confs/dashboard-art.vim
   source ~/.config/nvim/plugin-confs/dashboard-nvim.lua
   source ~/.config/nvim/plugin-confs/git-blame.lua
