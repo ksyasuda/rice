@@ -19,8 +19,7 @@ nmap <C-n> :NvimTreeToggle<CR>
 nnoremap // :Lines<CR>
 nnoremap ?? :BLines<CR>
 
-nmap ca :lua vim.lsp.buf.code_action()<CR>
-
+nmap gA :lua vim.lsp.buf.declaration()<CR>
 nmap gD :lua vim.lsp.buf.declaration()<CR>
 nmap gF :edit <cfile><cr>
 nmap gT :lua vim.lsp.buf.type_definition()<CR>
@@ -43,6 +42,7 @@ nmap <leader>bk :bdelete<CR>
 nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprev<CR>
 
+nmap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nmap <leader>cd :LspDiagnostics <bufnr><CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 
