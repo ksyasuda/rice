@@ -19,8 +19,9 @@ nmap <C-n> :NvimTreeToggle<CR>
 nnoremap // :Lines<CR>
 nnoremap ?? :BLines<CR>
 
-nmap gA :lua vim.lsp.buf.declaration()<CR>
-nmap gD :lua vim.lsp.buf.declaration()<CR>
+nmap gA :lua vim.lsp.buf.code_actions()<CR>
+nmap gDc :lua vim.lsp.buf.declaration()<CR>
+nmap gDf :lua vim.lsp.buf.definition()<CR>
 nmap gF :edit <cfile><cr>
 nmap gT :lua vim.lsp.buf.type_definition()<CR>
 nmap gb :lua vim.lsp.buf.document_symbol()<CR>
@@ -72,6 +73,18 @@ nmap <leader>isp :-1read $HOME/Templates/python.py<CR>4jw
 nmap <leader>j  :AnyJump<CR>
 
 nmap K :lua vim.lsp.buf.hover()<CR>
+
+nmap <leader>lD :lua vim.lsp.buf.definition()<CR>
+nmap <leader>la :lua vim.lsp.buf.code_action()<CR>
+nmap <leader>lci :lua vim.lsp.buf.incoming_calls()<CR>
+nmap <leader>lco :lua vim.lsp.buf.outgoing_calls()<CR>
+nmap <leader>ld :lua vim.lsp.buf.declaration()<CR>
+nmap <leader>lh :lua vim.lsp.buf.signature_help()<CR>
+nmap <leader>li :lua vim.lsp.buf.implementation()<CR>
+nmap <leader>lr :lua vim.lsp.buf.references()<CR>
+nmap <leader>ls :lua vim.lsp.buf.document_symbol()<CR>
+nmap <leader>lt :lua vim.lsp.buf.type_definition()<CR>
+nmap <leader>lw :lua vim.lsp.buf.workspace_symbol()<CR>
 
 nmap <leader>n :NvimTreeToggle<CR>
 
