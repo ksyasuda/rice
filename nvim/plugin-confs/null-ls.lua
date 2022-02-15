@@ -37,7 +37,7 @@ require("null-ls").setup({
             extra_args = { "-i", "4", "-ci", "-sr" }
         }),
         require("null-ls").builtins.diagnostics.shellcheck.with({
-            extra_args = {  "--format", "json1", "--source-path=$DIRNAME", "--external-sources", "-", "-s", "bash", "-o", "check-extra-masked-returns, check-set-e-suppressed, check-unassigned-uppercase, deprecate-which, quote-safe-variables" }
+            extra_args = {  "-s", "bash", "-o", "check-extra-masked-returns, check-set-e-suppressed, check-unassigned-uppercase, deprecate-which, quote-safe-variables" }
         }),
         require("null-ls").builtins.formatting.black,
         require("null-ls").builtins.formatting.isort,

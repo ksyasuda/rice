@@ -26,7 +26,7 @@ set wildmenu " show candidates for vim commands with tab
 set wildignore=*.o,*.obj,*.bak,*.exe
 set background=dark
 set showmatch
-set nocompatible " no more vi
+" set nocompatible " no more vi
 set list
 set listchars=tab:\ ,trail:
 " set path from current directory and all directories under
@@ -100,7 +100,9 @@ if has('nvim')
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'j-hui/fidget.nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'ksyasuda/lsp_lines.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'onsails/lspkind-nvim'
   Plug 'ray-x/lsp_signature.nvim'
@@ -138,15 +140,14 @@ if has('nvim')
   source ~/.config/nvim/keybindings.vim
 
   source ~/.config/nvim/plugin-confs/bufferline.lua
-  source ~/.config/nvim/plugin-confs/presence.lua
   source ~/.config/nvim/plugin-confs/dashboard-art.vim
   source ~/.config/nvim/plugin-confs/dashboard-nvim.lua
   source ~/.config/nvim/plugin-confs/git-blame.lua
   source ~/.config/nvim/plugin-confs/gitsigns.lua
   source ~/.config/nvim/plugin-confs/lspfuzzy.lua
   source ~/.config/nvim/plugin-confs/lualine.lua
-  " source ~/.config/nvim/plugin-confs/neogit.lua
   source ~/.config/nvim/plugin-confs/nvimtree.lua
+  source ~/.config/nvim/plugin-confs/presence.lua
   source ~/.config/nvim/plugin-confs/treesitter.lua
   source ~/.config/nvim/plugin-confs/whichkey.lua
 
@@ -155,8 +156,10 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/lsp-kind.lua
   source ~/.config/nvim/plugin-confs/lsp-signature.lua
   source ~/.config/nvim/plugin-confs/lspconfig.lua
+  source ~/.config/nvim/plugin-confs/lsplines.lua
   source ~/.config/nvim/plugin-confs/null-ls.lua
   source ~/.config/nvim/plugin-confs/nvim-cmp.lua
+  source ~/.config/nvim/plugin-confs/fidget.lua
   source ~/.config/nvim/plugin-confs/symbols-outline.lua
   source ~/.config/nvim/plugin-confs/trouble.lua
 

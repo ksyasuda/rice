@@ -70,7 +70,7 @@ nmap <leader>hk :Maps<CR>
 
 nmap <leader>isp :-1read $HOME/Templates/python.py<CR>4jw
 
-nmap <leader>j  :AnyJump<CR>
+nmap <leader>j :AnyJump<CR>
 
 nmap K :lua vim.lsp.buf.hover()<CR>
 
