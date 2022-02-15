@@ -14,15 +14,33 @@ require("null-ls").setup({
     end,
     sources = {
         require("null-ls").builtins.completion.spell,
+        require("null-ls").builtins.completion.luasnip,
         require("null-ls").builtins.code_actions.gitsigns,
+        require("null-ls").builtins.code_actions.shellcheck,
+        require("null-ls").builtins.diagnostics.cppcheck,
+        require("null-ls").builtins.diagnostics.gitlint,
+        require("null-ls").builtins.diagnostics.jsonlint,
+        require("null-ls").builtins.diagnostics.luacheck,
+        require("null-ls").builtins.diagnostics.markdownlint,
+        require("null-ls").builtins.diagnostics.pylint,
+        require("null-ls").builtins.diagnostics.pydocstyle.with({
+            extra_args = { "--config=$ROOT/setup.cfg" }
+        }),
+        require("null-ls").builtins.diagnostics.vint,
+        require("null-ls").builtins.formatting.json_tool,
+        require("null-ls").builtins.formatting.lua_format,
+        require("null-ls").builtins.formatting.markdownlint,
+        require("null-ls").builtins.formatting.prettier,
+        require("null-ls").builtins.formatting.rustfmt,
         require("null-ls").builtins.formatting.shfmt.with({
             filetypes = {"sh", "bash"},
             extra_args = { "-i", "4", "-ci", "-sr" }
         }),
-        require("null-ls").builtins.code_actions.shellcheck,
         require("null-ls").builtins.diagnostics.shellcheck.with({
             extra_args = {  "--format", "json1", "--source-path=$DIRNAME", "--external-sources", "-", "-s", "bash", "-o", "check-extra-masked-returns, check-set-e-suppressed, check-unassigned-uppercase, deprecate-which, quote-safe-variables" }
         }),
+        require("null-ls").builtins.formatting.black,
+        require("null-ls").builtins.formatting.isort,
     },
 })
 

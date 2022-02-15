@@ -226,9 +226,11 @@ endif
 set t_Co=256
 if has('nvim')
     set termguicolors
-    " colorscheme doom-one
+    colorscheme doom-one
     " colorscheme dracula
-    colorscheme github_dark
+    " colorscheme github_dark
+    " colorscheme onedark
+    " colorscheme onedarkpro
 else
     " let g:onedark_termcolors=256 "enable 256 colors
     " colorscheme onedark  "set colorsheme as onedark
