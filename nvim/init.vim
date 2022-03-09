@@ -30,7 +30,7 @@ set showmatch
 set list
 set listchars=tab:\ ,trail:
 " set path from current directory and all directories under
-set path=$PWD/**
+" set path=$PWD/**
 set encoding=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ 18
 set expandtab
@@ -78,6 +78,7 @@ let g:maplocalleader = ','
 if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'nvim-telescope/telescope.nvim'
 
   " Plug 'TimUntersberger/neogit'
@@ -91,7 +92,6 @@ if has('nvim')
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'ojroques/nvim-lspfuzzy'
 
   Plug 'L3MON4D3/LuaSnip'
@@ -139,6 +139,7 @@ if has('nvim')
   let g:fzf_command = 'fzf --height 90% --width=85% --layout=reverse --preview "bat --color=always {}"'
   source ~/.config/nvim/keybindings.vim
 
+  " nvim plugins
   source ~/.config/nvim/plugin-confs/bufferline.lua
   source ~/.config/nvim/plugin-confs/dashboard-art.vim
   source ~/.config/nvim/plugin-confs/dashboard-nvim.lua
@@ -163,6 +164,7 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/symbols-outline.lua
   source ~/.config/nvim/plugin-confs/trouble.lua
 
+  " nvim and vim plugins
   source ~/.vim/plugin-confs/floaterm.vim
   source ~/.vim/plugin-confs/fzf.vim
   source ~/.vim/plugin-confs/lightline.vim

@@ -20,8 +20,8 @@ onedarkpro.setup({
   styles = {
     comments = "italic",
     functions = "bold",
-    keywords = "bold,italic",
-    strings = "italic",
+    keywords = "italic,bold",
+    strings = "NONE",
     variables = "bold"
   },
   options = {

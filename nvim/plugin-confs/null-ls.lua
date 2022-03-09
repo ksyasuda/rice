@@ -20,7 +20,7 @@ require("null-ls").setup({
         require("null-ls").builtins.diagnostics.cppcheck,
         require("null-ls").builtins.diagnostics.gitlint,
         require("null-ls").builtins.diagnostics.jsonlint,
-        require("null-ls").builtins.diagnostics.luacheck,
+        -- require("null-ls").builtins.diagnostics.luacheck,
         require("null-ls").builtins.diagnostics.markdownlint,
         require("null-ls").builtins.diagnostics.pylint,
         require("null-ls").builtins.diagnostics.pydocstyle.with({
@@ -28,13 +28,14 @@ require("null-ls").setup({
         }),
         require("null-ls").builtins.diagnostics.vint,
         require("null-ls").builtins.formatting.json_tool,
-        require("null-ls").builtins.formatting.lua_format,
+        -- require("null-ls").builtins.formatting.lua_format,
         require("null-ls").builtins.formatting.markdownlint,
         require("null-ls").builtins.formatting.prettier,
-        require("null-ls").builtins.formatting.rustfmt,
+        -- handled by lsp server
+        -- require("null-ls").builtins.formatting.rustfmt,
         require("null-ls").builtins.formatting.shfmt.with({
             filetypes = {"sh", "bash"},
-            extra_args = { "-i", "4", "-ci", "-sr" }
+            extra_args = { "-i", "0", "-ci", "-sr" }
         }),
         require("null-ls").builtins.diagnostics.shellcheck.with({
             extra_args = {  "-s", "bash", "-o", "check-extra-masked-returns, check-set-e-suppressed, check-unassigned-uppercase, deprecate-which, quote-safe-variables" }
