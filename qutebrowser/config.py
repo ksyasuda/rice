@@ -15,6 +15,7 @@ c.url.searchengines["ap"] = "https://www.archlinux.org/packages/?sort=&q={}"
 c.url.searchengines["aur"] = "https://aur.archlinux.org/packages/?K={}"
 c.url.searchengines["gh"] = "https://github.com/search?q={}&type=Code"
 c.url.searchengines["r"] = "https://www.reddit.com/r/{}"
+c.url.searchengines["p"] = "https://docs.python.org/3/library/{}"
 
 c.aliases["gd"] = "open -t http://192.168.4.77:4000"
 
