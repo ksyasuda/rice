@@ -36,7 +36,7 @@ if [[ "$cmd" == "sudo"* ]]; then
 	fi
 fi
 
-if [[ "$1" == "-v" || "$1" == "--verbose" ]]; then
+if [[ "$#" -gt 0 ]] && [[ "$1" == "-v" || "$1" == "--verbose" ]]; then
 	# Send command to dunstify
 	dunstify "Running command: $cmd"
 fi
