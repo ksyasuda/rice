@@ -13,35 +13,36 @@ require("null-ls").setup({
         end
     end,
     sources = {
-        require("null-ls").builtins.completion.spell,
-        require("null-ls").builtins.completion.luasnip,
-        require("null-ls").builtins.code_actions.gitsigns,
-        require("null-ls").builtins.code_actions.shellcheck,
-        require("null-ls").builtins.diagnostics.cppcheck,
-        require("null-ls").builtins.diagnostics.gitlint,
-        require("null-ls").builtins.diagnostics.jsonlint,
+        null_ls.builtins.completion.spell,
+        null_ls.builtins.completion.luasnip,
+        null_ls.builtins.code_actions.gitsigns,
+        null_ls.builtins.code_actions.shellcheck,
+        null_ls.builtins.diagnostics.cppcheck,
+        null_ls.builtins.diagnostics.gitlint,
+        null_ls.builtins.diagnostics.jsonlint,
         -- require("null-ls").builtins.diagnostics.luacheck,
-        require("null-ls").builtins.diagnostics.markdownlint,
-        require("null-ls").builtins.diagnostics.pylint,
-        require("null-ls").builtins.diagnostics.pydocstyle.with({
+        null_ls.builtins.diagnostics.markdownlint,
+        null_ls.builtins.diagnostics.pylint,
+        null_ls.builtins.diagnostics.pydocstyle.with({
             extra_args = { "--config=$ROOT/setup.cfg" }
         }),
-        require("null-ls").builtins.diagnostics.vint,
-        require("null-ls").builtins.formatting.json_tool,
+        null_ls.builtins.diagnostics.vint,
+        null_ls.builtins.diagnostics.shellcheck.with({
+            extra_args = { "-s", "bash", "-o", "add-default-case, check-set-e-suppressed, check-unassigned-uppercase, deprecate-which, quote-safe-variables" }
+        }),
+        null_ls.builtins.diagnostics.ansiblelint,
+        null_ls.builtins.formatting.json_tool,
         -- require("null-ls").builtins.formatting.lua_format,
-        require("null-ls").builtins.formatting.markdownlint,
-        require("null-ls").builtins.formatting.prettier,
+        null_ls.builtins.formatting.markdownlint,
+        null_ls.builtins.formatting.prettier,
         -- handled by lsp server
         -- require("null-ls").builtins.formatting.rustfmt,
-        require("null-ls").builtins.formatting.shfmt.with({
-            filetypes = {"sh", "bash"},
+        null_ls.builtins.formatting.shfmt.with({
+            filetypes = { "sh", "bash" },
             extra_args = { "-i", "0", "-ci", "-sr" }
         }),
-        require("null-ls").builtins.diagnostics.shellcheck.with({
-            extra_args = {  "-s", "bash", "-o", "check-extra-masked-returns, check-set-e-suppressed, check-unassigned-uppercase, deprecate-which, quote-safe-variables" }
-        }),
-        require("null-ls").builtins.formatting.black,
-        require("null-ls").builtins.formatting.isort,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort,
     },
 })
 

@@ -1,7 +1,7 @@
 syntax enable
 filetype plugin on
 set noshowmode "disable default vim insert text at bottom
-set laststatus=2
+set laststatus=3
 set number
 set colorcolumn=80
 set tw=80
@@ -79,6 +79,8 @@ if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'zbirenbaum/copilot.lua'
+  " Plug 'zbirenbaum/copilot-cmp'
   " Plug 'nvim-telescope/telescope.nvim'
 
   " Plug 'TimUntersberger/neogit'
@@ -153,6 +155,7 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/whichkey.lua
 
   source ~/.config/nvim/plugin-confs/code_actions.lua
+  " source ~/.config/nvim/plugin-confs/copilot.lua
   source ~/.config/nvim/plugin-confs/goto-preview.lua
   source ~/.config/nvim/plugin-confs/lsp-kind.lua
   source ~/.config/nvim/plugin-confs/lsp-signature.lua

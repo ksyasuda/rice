@@ -5,10 +5,10 @@ nmap <F5> :!
 vnoremap < <gv
 vnoremap > >gv
 
-" for toggling/hiding the vsplit-term
+" for toggling/hiding the split-term
 tnoremap <C-T> <C-\><C-n>:FloatermToggle floatingterm<CR>
 tnoremap <Esc> <C-\><C-n>
-tnoremap <leader>tt <C-\><C-N>:FloatermToggle vsplit-term<CR>
+tnoremap <leader>tt <C-\><C-N>:FloatermToggle split-term<CR>
 
 nmap <C-J> :bnext<CR>
 nmap <C-K> :bprev<CR>
@@ -91,9 +91,10 @@ nmap <leader>n :NvimTreeToggle<CR>
 
 nmap <leader>ob :FloatermNew --title=bpytop --opener=vsplit bpytop<CR>
 nmap <leader>od :FloatermNew --title=lazydocker --opener=vsplit lazydocker<CR>
+nmap <leader>oh :FloatermNew --title=floaterm --name=split-term --opener=edit --wintype=split --position=botright --height=0.45<CR>
 nmap <leader>on :FloatermNew --title=ncmpcpp --opener=vsplit ncmpcpp<CR>
 nmap <leader>or :FloatermNew --title=ranger --opener=vsplit ranger --cmd="cd $PWD"<CR>
-nmap <leader>ot :FloatermNew --title=floaterm --name=vsplit-term --opener=edit --wintype=vsplit --position=botright --width=0.5<CR>
+nmap <leader>ot :FloatermNew --title=floaterm --name=split-term --opener=edit --wintype=vsplit --position=botright --width=0.5<CR>
 
 nmap <leader>r :NvimTreeRefresh<CR>
 
@@ -107,7 +108,7 @@ nmap <leader>s/ :History/<CR>
 
 nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
 nmap <leader>to :SymbolsOutline<CR>
-nmap <leader>tt :FloatermToggle vsplit-term<CR>
+nmap <leader>tt :FloatermToggle split-term<CR>
 
 nmap <leader>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
 nmap <leader>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
