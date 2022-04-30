@@ -38,11 +38,13 @@ set expandtab
 set hidden
 set nobackup
 set nowritebackup
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 set timeoutlen=400
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+
+set pumwidth=35
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))

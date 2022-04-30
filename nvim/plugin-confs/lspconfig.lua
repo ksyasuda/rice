@@ -70,10 +70,20 @@ local border = {
     { "│", "FloatBorder" },
 }
 
+
 local handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 }
+
+-- local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+-- function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+--     opts = {
+--         { "border", border },
+--     }
+--     opts.border = opts.border or border
+--     return orig_util_open_floating_preview(contents, syntax, opts, ...)
+-- end
 
 local DEFAULT_SETTINGS = {
     ui = {
@@ -176,7 +186,8 @@ end)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'bashls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'dotls', 'rust_analyzer', 'clangd', 'ansiblels' }
+-- local servers = { 'pyright', 'bashls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'dotls', 'rust_analyzer', 'clangd', 'ansiblels' }
+local servers = { 'jedi_language_server', 'bashls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'dotls', 'rust_analyzer', 'clangd', 'ansiblels' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,

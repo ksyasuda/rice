@@ -11,8 +11,8 @@ let g:fzf_tags_command = 'ctags -R'
 "   - CTRL-/ will toggle preview window.
 " - Note that this array is passed as arguments to fzf#vim#with_preview function.
 " - To learn more about preview window options, see `--preview-window` section of `man fzf`.
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.75 } }
+let g:fzf_preview_window = ['right:45%', 'ctrl-/']
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.85 } }
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',

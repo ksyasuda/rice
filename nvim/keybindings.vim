@@ -6,13 +6,16 @@ vnoremap < <gv
 vnoremap > >gv
 
 " for toggling/hiding the split-term
-tnoremap <C-T> <C-\><C-n>:FloatermToggle floatingterm<CR>
+tnoremap <C-T> <C-\><C-n>:FloatermToggle floatterm<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <leader>tt <C-\><C-N>:FloatermToggle split-term<CR>
+tnoremap <leader>tf <C-\><C-N>:FloatermToggle floatterm<CR>
+tnoremap <leader>tp <C-\><C-N>:FloatermToggle ipython<CR>
+tnoremap <leader>tP <C-\><C-N>:FloatermToggle ipython-full<CR>
 
 nmap <C-J> :bnext<CR>
 nmap <C-K> :bprev<CR>
-nmap <C-T> :wa<CR>:FloatermToggle floatingterm<CR>
+nmap <C-T> :wa<CR>:FloatermToggle floatterm<CR>
 nmap <C-n> :NvimTreeToggle<CR>
 
 " open file under cursor, create if necessary
@@ -91,8 +94,11 @@ nmap <leader>n :NvimTreeToggle<CR>
 
 nmap <leader>ob :FloatermNew --title=bpytop --opener=vsplit bpytop<CR>
 nmap <leader>od :FloatermNew --title=lazydocker --opener=vsplit lazydocker<CR>
+nmap <leader>of :wa<CR>:FloatermToggle floatterm<CR>
 nmap <leader>oh :FloatermNew --title=floaterm --name=split-term --opener=edit --wintype=split --position=botright --height=0.45<CR>
 nmap <leader>on :FloatermNew --title=ncmpcpp --opener=vsplit ncmpcpp<CR>
+nmap <leader>op :FloatermNew --title=ipython --name=ipython --opener=split --wintype=vsplit --position=botright --width=0.5 ipython<CR>
+nmap <leader>oP :FloatermNew --title=ipython-full --name=ipython-full --opener=edit --width=1.0 --height=1.0 ipython<CR>
 nmap <leader>or :FloatermNew --title=ranger --opener=vsplit ranger --cmd="cd $PWD"<CR>
 nmap <leader>ot :FloatermNew --title=floaterm --name=split-term --opener=edit --wintype=vsplit --position=botright --width=0.5<CR>
 
@@ -107,7 +113,10 @@ nmap <leader>sh :History:<CR>
 nmap <leader>s/ :History/<CR>
 
 nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nmap <leader>tf :wa<CR>:FloatermToggle floatterm<CR>
 nmap <leader>to :SymbolsOutline<CR>
+nmap <leader>tp :FloatermToggle ipython<CR>
+nmap <leader>tP :FloatermToggle ipython-full<CR>
 nmap <leader>tt :FloatermToggle split-term<CR>
 
 nmap <leader>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
