@@ -16,7 +16,6 @@ tnoremap <leader>tP <C-\><C-N>:FloatermToggle ipython-full<CR>
 nmap <C-J> :bnext<CR>
 nmap <C-K> :bprev<CR>
 nmap <C-T> :wa<CR>:FloatermToggle floatterm<CR>
-nmap <C-n> :NvimTreeToggle<CR>
 
 " open file under cursor, create if necessary
 nnoremap // :Lines<CR>
@@ -47,6 +46,7 @@ nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprev<CR>
 
 nmap <leader>ca :lua vim.lsp.buf.code_action()<CR>
+nmap <leader>cc :vert Copilot<CR>
 nmap <leader>cd :LspDiagnostics <bufnr><CR>
 nmap <leader>cl :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>

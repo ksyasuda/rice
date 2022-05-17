@@ -184,10 +184,8 @@ lsp_installer.on_server_ready(function(server)
     server:setup(DEFAULT_SETTINGS)
 end)
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
--- local servers = { 'pyright', 'bashls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'dotls', 'rust_analyzer', 'clangd', 'ansiblels' }
-local servers = { 'jedi_language_server', 'bashls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'dotls', 'rust_analyzer', 'clangd', 'ansiblels' }
+
+local servers = { 'jedi_language_server', 'bashls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'rust_analyzer', 'clangd', 'ansiblels' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
@@ -197,3 +195,5 @@ for _, lsp in pairs(servers) do
         }
     }
 end
+
+require 'lspconfig'.bashls.setup {}

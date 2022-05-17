@@ -3,7 +3,7 @@ local helpers = require("null-ls.helpers")
 
 require("null-ls").setup({
     on_attach = function(client)
-        if client.resolved_capabilities.document_formatting then
+        if client.supports_method "textDocument/formatting" then
             vim.cmd([[
             augroup LspFormatting
                 autocmd! * <buffer>
