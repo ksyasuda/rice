@@ -128,3 +128,6 @@ nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
+
+nmap <leader>y "+
+vmap <leader>y "+

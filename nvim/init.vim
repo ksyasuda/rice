@@ -181,18 +181,19 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/github-theme.lua
   source ~/.config/nvim/plugin-confs/onedarkpro.lua
 
+  source ~/.config/nvim/lua/toggle_lsp_diagnostics.lua
+
   " makes fzf match colorscheme (I think)
   augroup fzf_preview
-	autocmd!
-	autocmd User fzf_preview#rpc#initialized call s:fzf_preview_settings() " fzf_preview#remote#initialized or fzf_preview#coc#initialized
+    autocmd!
+    autocmd User fzf_preview#rpc#initialized call s:fzf_preview_settings()
   augroup END
   function! s:fzf_preview_settings() abort
-	let g:fzf_preview_command = 'COLORTERM=truecolor ' . g:fzf_preview_command
-	let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
+    let g:fzf_preview_command = 'COLORTERM=truecolor ' . g:fzf_preview_command
+    let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
   endfunction
   " make terminal not have line numbers
   autocmd TermOpen * setlocal nonumber norelativenumber
-
 else
   source ~/.vim/keybindings.vim
 
