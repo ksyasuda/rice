@@ -4,7 +4,7 @@ set noshowmode "disable default vim insert text at bottom
 set laststatus=3
 set number
 set colorcolumn=80
-set tw=80
+set textwidth=80
 set shiftwidth=4
 set tabstop=4
 set autoindent
@@ -26,11 +26,8 @@ set wildmenu " show candidates for vim commands with tab
 set wildignore=*.o,*.obj,*.bak,*.exe
 set background=dark
 set showmatch
-" set nocompatible " no more vi
 set list
 set listchars=tab:\ ,trail:
-" set path from current directory and all directories under
-" set path=$PWD/**
 set encoding=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ 18
 set expandtab
@@ -43,8 +40,11 @@ set updatetime=300
 set timeoutlen=400
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
 set pumwidth=35
+
+" set nocompatible " no more vi
+" set path from current directory and all directories under
+" set path=$PWD/**
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -93,7 +93,6 @@ if has('nvim')
   Plug 'glepnir/dashboard-nvim'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'lewis6991/gitsigns.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'ojroques/nvim-lspfuzzy'
