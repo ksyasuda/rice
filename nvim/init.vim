@@ -81,14 +81,9 @@ if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " Plug 'zbirenbaum/copilot.lua'
-  " Plug 'zbirenbaum/copilot-cmp'
-  " Plug 'nvim-telescope/telescope.nvim'
 
-  " Plug 'TimUntersberger/neogit'
   Plug 'akinsho/bufferline.nvim'
   Plug 'andweeb/presence.nvim'
-  Plug 'f-person/git-blame.nvim'
   Plug 'folke/which-key.nvim'
   Plug 'glepnir/dashboard-nvim'
   Plug 'kyazdani42/nvim-tree.lua'
@@ -146,7 +141,6 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/bufferline.lua
   source ~/.config/nvim/plugin-confs/dashboard-art.vim
   source ~/.config/nvim/plugin-confs/dashboard-nvim.lua
-  source ~/.config/nvim/plugin-confs/git-blame.lua
   source ~/.config/nvim/plugin-confs/gitsigns.lua
   source ~/.config/nvim/plugin-confs/lspfuzzy.lua
   source ~/.config/nvim/plugin-confs/lualine.lua
@@ -166,7 +160,7 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/nvim-cmp.lua
   source ~/.config/nvim/plugin-confs/fidget.lua
   source ~/.config/nvim/plugin-confs/symbols-outline.lua
-  source ~/.config/nvim/plugin-confs/trouble.lua
+  " source ~/.config/nvim/plugin-confs/trouble.lua
 
   " nvim and vim plugins
   source ~/.vim/plugin-confs/floaterm.vim
@@ -263,9 +257,10 @@ command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0)
 
 command! -bang -nargs=? -complete=dir AllFiles
-  \ call fzf#run(fzf#wrap('allfiles', fzf#vim#with_preview({'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden --no-ignore', 'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0))
+    \ call fzf#run(fzf#wrap('allfiles', fzf#vim#with_preview({'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden --no-ignore', 'options': ['--layout=reverse', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0))
 
-command! Lines call fzf#vim#lines(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse']}), <bang>0)
+command! -bang -nargs=? -complete=dir Lines
+    \ call fzf#vim#lines(<q-args>, ({'options': ['--layout=reverse']}), <bang>0)
 
 command! -bang -nargs=? -complete=dir Buffers
     \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0)

@@ -26,7 +26,7 @@ nmap gDc :lua vim.lsp.buf.declaration()<CR>
 nmap gDf :lua vim.lsp.buf.definition()<CR>
 nmap gF :edit <cfile><cr>
 nmap gT :lua vim.lsp.buf.type_definition()<CR>
-nmap gb :lua vim.lsp.buf.document_symbol()<CR>
+nmap gb :Gitsigns blame_line<CR>
 " nmap gd :lua vim.lsp.buf.definition()<CR>
 nmap gi :lua vim.lsp.buf.implementation()<CR>
 nmap gl :lua vim.lsp.buf.code_lens()<CR>
@@ -56,7 +56,7 @@ nmap <silent> <Leader>fa :DashboardFindWord<CR>
 nmap <silent> <Leader>fb :DashboardJumpMark<CR>
 nmap <silent> <Leader>fh :DashboardFindHistory<CR>
 
-nmap <leader>gb :GitBlameToggle<CR>
+nmap <leader>gb :Gitsigns blame_line<CR>
 nmap <leader>gc :Commits<CR>
 nmap <leader>gf :GitFiles<CR>
 " nmap <leader>gg :Neogit<CR>
@@ -123,11 +123,11 @@ nmap <leader>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
 nmap <leader>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
 nmap <leader>wr :lua vim.lsp.buf.remove_workspace_folder()<CR>
 
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
+" nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+" nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+" nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+" nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+" nnoremap <leader>xx <cmd>TroubleToggle<cr>
 
 nmap <leader>y "+
 vmap <leader>y "+

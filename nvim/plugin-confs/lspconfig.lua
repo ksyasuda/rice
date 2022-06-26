@@ -185,7 +185,7 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 
-local servers = { 'jedi_language_server', 'bashls', 'vimls', 'yamlls', 'dockerls', 'html', 'sumneko_lua', 'rust_analyzer', 'clangd', 'ansiblels' }
+local servers = { 'jedi_language_server', 'bashls', 'vimls', 'yamlls', 'dockerls', 'sumneko_lua', 'rust_analyzer', 'clangd', 'ansiblels' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
@@ -196,4 +196,4 @@ for _, lsp in pairs(servers) do
     }
 end
 
-require 'lspconfig'.bashls.setup {}
+-- require 'lspconfig'.bashls.setup {}
