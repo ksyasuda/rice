@@ -22,17 +22,15 @@ nnoremap // :Lines<CR>
 nnoremap ?? :BLines<CR>
 
 nmap gA :lua vim.lsp.buf.code_actions()<CR>
-nmap gd :Telescope lsp_definitions<CR>
-nmap gDc :Telescope lsp_implementations<CR>
-nmap gDf :Telescope lsp_definitions<CR>
+nmap gDc :lua vim.lsp.buf.declaration()<CR>
+nmap gDf :lua vim.lsp.buf.definition()<CR>
 nmap gF :edit <cfile><cr>
-nmap gT :Telescope lsp_type_definitions<CR>
+nmap gT :lua vim.lsp.buf.type_definition()<CR>
 nmap gb :Gitsigns blame_line<CR>
 " nmap gd :lua vim.lsp.buf.definition()<CR>
-nmap gi :Telescope lsp_implementations<CR>
-nmap gj :Telescope jumplist<CR>
+nmap gi :lua vim.lsp.buf.implementation()<CR>
 nmap gl :lua vim.lsp.buf.code_lens()<CR>
-nmap gr :Telescope lsp_references<CR>
+nmap gr :lua vim.lsp.buf.references()<CR>
 nmap gs :lua vim.lsp.buf.signature_help()<CR>
 
 nmap Q !!$SHELL<CR>
@@ -42,60 +40,55 @@ nmap rn :lua vim.lsp.buf.rename()<CR>
 nmap <leader>as :FloatermNew --title=aniwrapper aniwrapper -qtdoomone -D144<CR>
 nmap <leader>ad :FloatermNew --title=aniwrapper ani-cli -q720p -cd/home/sudacode/Videos/sauce -D144<CR>
 
-nmap <leader>bb :Telescope buffers<CR>
+nmap <leader>bb :Buffers<CR>
 nmap <leader>bk :bdelete<CR>
 nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprev<CR>
 
 nmap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nmap <leader>cc :vert Copilot<CR>
-nmap <leader>cd :Telescope diagnostics<CR>
-" nmap <leader>cl :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nmap <leader>cd :LspDiagnostics <bufnr><CR>
+nmap <leader>cl :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 
-nnoremap <leader>ff :Telescope find_files<cr>
-nnoremap <leader>fg :Telescope live_grep<cr>
-nnoremap <leader>fb :Telescope buffers<cr>
-nnoremap <leader>fh :Telescope help_tags<cr>
+nmap <leader>ff :CocCommand fzf-preview.ProjectFiles<CR>
 nmap <silent> <Leader>fa :DashboardFindWord<CR>
 nmap <silent> <Leader>fb :DashboardJumpMark<CR>
 nmap <silent> <Leader>fh :DashboardFindHistory<CR>
 
 nmap <leader>gb :Gitsigns blame_line<CR>
-nmap <leader>gc :Telescope git_commits<CR>
-nmap <leader>gf :Telescope git_files<CR>
+nmap <leader>gc :Commits<CR>
+nmap <leader>gf :GitFiles<CR>
 " nmap <leader>gg :Neogit<CR>
 nmap <leader>gg :FloatermNew --title=lazygit --width=1.0 --height=1.0 --opener=vsplit lazygit<CR>
 nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>
-nnoremap gR <cmd>Telescope lsp_references<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 nnoremap gpc <cmd>lua require('goto-preview').close_all_win()<CR>
 nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>
 nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
 
-nmap <leader>hc :Telescope commands<CR>
-nmap <leader>hh :Telescope tags<CR>
-nmap <leader>hk :Telescope keymaps<CR>
-nmap <leader>hs :Telescope spell_suggest<CR>
+nmap <leader>hc :Commands<CR>
+nmap <leader>hh :Helptags<CR>
+nmap <leader>hk :Maps<CR>
 
 nmap <leader>isp :-1read $HOME/Templates/python.py<CR>4jw
 
 nmap <leader>j :AnyJump<CR>
 
-nmap K :DocsViewToggle<CR>
-" nmap K :lua vim.lsp.buf.hover()<CR>
+nmap K :lua vim.lsp.buf.hover()<CR>
 
-nmap <leader>lD :Telescope lsp_definitions<CR>
+nmap <leader>lD :lua vim.lsp.buf.definition()<CR>
 nmap <leader>la :lua vim.lsp.buf.code_action()<CR>
-nmap <leader>lci :Telescope lsp_incoming_calls<CR>
-nmap <leader>lco :Telescope lsp_outgoing_calls<CR>
-nmap <leader>ld :Telescope lsp_declarations<CR>
+nmap <leader>lci :lua vim.lsp.buf.incoming_calls()<CR>
+nmap <leader>lco :lua vim.lsp.buf.outgoing_calls()<CR>
+nmap <leader>ld :lua vim.lsp.buf.declaration()<CR>
 nmap <leader>lh :lua vim.lsp.buf.signature_help()<CR>
-nmap <leader>li :Telescope lsp_implementations<CR>
-nmap <leader>lr :Telescope lsp_references<CR>
+nmap <leader>li :lua vim.lsp.buf.implementation()<CR>
+nmap <leader>lr :lua vim.lsp.buf.references()<CR>
 nmap <leader>lR :lua vim.lsp.buf.rename()<CR>
-nmap <leader>ls :Telescope lsp_document_symbols<CR>
-nmap <leader>lt :Telescope lsp_type_definitions<CR>
-nmap <leader>lw :Telescope lsp_dynamic_workspace_symbols<CR>
+nmap <leader>ls :lua vim.lsp.buf.document_symbol()<CR>
+nmap <leader>lt :lua vim.lsp.buf.type_definition()<CR>
+nmap <leader>lw :lua vim.lsp.buf.workspace_symbol()<CR>
 
 nmap <leader>n :NvimTreeToggle<CR>
 
@@ -113,14 +106,13 @@ nmap <leader>r :NvimTreeRefresh<CR>
 
 nmap <Leader>sl :<C-u>SessionLoad<CR>
 nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <leader>sF :AllFiles<Cr>
 nmap <leader>sc :nohls<Cr>
-nmap <leader>sC :Telescope commands<Cr>
-nmap <leader>sf :Telescope find_files<Cr>
-nmap <leader>sh :Telescope command_history<CR>
-nmap <leader>sm :Telescope man_pages<CR>
-nmap <leader>s/ :Telescope search_history<CR>
+nmap <leader>sf :Files<Cr>
+nmap <leader>sh :History:<CR>
+nmap <leader>s/ :History/<CR>
 
-nnoremap <silent> <Leader>tc :Telescope colorscheme<CR>
+nnoremap <silent> <Leader>tc :Colors<CR>
 nmap <leader>tf :wa<CR>:FloatermToggle floatterm<CR>
 nmap <leader>to :SymbolsOutline<CR>
 nmap <leader>tp :FloatermToggle ipython<CR>

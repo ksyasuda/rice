@@ -90,10 +90,11 @@ if has('nvim')
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
   Plug 'ojroques/nvim-lspfuzzy'
 
   Plug 'L3MON4D3/LuaSnip'
-  Plug 'folke/trouble.nvim'
+  Plug 'amrbashir/nvim-docs-view'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-path'
@@ -106,7 +107,6 @@ if has('nvim')
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'rmagatti/goto-preview',
   Plug 'saadparwaiz1/cmp_luasnip'
-  Plug 'simrat39/symbols-outline.nvim'
   Plug 'williamboman/nvim-lsp-installer'
 
   Plug 'Mofiqul/dracula.nvim'
@@ -148,6 +148,7 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/presence.lua
   source ~/.config/nvim/plugin-confs/treesitter.lua
   source ~/.config/nvim/plugin-confs/whichkey.lua
+  source ~/.config/nvim/plugin-confs/telescope.lua
 
   source ~/.config/nvim/plugin-confs/code_actions.lua
   " source ~/.config/nvim/plugin-confs/copilot.lua
@@ -160,12 +161,11 @@ if has('nvim')
   source ~/.config/nvim/plugin-confs/nvim-cmp.lua
   source ~/.config/nvim/plugin-confs/fidget.lua
   source ~/.config/nvim/plugin-confs/symbols-outline.lua
-  " source ~/.config/nvim/plugin-confs/trouble.lua
+  source ~/.config/nvim/plugin-confs/nvim-docs-view.lua
 
   " nvim and vim plugins
   source ~/.vim/plugin-confs/floaterm.vim
   source ~/.vim/plugin-confs/fzf.vim
-  source ~/.vim/plugin-confs/lightline.vim
   source ~/.vim/plugin-confs/vim-closetag.vim
   source ~/.vim/plugin-confs/wakatime.vim
 

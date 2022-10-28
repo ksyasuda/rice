@@ -196,4 +196,21 @@ for _, lsp in pairs(servers) do
     }
 end
 
+local plugins_path = vim.fn.stdpath("data") .. "site/autoload/plug.vim"
+local dir_list = vim.fn.glob(plugins_path .. "/*", true, true)
+local library_table = {}
+for _, v in ipairs(dir_list) do
+  library_table[v .. "/lua"] = true
+end
+library_table[vim.fn.expand("$VIMRUNTIME/lua")] = true
+library_table[vim.fn.stdpath("config") .. "/lua"] = true
+require('lspconfig').sumneko_lua.setup({
+  settings = {
+    Lua = {
+      diagnostics = { globals = { "vim" } },
+      workspace = { library = library_table },
+    },
+  },
+})
+
 -- require 'lspconfig'.bashls.setup {}
