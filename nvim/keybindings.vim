@@ -18,7 +18,7 @@ nmap <C-K> :bprev<CR>
 nmap <C-T> :wa<CR>:FloatermToggle floatterm<CR>
 
 " open file under cursor, create if necessary
-nnoremap // :Lines<CR>
+nnoremap // :Telescope current_buffer_fuzzy_find<CR>
 nnoremap ?? :BLines<CR>
 
 nmap gA :lua vim.lsp.buf.code_actions()<CR>
@@ -81,14 +81,13 @@ nmap <leader>isp :-1read $HOME/Templates/python.py<CR>4jw
 
 nmap <leader>j :AnyJump<CR>
 
-nmap K :DocsViewToggle<CR>
-" nmap K :lua vim.lsp.buf.hover()<CR>
+" nmap K :DocsViewToggle<CR>
+nmap K :lua vim.lsp.buf.hover()<CR>
 
-nmap <leader>lD :Telescope lsp_definitions<CR>
+nmap <leader>ld :Telescope lsp_definitions<CR>
 nmap <leader>la :lua vim.lsp.buf.code_action()<CR>
 nmap <leader>lci :Telescope lsp_incoming_calls<CR>
 nmap <leader>lco :Telescope lsp_outgoing_calls<CR>
-nmap <leader>ld :Telescope lsp_declarations<CR>
 nmap <leader>lh :lua vim.lsp.buf.signature_help()<CR>
 nmap <leader>li :Telescope lsp_implementations<CR>
 nmap <leader>lr :Telescope lsp_references<CR>

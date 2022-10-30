@@ -5,6 +5,9 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+autocmd FileType help wincmd L
+autocmd FileType man wincmd L
+
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 set completeopt=menu,menuone,noselect
@@ -35,7 +38,7 @@ source ~/.config/nvim/plugin-confs/null-ls.lua
 source ~/.config/nvim/plugin-confs/nvim-cmp.lua
 source ~/.config/nvim/plugin-confs/fidget.lua
 source ~/.config/nvim/plugin-confs/symbols-outline.lua
-source ~/.config/nvim/plugin-confs/nvim-docs-view.lua
+" source ~/.config/nvim/plugin-confs/nvim-docs-view.lua
 
 " nvim and vim plugins
 source ~/.vim/plugin-confs/floaterm.vim
@@ -67,7 +70,8 @@ command! -bang -nargs=? -complete=dir Buffers
     \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh']}), <bang>0)
 
 command! Reload execute "source ~/.vimrc"
-command! Config execute ":e ~/.vimrc"
+command! Config execute ":e ~/.config/nvim/init.vim"
+command! Plugins execute ":e ~/.config/nvim/lua/plugins.lua"
 command! Env execute ":Dotenv .env"
 command! MakeTags !ctags -R .
 command! Ovewrite execute ":w !sudo tee %"

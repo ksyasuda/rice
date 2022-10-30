@@ -115,7 +115,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["copilot-cmp"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16copilot_cmp\frequire\0" },
+    config = { "\27LJ\2\n¶\1\0\0\a\0\t\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\6\0006\4\0\0'\6\4\0B\4\2\0029\4\5\4=\4\a\3=\3\b\2B\0\2\1K\0\1\0\15formatters\16insert_text\1\0\0\20remove_existing\23copilot_cmp.format\1\0\1\vmethod\26getCompletionsCycling\nsetup\16copilot_cmp\frequire\0" },
     load_after = {},
     loaded = true,
     needs_bufread = false,
@@ -124,7 +124,7 @@ _G.packer_plugins = {
   },
   ["copilot.lua"] = {
     after = { "copilot-cmp" },
-    config = { "\27LJ\2\n‘\4\0\0\6\0\20\0\0276\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\0025\3\b\0005\4\t\0=\4\5\3=\3\n\0025\3\v\0=\3\f\0026\3\r\0009\3\14\0039\3\15\3'\5\16\0B\3\2\2'\4\17\0&\3\4\3=\3\18\0024\3\0\0=\3\19\2B\0\2\1K\0\1\0\26server_opts_overrides\24plugin_manager_path\22/site/pack/packer\tdata\fstdpath\afn\bvim\14filetypes\1\0\t\bsvn\1\rhgcommit\1\14gitrebase\1\14gitcommit\1\thelp\1\rmarkdown\1\tyaml\1\6.\1\bcvs\1\15suggestion\1\0\4\tnext\n<M-]>\fdismiss\n<C-]>\tprev\n<M-[>\vaccept\n<M-l>\1\0\3\rdebounce\3K\fenabled\2\17auto_trigger\2\npanel\1\0\1\25copilot_node_command\tnode\vkeymap\1\0\5\14jump_prev\a[[\frefresh\agr\vaccept\t<CR>\topen\v<M-CR>\14jump_next\a]]\1\0\2\17auto_refresh\1\fenabled\2\nsetup\fcopilot\frequire-\1\0\4\0\3\0\0066\0\0\0009\0\1\0003\2\2\0)\3d\0B\0\3\1K\0\1\0\0\rdefer_fn\bvim\0" },
+    config = { "\27LJ\2\n¹\3\0\0\6\0\18\0\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\0025\3\b\0005\4\t\0=\4\5\3=\3\n\0026\3\v\0009\3\f\0039\3\r\3'\5\14\0B\3\2\2'\4\15\0&\3\4\3=\3\16\0024\3\0\0=\3\17\2B\0\2\1K\0\1\0\26server_opts_overrides\24plugin_manager_path\22/site/pack/packer\tdata\fstdpath\afn\bvim\15suggestion\1\0\4\vaccept\n<Tab>\tprev\n<M-[>\tnext\n<M-]>\fdismiss\n<C-]>\1\0\3\17auto_trigger\2\rdebounce\3K\fenabled\2\npanel\1\0\1\25copilot_node_command\tnode\vkeymap\1\0\5\frefresh\agr\topen\v<M-CR>\14jump_next\a]]\vaccept\t<CR>\14jump_prev\a[[\1\0\2\17auto_refresh\1\fenabled\2\nsetup\fcopilot\frequire-\1\0\4\0\3\0\0066\0\0\0009\0\1\0003\2\2\0)\3d\0B\0\3\1K\0\1\0\0\rdefer_fn\bvim\0" },
     load_after = {},
     loaded = true,
     needs_bufread = false,
@@ -176,6 +176,12 @@ _G.packer_plugins = {
     path = "/home/sudacode/.local/share/nvim/site/pack/packer/start/goto-preview",
     url = "https://github.com/rmagatti/goto-preview"
   },
+  ["hover.nvim"] = {
+    config = { "\27LJ\2\nz\0\0\3\0\4\0\n6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\0016\0\0\0'\2\3\0B\0\2\1K\0\1\0\31hover.providers.dictionary\24hover.providers.man\24hover.providers.lsp\frequire°\2\1\0\a\0\17\0!6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0006\4\0\0'\6\1\0B\4\2\0029\4\1\0045\5\r\0B\0\5\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\14\0006\4\0\0'\6\1\0B\4\2\0029\4\15\0045\5\16\0B\0\5\1K\0\1\0\1\0\1\tdesc\24hover.nvim (select)\17hover_select\agK\1\0\1\tdesc\15hover.nvim\6K\6n\bset\vkeymap\bvim\17preview_opts\1\0\1\vborder\frounded\tinit\1\0\2\19preview_window\1\ntitle\2\0\nsetup\nhover\frequire\0" },
+    loaded = true,
+    path = "/home/sudacode/.local/share/nvim/site/pack/packer/start/hover.nvim",
+    url = "https://github.com/lewis6991/hover.nvim"
+  },
   ["lsp_lines.nvim"] = {
     loaded = true,
     path = "/home/sudacode/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
@@ -210,11 +216,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sudacode/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-docs-view"] = {
-    loaded = true,
-    path = "/home/sudacode/.local/share/nvim/site/pack/packer/start/nvim-docs-view",
-    url = "https://github.com/amrbashir/nvim-docs-view"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -304,18 +305,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: hover.nvim
+time([[Config for hover.nvim]], true)
+try_loadstring("\27LJ\2\nz\0\0\3\0\4\0\n6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\0016\0\0\0'\2\3\0B\0\2\1K\0\1\0\31hover.providers.dictionary\24hover.providers.man\24hover.providers.lsp\frequire°\2\1\0\a\0\17\0!6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0006\4\0\0'\6\1\0B\4\2\0029\4\1\0045\5\r\0B\0\5\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\14\0006\4\0\0'\6\1\0B\4\2\0029\4\15\0045\5\16\0B\0\5\1K\0\1\0\1\0\1\tdesc\24hover.nvim (select)\17hover_select\agK\1\0\1\tdesc\15hover.nvim\6K\6n\bset\vkeymap\bvim\17preview_opts\1\0\1\vborder\frounded\tinit\1\0\2\19preview_window\1\ntitle\2\0\nsetup\nhover\frequire\0", "config", "hover.nvim")
+time([[Config for hover.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd lualine.nvim ]]
 vim.cmd [[ packadd copilot.lua ]]
 
 -- Config for: copilot.lua
-try_loadstring("\27LJ\2\n‘\4\0\0\6\0\20\0\0276\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\0025\3\b\0005\4\t\0=\4\5\3=\3\n\0025\3\v\0=\3\f\0026\3\r\0009\3\14\0039\3\15\3'\5\16\0B\3\2\2'\4\17\0&\3\4\3=\3\18\0024\3\0\0=\3\19\2B\0\2\1K\0\1\0\26server_opts_overrides\24plugin_manager_path\22/site/pack/packer\tdata\fstdpath\afn\bvim\14filetypes\1\0\t\bsvn\1\rhgcommit\1\14gitrebase\1\14gitcommit\1\thelp\1\rmarkdown\1\tyaml\1\6.\1\bcvs\1\15suggestion\1\0\4\tnext\n<M-]>\fdismiss\n<C-]>\tprev\n<M-[>\vaccept\n<M-l>\1\0\3\rdebounce\3K\fenabled\2\17auto_trigger\2\npanel\1\0\1\25copilot_node_command\tnode\vkeymap\1\0\5\14jump_prev\a[[\frefresh\agr\vaccept\t<CR>\topen\v<M-CR>\14jump_next\a]]\1\0\2\17auto_refresh\1\fenabled\2\nsetup\fcopilot\frequire-\1\0\4\0\3\0\0066\0\0\0009\0\1\0003\2\2\0)\3d\0B\0\3\1K\0\1\0\0\rdefer_fn\bvim\0", "config", "copilot.lua")
+try_loadstring("\27LJ\2\n¹\3\0\0\6\0\18\0\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\0025\3\b\0005\4\t\0=\4\5\3=\3\n\0026\3\v\0009\3\f\0039\3\r\3'\5\14\0B\3\2\2'\4\15\0&\3\4\3=\3\16\0024\3\0\0=\3\17\2B\0\2\1K\0\1\0\26server_opts_overrides\24plugin_manager_path\22/site/pack/packer\tdata\fstdpath\afn\bvim\15suggestion\1\0\4\vaccept\n<Tab>\tprev\n<M-[>\tnext\n<M-]>\fdismiss\n<C-]>\1\0\3\17auto_trigger\2\rdebounce\3K\fenabled\2\npanel\1\0\1\25copilot_node_command\tnode\vkeymap\1\0\5\frefresh\agr\topen\v<M-CR>\14jump_next\a]]\vaccept\t<CR>\14jump_prev\a[[\1\0\2\17auto_refresh\1\fenabled\2\nsetup\fcopilot\frequire-\1\0\4\0\3\0\0066\0\0\0009\0\1\0003\2\2\0)\3d\0B\0\3\1K\0\1\0\0\rdefer_fn\bvim\0", "config", "copilot.lua")
 
 vim.cmd [[ packadd copilot-cmp ]]
 
 -- Config for: copilot-cmp
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16copilot_cmp\frequire\0", "config", "copilot-cmp")
+try_loadstring("\27LJ\2\n¶\1\0\0\a\0\t\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\6\0006\4\0\0'\6\4\0B\4\2\0029\4\5\4=\4\a\3=\3\b\2B\0\2\1K\0\1\0\15formatters\16insert_text\1\0\0\20remove_existing\23copilot_cmp.format\1\0\1\vmethod\26getCompletionsCycling\nsetup\16copilot_cmp\frequire\0", "config", "copilot-cmp")
 
 time([[Sequenced loading]], false)
 

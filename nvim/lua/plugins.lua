@@ -39,17 +39,17 @@ return require('packer').startup(function(use)
                  dismiss = "<C-]>",
                 },
               },
-              filetypes = {
-                yaml = false,
-                markdown = false,
-                help = false,
-                gitcommit = false,
-                gitrebase = false,
-                hgcommit = false,
-                svn = false,
-                cvs = false,
-                ["."] = false,
-              },
+              -- filetypes = {
+              --   yaml = false,
+              --   markdown = false,
+              --   help = false,
+              --   gitcommit = false,
+              --   gitrebase = false,
+              --   hgcommit = false,
+              --   svn = false,
+              --   cvs = false,
+              --   ["."] = false,
+              -- },
               copilot_node_command = 'node', -- Node version must be < 18
               plugin_manager_path = vim.fn.stdpath("data") .. "/site/pack/packer",
               server_opts_overrides = {},
@@ -63,7 +63,7 @@ return require('packer').startup(function(use)
       after = { "copilot.lua" },
       config = function ()
           require("copilot_cmp").setup({
-              -- method = "getCompletionsCycling",
+              method = "getCompletionsCycling",
               formatters = {
                 insert_text = require("copilot_cmp.format").remove_existing
               }
@@ -74,6 +74,43 @@ return require('packer').startup(function(use)
     use {
         'junegunn/fzf',
         run = function() vim.fn['fzf#install']() end
+    }
+
+    use {
+        "lewis6991/hover.nvim",
+        config = function()
+            require("hover").setup {
+                init = function()
+                    -- Require providers
+                    require("hover.providers.lsp")
+                    -- require('hover.providers.gh')
+                    -- require('hover.providers.jira')
+                    require('hover.providers.man')
+                    require('hover.providers.dictionary')
+                end,
+                preview_opts = {
+                    border = "rounded"
+                    -- border = {
+                    --     { "╭", "FloatBorder" },
+                    --     { "─", "FloatBorder" },
+                    --     { "╮", "FloatBorder" },
+                    --     { "│", "FloatBorder" },
+                    --     { "╯", "FloatBorder" },
+                    --     { "─", "FloatBorder" },
+                    --     { "╰", "FloatBorder" },
+                    --     { "│", "FloatBorder" },
+                    -- }
+                },
+                -- Whether the contents of a currently open hover window should be moved
+                -- to a :h preview-window when pressing the hover keymap.
+                preview_window = false,
+                title = true
+            }
+
+            -- Setup keymaps
+            vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
+            vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
+        end
     }
 
     use 'ap/vim-css-color'
@@ -96,7 +133,7 @@ return require('packer').startup(function(use)
     use 'ojroques/nvim-lspfuzzy'
 
     use 'L3MON4D3/LuaSnip'
-    use 'amrbashir/nvim-docs-view'
+    -- use 'amrbashir/nvim-docs-view'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-nvim-lua'

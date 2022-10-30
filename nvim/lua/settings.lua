@@ -4,6 +4,7 @@ local A = vim.api
 
 g.mapleader = "<Space>"
 g.maplocalleader = ','
+o.showmode = false
 o.termguicolors = true
 o.background = 'dark'
 o.mouse = 'a'
