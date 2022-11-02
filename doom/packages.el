@@ -58,3 +58,6 @@
 (package! treemacs-icons-dired)
 (package! flycheck)
 (package! shfmt)
+(package! lsp-jedi)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
