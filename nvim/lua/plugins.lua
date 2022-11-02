@@ -1,4 +1,5 @@
-return require('packer').startup(function(use)
+vim.cmd [[packadd packer.nvim]]
+require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim'
     use {
@@ -7,9 +8,10 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+
 
     use {
       "zbirenbaum/copilot.lua",
@@ -63,10 +65,10 @@ return require('packer').startup(function(use)
       after = { "copilot.lua" },
       config = function ()
           require("copilot_cmp").setup({
-              method = "getCompletionsCycling",
-              formatters = {
-                insert_text = require("copilot_cmp.format").remove_existing
-              }
+              -- method = "getCompletionsCycling",
+              -- formatters = {
+              --   insert_text = require("copilot_cmp.format").remove_existing
+              -- }
           })
       end
     }
@@ -122,35 +124,84 @@ return require('packer').startup(function(use)
     use 'voldikss/vim-floaterm'
     use 'wakatime/vim-wakatime'
 
-    use 'akinsho/nvim-bufferline.lua'
-    use 'andweeb/presence.nvim'
-    use 'folke/which-key.nvim'
-    use 'glepnir/dashboard-nvim'
-    use 'kyazdani42/nvim-tree.lua'
+    use {
+        'akinsho/nvim-bufferline.lua'
+    }
+    use {
+        'andweeb/presence.nvim'
+    }
+    use {
+        'folke/which-key.nvim'
+    }
+    use {
+        'glepnir/dashboard-nvim'
+    }
+    use {
+        'kyazdani42/nvim-tree.lua'
+    }
     use 'kyazdani42/nvim-web-devicons'
-    use 'lewis6991/gitsigns.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'ojroques/nvim-lspfuzzy'
+    use {
+        'lewis6991/gitsigns.nvim'
+    }
+    use {
+        'nvim-telescope/telescope.nvim'
+    }
+    use {
+        'ojroques/nvim-lspfuzzy'
+    }
 
     use 'L3MON4D3/LuaSnip'
     -- use 'amrbashir/nvim-docs-view'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/nvim-cmp'
-    use 'j-hui/fidget.nvim'
-    use 'jose-elias-alvarez/null-ls.nvim'
-    use 'ksyasuda/lsp_lines.nvim'
-    use 'neovim/nvim-lspconfig'
-    use 'onsails/lspkind-nvim'
-    use 'ray-x/lsp_signature.nvim'
-    use 'rmagatti/goto-preview'
+    use {
+        'hrsh7th/nvim-cmp'
+    }
+    use {
+        'hrsh7th/cmp-nvim-lsp'
+    }
+    use {
+        'hrsh7th/cmp-nvim-lua'
+    }
+    use {
+        'hrsh7th/cmp-nvim-lsp-signature-help'
+    }
+    use {
+        'hrsh7th/cmp-path'
+    }
+    use {
+        'hrsh7th/cmp-buffer'
+    }
+    use {
+        'j-hui/fidget.nvim'
+    }
+    use {
+        'jose-elias-alvarez/null-ls.nvim'
+    }
+    use {
+        'ksyasuda/lsp_lines.nvim'
+    }
+    use {
+        'neovim/nvim-lspconfig'
+    }
+    use {
+        'onsails/lspkind-nvim'
+    }
+    -- use 'ray-x/lsp_signature.nvim'
+    use {
+        'rmagatti/goto-preview'
+    }
     use 'saadparwaiz1/cmp_luasnip'
     use 'williamboman/nvim-lsp-installer'
 
-    use 'Mofiqul/dracula.nvim'
-    use 'NTBBloodbath/doom-one.nvim'
-    use 'olimorris/onedarkpro.nvim'
-    use 'projekt0n/github-nvim-theme'
+    use {
+        'Mofiqul/dracula.nvim'
+    }
+    use {
+        'NTBBloodbath/doom-one.nvim'
+    }
+    use {
+        'olimorris/onedarkpro.nvim'
+    }
+    use {
+        'projekt0n/github-nvim-theme'
+    }
 end)

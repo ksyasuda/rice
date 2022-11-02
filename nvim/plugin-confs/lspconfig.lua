@@ -185,33 +185,33 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 
-local servers = { 'jedi_language_server', 'bashls', 'vimls', 'yamlls', 'dockerls', 'rust_analyzer', 'clangd', 'ansiblels' }
-for _, lsp in pairs(servers) do
-    require('lspconfig')[lsp].setup {
-        on_attach = on_attach,
-        handlers = handlers,
-        flags = {
-            -- This will be the default in neovim 0.7+
-            debounce_text_changes = 150,
-        }
-    }
-end
+-- local servers = { 'jedi_language_server', 'bashls', 'vimls', 'yamlls', 'dockerls', 'rust_analyzer', 'clangd', 'ansiblels' }
+-- for _, lsp in pairs(servers) do
+--     require('lspconfig')[lsp].setup {
+--         on_attach = on_attach,
+--         handlers = handlers,
+--         flags = {
+--             -- This will be the default in neovim 0.7+
+--             debounce_text_changes = 150,
+--         }
+--     }
+-- end
 
-local plugins_path = vim.fn.stdpath("data") .. "site/autoload/plug.vim"
-local dir_list = vim.fn.glob(plugins_path .. "/*", true, true)
-local library_table = {}
-for _, v in ipairs(dir_list) do
-  library_table[v .. "/lua"] = true
-end
-library_table[vim.fn.expand("$VIMRUNTIME/lua")] = true
-library_table[vim.fn.stdpath("config") .. "/lua"] = true
-require('lspconfig').sumneko_lua.setup({
-  settings = {
-    Lua = {
-      diagnostics = { globals = { "vim" } },
-      workspace = { library = library_table },
-    },
-  },
-})
+-- local plugins_path = vim.fn.stdpath("data") .. "site/autoload/plug.vim"
+-- local dir_list = vim.fn.glob(plugins_path .. "/*", true, true)
+-- local library_table = {}
+-- for _, v in ipairs(dir_list) do
+--   library_table[v .. "/lua"] = true
+-- end
+-- library_table[vim.fn.expand("$VIMRUNTIME/lua")] = true
+-- library_table[vim.fn.stdpath("config") .. "/lua"] = true
+-- require('lspconfig').sumneko_lua.setup({
+--   settings = {
+--     Lua = {
+--       diagnostics = { globals = { "vim" } },
+--       workspace = { library = library_table },
+--     },
+--   },
+-- })
 
--- require 'lspconfig'.bashls.setup {}
+-- -- require 'lspconfig'.bashls.setup {}

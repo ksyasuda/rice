@@ -2,8 +2,10 @@ local g = vim.g
 local o = vim.o
 local A = vim.api
 
-g.mapleader = "<Space>"
+g.mapleader = " "
 g.maplocalleader = ','
+g.fzf_command = 'fzf --height 90% --width=85% --layout=reverse --preview "bat --color=always {}"'
+o.completeopt="menu,menuone,noselect"
 o.showmode = false
 o.termguicolors = true
 o.background = 'dark'
