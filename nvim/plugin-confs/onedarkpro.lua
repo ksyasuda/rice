@@ -10,7 +10,7 @@ onedarkpro.setup({
   },
   styles = {
     comments = "italic",
-    functions = "bold",
+    functions = "italic,bold",
     keywords = "italic,bold",
     strings = "NONE",
     variables = "bold"
@@ -18,11 +18,11 @@ onedarkpro.setup({
   options = {
       bold = true, -- Use the themes opinionated bold styles?
       italic = true, -- Use the themes opinionated italic styles?
-      underline = false, -- Use the themes opinionated underline styles?
+      underline = true, -- Use the themes opinionated underline styles?
       undercurl = false, -- Use the themes opinionated undercurl styles?
-      cursorline = false, -- Use cursorline highlighting?
+      cursorline = true, -- Use cursorline highlighting?
       transparency = false, -- Use a transparent background?
-      terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
+      terminal_colors = false, -- Use the theme's colors for Neovim's :terminal?
       window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
   }
 })
